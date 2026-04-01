@@ -1,5 +1,5 @@
-import { HeroSection } from '@/components/ui/hero-section-1';
+import { redirect } from 'next/navigation';
 
 export default function HeroSectionOnePage() {
-  return <HeroSection />;
+  redirect('/en/hero-section-1');
 }
