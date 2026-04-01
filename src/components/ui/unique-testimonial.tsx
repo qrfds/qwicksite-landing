@@ -1,0 +1,146 @@
+"use client";
+
+import { useState } from "react";
+import { useTranslations } from "next-intl";
+import { cn } from "@/lib/utils";
+
+export function Testimonials() {
+  const t = useTranslations("home.testimonials");
+  const testimonials = [
+    {
+      id: 1,
+      quote: t("items.0.quote"),
+      author: t("items.0.author"),
+      role: t("items.0.role"),
+      avatar:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      id: 2,
+      quote: t("items.1.quote"),
+      author: t("items.1.author"),
+      role: t("items.1.role"),
+      avatar:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80",
+    },
+    {
+      id: 3,
+      quote: t("items.2.quote"),
+      author: t("items.2.author"),
+      role: t("items.2.role"),
+      avatar:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80",
+    },
+  ];
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [displayedQuote, setDisplayedQuote] = useState(testimonials[0].quote);
+  const [displayedRole, setDisplayedRole] = useState(testimonials[0].role);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const handleSelect = (index: number) => {
+    if (index === activeIndex || isAnimating) return;
+    setIsAnimating(true);
+
+    setTimeout(() => {
+      setDisplayedQuote(testimonials[index].quote);
+      setDisplayedRole(testimonials[index].role);
+      setActiveIndex(index);
+      setTimeout(() => setIsAnimating(false), 400);
+    }, 200);
+  };
+
+  return (
+    <div className="flex flex-col items-center gap-10 py-8">
+      <h3 className="text-2xl md:text-3xl font-semibold text-white text-center">
+        {t("title")}
+      </h3>
+
+      <div className="relative px-8">
+        <span className="absolute -left-2 -top-6 text-7xl font-serif text-white select-none pointer-events-none">
+          "
+        </span>
+
+        <p
+          className={cn(
+            "text-2xl md:text-3xl font-light text-white text-center max-w-lg leading-relaxed transition-all duration-400 ease-out",
+            isAnimating ? "opacity-0 blur-sm scale-[0.98]" : "opacity-100 blur-0 scale-100"
+          )}
+        >
+          {displayedQuote}
+        </p>
+
+        <span className="absolute -right-2 -bottom-8 text-7xl font-serif text-white select-none pointer-events-none">
+          "
+        </span>
+      </div>
+
+      <div className="flex flex-col items-center gap-6 mt-2">
+        <p
+          className={cn(
+            "text-xs text-muted-foreground tracking-[0.2em] uppercase transition-all duration-500 ease-out",
+            isAnimating ? "opacity-0 translate-y-2" : "opacity-100 translate-y-0"
+          )}
+        >
+          {displayedRole}
+        </p>
+
+        <div className="flex items-center justify-center gap-2">
+          {testimonials.map((testimonial, index) => {
+            const isActive = activeIndex === index;
+            const isHovered = hoveredIndex === index && !isActive;
+            const showName = isActive || isHovered;
+
+            return (
+              <button
+                key={testimonial.id}
+                onClick={() => handleSelect(index)}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className={cn(
+                  "relative flex items-center gap-0 rounded-full cursor-pointer",
+                  "transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+                  isActive ? "bg-foreground shadow-lg" : "bg-transparent hover:bg-muted/80",
+                  showName ? "pr-4 pl-2 py-2" : "p-0.5"
+                )}
+              >
+                <div className="relative flex-shrink-0">
+                  <img
+                    src={testimonial.avatar}
+                    alt={testimonial.author}
+                    className={cn(
+                      "w-8 h-8 rounded-full object-cover",
+                      "transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+                      isActive ? "ring-2 ring-background/30" : "ring-0",
+                      !isActive && "hover:scale-105"
+                    )}
+                  />
+                </div>
+
+                <div
+                  className={cn(
+                    "grid transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
+                    showName ? "grid-cols-[1fr] opacity-100 ms-2" : "grid-cols-[0fr] opacity-0 ms-0"
+                  )}
+                >
+                  <div className="overflow-hidden">
+                    <span
+                      className={cn(
+                        "text-sm font-medium whitespace-nowrap block",
+                        "transition-colors duration-300",
+                        isActive ? "text-background" : "text-foreground"
+                      )}
+                    >
+                      {testimonial.author}
+                    </span>
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}

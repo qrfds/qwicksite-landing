@@ -1,38 +1,42 @@
+"use client";
+
 import { Zap, ShoppingCart, MousePointer, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useTranslations } from "next-intl";
 
 const BenefitsSection = () => {
+  const t = useTranslations("home.benefits");
   const benefits = [
     {
       icon: Zap,
-      title: "AI Website Generation",
-      description: "Create a complete site or store in under 60 seconds. Our AI analyzes your business and builds everything automatically.",
-      feature: "60-second setup"
+      title: t("items.0.title"),
+      description: t("items.0.description"),
+      feature: t("items.0.feature")
     },
     {
       icon: ShoppingCart,
-      title: "E-commerce Ready",
-      description: "Payments, inventory, checkout, and shipping built-in. Start selling immediately with zero setup headaches.",
-      feature: "Built-in payments"
+      title: t("items.1.title"),
+      description: t("items.1.description"),
+      feature: t("items.1.feature")
     },
     {
       icon: MousePointer,
-      title: "No Code, No Stress",
-      description: "Drag, drop, and edit instantly. Make changes in real-time without touching a single line of code.",
-      feature: "Visual editor"
+      title: t("items.2.title"),
+      description: t("items.2.description"),
+      feature: t("items.2.feature")
     }
   ];
 
   return (
-    <section className="py-20">
+    <section id="features" className="py-20">
       <div className="container">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Why choose QuickSite?
+            {t("title")}
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Built for entrepreneurs who want to focus on growing their business, not building technology.
+            {t("description")}
           </p>
         </div>
 
@@ -55,8 +59,8 @@ const BenefitsSection = () => {
                   {benefit.description}
                 </p>
                 <div className="flex items-center text-primary font-medium group-hover:text-primary/80 transition-colors">
-                  Learn more
-                  <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  {t("learnMore")}
+                  <ArrowRight className="w-4 h-4 ms-2 group-hover:translate-x-1 transition-transform" />
                 </div>
               </CardContent>
             </Card>

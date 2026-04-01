@@ -86,7 +86,7 @@ export default function ScrollingCardSection() {
   }, [scrollY]);
 
   return (
-    <section className="relative h-[150vh] w-full hidden md:block overflow-visible">
+    <section id="examples" className="relative h-[150vh] w-full hidden md:block overflow-visible">
       {/* Cards Grid */}
       <div className="w-full px-4">
         <div

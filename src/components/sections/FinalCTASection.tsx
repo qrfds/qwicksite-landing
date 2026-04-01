@@ -1,14 +1,13 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
 
 const FinalCTASection = () => {
-  const features = [
-    "AI generates your site in 60 seconds",
-    "Built-in e-commerce & payment processing", 
-    "Drag-and-drop editor (no coding)",
-    "Mobile-responsive & SEO optimized",
-    "24/7 support & free migration"
-  ];
+  const t = useTranslations("home.finalCta");
+  const features = t.raw("features") as string[];
 
   return (
     <section className="py-20 relative overflow-hidden">
@@ -20,10 +19,10 @@ const FinalCTASection = () => {
         <div className="text-center space-y-8">
           <div className="space-y-6">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              Your business online in minutes, not months
+              {t("title")}
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Stop losing customers to competitors with better websites. Join thousands of entrepreneurs who chose the faster, smarter way to build online.
+              {t("description")}
             </p>
           </div>
 
@@ -43,27 +42,31 @@ const FinalCTASection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              variant="secondary" 
-              size="lg" 
+            <Button
+              asChild
+              variant="secondary"
+              size="lg"
               className="text-lg px-12 py-6 h-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-strong"
             >
-              Start Free & Launch Your Store Today
-              <ArrowRight className="w-5 h-5 ml-2" />
+              <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                {t("primaryButton")}
+                <ArrowRight className="w-5 h-5 ms-2" />
+              </Link>
             </Button>
-            <Button 
-              variant="outline" 
-              size="lg" 
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
               className="text-lg px-8 py-6 h-auto border-border text-foreground hover:bg-card/50"
             >
-              Book a Demo
+              <Link href="/support">{t("secondaryButton")}</Link>
             </Button>
           </div>
 
           {/* Final trust elements */}
           <div className="space-y-4 text-muted-foreground">
-            <p className="text-sm">✨ No credit card required • 14-day money-back guarantee</p>
-            <p className="text-xs">Start with our free plan, upgrade only when you're ready to grow</p>
+            <p className="text-sm">{t("trustLine1")}</p>
+            <p className="text-xs">{t("trustLine2")}</p>
           </div>
         </div>
       </div>

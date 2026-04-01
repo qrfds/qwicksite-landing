@@ -6,7 +6,7 @@
   --light-display: block;
   
   /* Background Colors */
-  --bg-dark: radial-gradient(125% 125% at 50% 100%, #000000 40%, #010133 100%);
+  --bg-dark: #050505;
   --bg-light: #f8fafc;
   --bg-light-glow: radial-gradient(circle at top right, rgba(70, 130, 180, 0.5), transparent 70%);
   --bg-light-grid: linear-gradient(to right, #e2e8f0 1px, transparent 1px), linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);

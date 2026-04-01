@@ -1,0 +1,376 @@
+{
+  "meta": {
+    "title": "QwickSite | AI Website Builder for Egypt & Gulf",
+    "description": "Launch your AI-powered storefront in minutes. Built for Egyptian and GCC businesses with SEO-ready pages, WhatsApp Commerce, and cash-on-delivery workflows."
+  },
+  "common": {
+    "startFree": "Start Free Now",
+    "seePricing": "See Pricing",
+    "talkToSupport": "Talk to Support",
+    "signIn": "Sign In",
+    "getStarted": "Get Started"
+  },
+  "header": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "support": "Support",
+    "languageLabel": "Language",
+    "switchToArabic": "عربي",
+    "switchToEnglish": "EN"
+  },
+  "hero": {
+    "badge": "Build your professional store in 30 seconds",
+    "title": "Build your professional store in 30 seconds",
+    "description": "QwickSite builds your store instantly, so you can focus on growing your business.",
+    "footnote": "Free forever plan available • No credit card required • Cancel anytime"
+  },
+  "home": {
+    "trust": {
+      "title": "Trusted by leading businesses worldwide",
+      "description": "Join thousands of companies that trust QwickSite to power their online presence."
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "items": [
+        {
+          "quote": "Launched my online store in 30 minutes. Made my first sale the same day!",
+          "author": "Sarah Chen",
+          "role": "Boutique Owner"
+        },
+        {
+          "quote": "Finally, a website builder that actually works like they promise. Game changer!",
+          "author": "Mike Rodriguez",
+          "role": "Restaurant Owner"
+        },
+        {
+          "quote": "Migrated from Shopify in minutes. QwickSite is so much easier to use!",
+          "author": "Emily Johnson",
+          "role": "Fashion Designer"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Why choose QwickSite?",
+      "description": "Built for entrepreneurs who want to focus on growing their business, not building technology.",
+      "learnMore": "Learn more",
+      "items": [
+        {
+          "title": "AI Website Generation",
+          "description": "Create a complete site or store in under 60 seconds. Our AI analyzes your business and builds everything automatically.",
+          "feature": "60-second setup"
+        },
+        {
+          "title": "E-commerce Ready",
+          "description": "Payments, inventory, checkout, and shipping built-in. Start selling immediately with zero setup headaches.",
+          "feature": "Built-in payments"
+        },
+        {
+          "title": "No Code, No Stress",
+          "description": "Drag, drop, and edit instantly. Make changes in real-time without touching a single line of code.",
+          "feature": "Visual editor"
+        }
+      ]
+    },
+    "caseStudy": {
+      "badge": "Success Story",
+      "title": "From idea to Comfytix",
+      "description": "See how Youssef used QwickSite to launch Comfytix, an online massage chairs store, and scale quickly.",
+      "stats": [
+        { "label": "Weeks to launch" },
+        { "label": "Revenue in 6 months" },
+        { "label": "Customer satisfaction" }
+      ],
+      "cards": {
+        "challenge": {
+          "title": "The Challenge",
+          "body": "Youssef wanted to launch Comfytix, an online massage chairs store, but needed a faster way to build a professional storefront without getting blocked by technical setup."
+        },
+        "solution": {
+          "title": "The Solution",
+          "body": "QwickSite's AI-powered builder generated a polished store in minutes, and the built-in e-commerce flow helped Comfytix start taking orders right away."
+        },
+        "results": {
+          "title": "The Results",
+          "body": "Within months, Comfytix built momentum with a conversion-focused website, stronger mobile experience, and SEO-friendly pages that attracted qualified shoppers."
+        },
+        "next": {
+          "title": "What's Next",
+          "body": "Youssef is now expanding Comfytix with more product lines and category pages, while QwickSite continues to support growth and optimization."
+        }
+      },
+      "cta": {
+        "title": "Ready to write your success story?",
+        "description": "Join thousands of entrepreneurs who chose the faster, smarter way to build online.",
+        "button": "Start Your Journey"
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "description": "Everything you need to know about QwickSite. Can't find what you're looking for? Contact our support team.",
+      "items": [
+        {
+          "question": "Do I need coding skills to use QwickSite?",
+          "answer": "Absolutely not! QwickSite is designed for everyone. Our AI handles all the technical work, and our visual editor lets you make changes with simple drag-and-drop. No coding knowledge required."
+        },
+        {
+          "question": "How much does QwickSite cost?",
+          "answer": "We offer flexible pricing starting with a free forever plan. Paid plans start at just $9/month with advanced features, custom domains, and priority support. All plans include a 14-day money-back guarantee."
+        },
+        {
+          "question": "Can I migrate from Shopify or WooCommerce?",
+          "answer": "Yes! Our seamless import tool can migrate your existing store, products, and customer data in minutes. We also provide free migration assistance to ensure nothing is lost in the process."
+        },
+        {
+          "question": "Is QwickSite scalable for growing businesses?",
+          "answer": "Absolutely. QwickSite is built for growth. Our infrastructure automatically scales with your traffic, and our e-commerce features handle everything from small shops to enterprise-level stores with thousands of products."
+        },
+        {
+          "question": "What kind of support do you provide?",
+          "answer": "We offer 24/7 chat support, comprehensive documentation, video tutorials, and free onboarding calls for paid plans. Our team is committed to your success every step of the way."
+        },
+        {
+          "question": "How fast will my website load?",
+          "answer": "Lightning fast! All QwickSite websites are automatically optimized for speed with global CDN, image optimization, and performance monitoring. Most sites load in under 2 seconds worldwide."
+        }
+      ]
+    },
+    "finalCta": {
+      "title": "Your business online in minutes, not months",
+      "description": "Stop losing customers to competitors with better websites. Join thousands of entrepreneurs who chose the faster, smarter way to build online.",
+      "features": [
+        "AI generates your site in 60 seconds",
+        "Built-in e-commerce & payment processing",
+        "Drag-and-drop editor (no coding)",
+        "Mobile-responsive & SEO optimized",
+        "24/7 support & free migration"
+      ],
+      "primaryButton": "Start Free & Launch Your Store Today",
+      "secondaryButton": "Book a Demo",
+      "trustLine1": "✨ No credit card required • 14-day money-back guarantee",
+      "trustLine2": "Start with our free plan, upgrade only when you're ready to grow"
+    }
+  },
+  "footer": {
+    "tagline": "The AI-powered website builder that gets you online in minutes, not months.",
+    "copyright": "© 2026 QwickSite. All rights reserved.",
+    "product": "Product",
+    "company": "Company",
+    "support": "Support",
+    "legal": "Legal",
+    "features": "Features",
+    "pricing": "Pricing",
+    "templates": "Templates",
+    "examples": "Examples",
+    "about": "About",
+    "blog": "Blog",
+    "careers": "Careers",
+    "contact": "Contact",
+    "helpCenter": "Help Center",
+    "documentation": "Documentation",
+    "apiReference": "API Reference",
+    "status": "Status",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookiePolicy": "Cookie Policy",
+    "licenses": "Licenses"
+  },
+  "featuresPage": {
+    "badge": "Features",
+    "title": "Build stunning websites effortlessly",
+    "description": "QwickSite can create and optimize high-converting websites from simple prompts and visual editing workflows.",
+    "searchPlaceholder": "How can QwickSite help you today?",
+    "chip1": "Launch a blog with SEO pages",
+    "chip2": "Build a product-focused landing page",
+    "chip3": "Generate a conversion-ready hero section",
+    "chip4": "Create your support and docs pages",
+    "coreValue": "Core Builder Value",
+    "editingSurface": "Editing & Control Surface",
+    "componentLibrary": "Component Library",
+    "componentLibraryDescription": "Build almost any storefront experience with modular blocks organized for speed, consistency, and conversion workflows.",
+    "controls": [
+      "Desktop / Tablet / Mobile preview",
+      "Advanced padding, margin, radius controls",
+      "Custom class and Tailwind utility controls",
+      "Link and icon controllers",
+      "Grid layout editors",
+      "Live iframe sync"
+    ],
+    "componentCategories": [
+      {
+        "title": "Basic Elements",
+        "blocks": ["Text", "Image", "Video", "Rich Text", "HTML/Embed", "Map", "PDF", "Avatar First Card"]
+      },
+      {
+        "title": "Brand & Storytelling",
+        "blocks": ["Banner", "About", "Service", "Experience", "Skills", "Reviews", "Clients", "Portfolio", "Media Collage"]
+      },
+      {
+        "title": "Marketing & Conversion",
+        "blocks": ["Contact", "FAQ", "Newsletter", "Popup", "Notification", "Blogs", "Product Holder", "Marquee"]
+      },
+      {
+        "title": "Layout & Commerce Blocks",
+        "blocks": ["Card", "Carousel", "Grid", "Footer"]
+      },
+      {
+        "title": "Events & Professional",
+        "blocks": ["Agenda", "Speakers", "Side Info"]
+      }
+    ],
+    "ctaTitle": "Ready to launch your SEO storefront faster?",
+    "ctaDescription": "Start with drag-and-drop speed, then publish through a Next.js delivery layer built for discoverability and growth.",
+    "pillars": {
+      "visualPrecisionBuilder": {
+        "title": "Visual Precision Builder",
+        "description": "Build pages fast with drag-and-drop section ordering, inline text/image editing, and live iframe syncing so every change is instantly visible.",
+        "outcomes": [
+          "Drag-in Content Blocks",
+          "Inline Editing",
+          "Reorder sections in seconds for campaign testing"
+        ]
+      },
+      "designSystemControl": {
+        "title": "Design System Control",
+        "description": "Go from starter layouts to brand-perfect pages using global style configuration, advanced spacing/radius controls, custom classes, and grid editors.",
+        "outcomes": [
+          "Maintain consistent branding across every page",
+          "Fine-tune responsive spacing and layout without code rewrites",
+          "Scale design updates globally from one control layer"
+        ]
+      },
+      "conversionEngine": {
+        "title": "Data-Driven Conversion Engine",
+        "description": "Capture high-intent leads with a flexible form builder that supports custom fields, file uploads, UTM attribution, and age logic for better qualification.",
+        "outcomes": [
+          "Automatic marketing attribution from campaign source to lead",
+          "Collect richer lead data at first touch",
+          "Pre-qualify users with conditional business rules"
+        ]
+      },
+      "seoStorefront": {
+        "title": "SEO Storefront Output",
+        "description": "Publish through a Next.js storefront architecture that outputs SEO-optimized pages designed for discoverability, speed, and production-grade scalability.",
+        "outcomes": [
+          "SEO-Optimized Storefront",
+          "Deliver faster page loads for better conversion",
+          "Separate builder experience from storefront performance concerns"
+        ]
+      }
+    }
+  },
+  "pricingPage": {
+    "badge": "MENA-First Pricing",
+    "titlePrefix": "Tiered plans built for",
+    "titleHighlight": "local growth",
+    "description": "Start free, grow with WhatsApp-first commerce, and scale into regional operations with COD and VAT-ready workflows.",
+    "mostPopular": "Most Popular",
+    "highlights": "You will unlock",
+    "compareFeatures": "Compare Features",
+    "compareDescription": "Quick view of what unlocks at each stage of growth.",
+    "featureHeader": "Feature",
+    "periodMonthly": "/mo",
+    "periodYearly": "/yr",
+    "billingLabel": "Billing",
+    "billingMonthly": "Monthly",
+    "billingYearly": "Yearly",
+    "yearlyDiscountBadge": "Save 20% yearly",
+    "yearlySavingsLine": "Regular yearly total: {base}",
+    "pricingNotes": {
+      "launch": "Forever Free",
+      "growthEgypt": "~$15/mo",
+      "growthGulf": "WhatsApp Commerce ready",
+      "expansionEgypt": "~SAR/AED 250/mo",
+      "expansionGulf": "Regional scale plan"
+    },
+    "plans": {
+      "launch": {
+        "name": "Launch Plan",
+        "tagline": "Forever Free",
+        "description": "Ideal for hobbyists and side-hustlers.",
+        "cta": "Get Started Free"
+      },
+      "growth": {
+        "name": "Growth Plan",
+        "tagline": "Best Value",
+        "description": "Built for Egyptian SMEs and professionals.",
+        "cta": "Start Growth"
+      },
+      "expansion": {
+        "name": "Expansion Engine",
+        "tagline": "Regional Scale",
+        "description": "For professional regional merchants scaling across the Gulf.",
+        "cta": "Scale with Expansion"
+      }
+    },
+    "planFeatures": {
+      "launch": [
+        "1 AI-Generated Site",
+        "Basic RTL (Arabic) Support",
+        "qwicksite.ai subdomain",
+        "Standard Component Library"
+      ],
+      "growth": [
+        "Custom Domain (.com/.eg)",
+        "WhatsApp Commerce",
+        "EGP-Optimized SEO",
+        "Advanced Form Builder (UTM/Custom Fields)",
+        "Remove QwickSite Branding"
+      ],
+      "expansion": [
+        "Unlimited Products",
+        "Shopify/Marketplace Sync",
+        "COD Verification",
+        "Multi-Region/VAT Compliance",
+        "Priority Technical Support"
+      ]
+    },
+    "highlightsList": {
+      "growth": ["WhatsApp Commerce"],
+      "expansion": ["COD Verification", "Multi-Region/VAT Compliance"]
+    },
+    "comparisonRows": [
+      {
+        "feature": "AI-Generated Site",
+        "launch": "1 site",
+        "growth": "Up to 10 sites",
+        "expansion": "Unlimited"
+      },
+      {
+        "feature": "Component Library",
+        "launch": "Standard",
+        "growth": "Advanced + conversion blocks",
+        "expansion": "Full + marketplace-ready blocks"
+      },
+      {
+        "feature": "WhatsApp Commerce",
+        "launch": "—",
+        "growth": "Included",
+        "expansion": "Included"
+      },
+      {
+        "feature": "Advanced Form Builder (UTM/Custom Fields)",
+        "launch": "—",
+        "growth": "Included",
+        "expansion": "Included"
+      },
+      {
+        "feature": "COD Verification",
+        "launch": "—",
+        "growth": "—",
+        "expansion": "Included"
+      },
+      {
+        "feature": "Multi-Region/VAT Compliance",
+        "launch": "—",
+        "growth": "—",
+        "expansion": "Included"
+      },
+      {
+        "feature": "Branding Removal",
+        "launch": "—",
+        "growth": "Included",
+        "expansion": "Included"
+      }
+    ]
+  }
+}

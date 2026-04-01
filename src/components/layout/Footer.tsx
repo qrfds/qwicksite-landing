@@ -1,28 +1,35 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+
 const Footer = () => {
+  const t = useTranslations("footer");
+
   const links = {
     product: [
-      { name: "Features", href: "#" },
-      { name: "Pricing", href: "#" },
-      { name: "Templates", href: "#" },
-      { name: "Examples", href: "#" },
+      { name: t("features"), href: "/features" },
+      { name: t("pricing"), href: "/pricing" },
+      { name: t("templates"), href: "/templates" },
+      { name: t("examples"), href: "/examples" },
     ],
     company: [
-      { name: "About", href: "#" },
-      { name: "Blog", href: "#" },
-      { name: "Careers", href: "#" },
-      { name: "Contact", href: "#" },
+      { name: t("about"), href: "/about" },
+      { name: t("blog"), href: "/blog" },
+      { name: t("careers"), href: "/careers" },
+      { name: t("contact"), href: "/contact" },
     ],
     support: [
-      { name: "Help Center", href: "#" },
-      { name: "Documentation", href: "#" },
-      { name: "API Reference", href: "#" },
-      { name: "Status", href: "#" },
+      { name: t("helpCenter"), href: "/help-center" },
+      { name: t("documentation"), href: "/documentation" },
+      { name: t("apiReference"), href: "/api-reference" },
+      { name: t("status"), href: "/status" },
     ],
     legal: [
-      { name: "Privacy", href: "#" },
-      { name: "Terms", href: "#" },
-      { name: "Cookie Policy", href: "#" },
-      { name: "Licenses", href: "#" },
+      { name: t("privacy"), href: "/privacy" },
+      { name: t("terms"), href: "/terms" },
+      { name: t("cookiePolicy"), href: "/cookie-policy" },
+      { name: t("licenses"), href: "/licenses" },
     ],
   };
 
@@ -32,13 +39,17 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
-            <div className="text-2xl font-bold text-primary mb-4">
-              QuickSite
-            </div>
+            <Link href="/" aria-label="Go to homepage" className="inline-block mb-4">
+              <img
+                src="/QRFDLOGO.png"
+                alt="QwickSite Logo"
+                className="h-20 w-auto"
+              />
+            </Link>
             <p className="text-sm text-muted-foreground mb-4">
-              The AI-powered website builder that gets you online in minutes, not months.
+              {t("tagline")}
             </p>
-            <div className="flex space-x-4">
+            <div className="flex gap-4">
               <div className="w-6 h-6 bg-primary/20 rounded"></div>
               <div className="w-6 h-6 bg-primary/20 rounded"></div>
               <div className="w-6 h-6 bg-primary/20 rounded"></div>
@@ -47,52 +58,52 @@ const Footer = () => {
 
           {/* Links */}
           <div>
-            <h3 className="font-semibold mb-4">Product</h3>
+            <h3 className="font-semibold mb-4">{t("product")}</h3>
             <ul className="space-y-2">
               {links.product.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Company</h3>
+            <h3 className="font-semibold mb-4">{t("company")}</h3>
             <ul className="space-y-2">
               {links.company.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Support</h3>
+            <h3 className="font-semibold mb-4">{t("support")}</h3>
             <ul className="space-y-2">
               {links.support.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
+            <h3 className="font-semibold mb-4">{t("legal")}</h3>
             <ul className="space-y-2">
               {links.legal.map((link) => (
                 <li key={link.name}>
-                  <a href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -101,11 +112,11 @@ const Footer = () => {
 
         <div className="border-t border-border/50 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 QuickSite. All rights reserved.
+            {t("copyright")}
           </p>
-          <p className="text-sm text-muted-foreground mt-2 sm:mt-0">
+          {/* <p className="text-sm text-muted-foreground mt-2 sm:mt-0">
             Made with ❤️ for entrepreneurs worldwide
-          </p>
+          </p> */}
         </div>
       </div>
     </footer>
