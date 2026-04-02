@@ -2,9 +2,32 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
 
 const Footer = () => {
   const t = useTranslations("footer");
+  const socialLinks = [
+    {
+      name: "WhatsApp",
+      href: "https://wa.me/201062034597",
+      icon: MessageCircle,
+    },
+    {
+      name: "Instagram",
+      href: "#",
+      icon: Instagram,
+    },
+    {
+      name: "Facebook",
+      href: "#",
+      icon: Facebook,
+    },
+    {
+      name: "LinkedIn",
+      href: "#",
+      icon: Linkedin,
+    },
+  ];
 
   const links = {
     product: [
@@ -49,10 +72,19 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground mb-4">
               {t("tagline")}
             </p>
-            <div className="flex gap-4">
-              <div className="w-6 h-6 bg-primary/20 rounded"></div>
-              <div className="w-6 h-6 bg-primary/20 rounded"></div>
-              <div className="w-6 h-6 bg-primary/20 rounded"></div>
+            <div className="flex items-center gap-3">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  className="flex h-9 w-9 items-center justify-center rounded-md border border-border/60 bg-card/40 text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50"
+                >
+                  <social.icon className="h-4 w-4" />
+                </a>
+              ))}
             </div>
           </div>
 

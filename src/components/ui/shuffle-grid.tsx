@@ -32,7 +32,7 @@ const shuffle = (array: ImageTile[]) => {
 };
 
 const generateSquares = (items: ImageTile[]) =>
-  shuffle(items).map((sq) => (
+  items.map((sq) => (
     <motion.div
       key={sq.id}
       layout
@@ -95,15 +95,15 @@ export const ShuffleHero = () => {
 
 const ShuffleGrid = () => {
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [squares, setSquares] = useState(generateSquares(baseTiles));
+  const [tiles, setTiles] = useState<ImageTile[]>(baseTiles);
 
   useEffect(() => {
     const shuffleSquares = () => {
-      setSquares(generateSquares(baseTiles));
+      setTiles(shuffle(baseTiles));
       timeoutRef.current = setTimeout(shuffleSquares, 3000);
     };
 
-    shuffleSquares();
+    timeoutRef.current = setTimeout(shuffleSquares, 3000);
 
     return () => {
       if (timeoutRef.current) {
@@ -112,5 +112,5 @@ const ShuffleGrid = () => {
     };
   }, []);
 
-  return <div className="grid h-[450px] grid-cols-4 grid-rows-4 gap-1">{squares}</div>;
+  return <div className="grid h-[450px] grid-cols-4 grid-rows-4 gap-1">{generateSquares(tiles)}</div>;
 };
