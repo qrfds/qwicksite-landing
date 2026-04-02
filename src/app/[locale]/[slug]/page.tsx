@@ -257,8 +257,14 @@ const staticPages: Record<string, Record<"en" | "ar", StaticPageConfig>> = {
   },
 };
 
+const reservedSlugs = new Set(["features", "privacy", "terms", "cookie-policy", "licenses"]);
+
 export function generateStaticParams() {
-  return routing.locales.flatMap((locale) => Object.keys(staticPages).map((slug) => ({ locale, slug })));
+  return routing.locales.flatMap((locale) =>
+    Object.keys(staticPages)
+      .filter((slug) => !reservedSlugs.has(slug))
+      .map((slug) => ({ locale, slug })),
+  );
 }
 
 export default async function LocalizedStaticContentPage({
@@ -269,6 +275,10 @@ export default async function LocalizedStaticContentPage({
   const { locale, slug } = await params;
 
   if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+
+  if (reservedSlugs.has(slug)) {
     notFound();
   }
 
