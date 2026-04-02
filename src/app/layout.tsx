@@ -24,6 +24,11 @@ export const metadata: Metadata = {
   description: "AI builds your site instantly, so you can focus on growing your business, not building tech. Create a professional website or online store in minutes — no coding needed.",
   keywords: ["AI website builder", "website builder", "e-commerce", "no-code", "AI", "website creation"],
   authors: [{ name: "QwickSite Team" }],
+  icons: {
+    icon: "/qrfd.ico",
+    shortcut: "/qrfd.ico",
+    apple: "/qrfd.ico",
+  },
   openGraph: {
     title: "QwickSite - AI Website Builder",
     description: "Launch a professional website or online store in minutes — no coding needed.",
