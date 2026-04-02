@@ -21,6 +21,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
+import { TypingEffect } from "@/components/ui/typing-effect";
 
 export default async function FeaturesPage() {
   const t = await getTranslations("featuresPage");
@@ -89,7 +90,7 @@ export default async function FeaturesPage() {
               </div>
 
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                {t("title")}
+                <TypingEffect text={t("title")} speed={60} />
               </h1>
               <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto">
                 {t("description")}
