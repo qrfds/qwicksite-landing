@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, MessageSquare, LifeBuoy } from "lucide-react";
 import Link from "next/link";
+import { TypingEffect } from "@/components/ui/typing-effect";
 
 const supportOptions = [
   {
@@ -42,10 +43,7 @@ export default function SupportPage() {
               We are here to help
             </Badge>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              QwickSite{" "}
-              <span className="bg-gradient-to-r from-primary via-primary/80 to-primary/90 bg-clip-text text-transparent">
-                Support Center
-              </span>
+              <TypingEffect text="QwickSite Support Center" speed={60} />
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
               Need help with setup, billing, or your website? Reach out and our team will assist
