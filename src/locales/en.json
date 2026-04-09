@@ -169,10 +169,12 @@
     "documentation": "Documentation",
     "apiReference": "API Reference",
     "status": "Status",
-    "privacy": "Privacy",
-    "terms": "Terms",
-    "cookiePolicy": "Cookie Policy",
-    "licenses": "Licenses"
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "delivery": "Delivery",
+      "refund": "Refund",
+      "cookiePolicy": "Cookie Policy",
+      "licenses": "Licenses"
   },
   "featuresPage": {
     "badge": "Features",

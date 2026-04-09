@@ -169,10 +169,12 @@
     "documentation": "التوثيق",
     "apiReference": "مرجع API",
     "status": "حالة الخدمة",
-    "privacy": "الخصوصية",
-    "terms": "الشروط",
-    "cookiePolicy": "سياسة الكوكيز",
-    "licenses": "التراخيص"
+      "privacy": "الخصوصية",
+      "terms": "الشروط",
+      "delivery": "التوصيل",
+      "refund": "الاسترداد",
+      "cookiePolicy": "سياسة الكوكيز",
+      "licenses": "التراخيص"
   },
   "featuresPage": {
     "badge": "المزايا",

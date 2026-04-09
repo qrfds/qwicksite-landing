@@ -51,6 +51,8 @@ const Footer = () => {
     legal: [
       { name: t("privacy"), href: "/privacy" },
       { name: t("terms"), href: "/terms" },
+      { name: t("delivery"), href: "/delivery" },
+      { name: t("refund"), href: "/refund" },
       { name: t("cookiePolicy"), href: "/cookie-policy" },
       { name: t("licenses"), href: "/licenses" },
     ],
