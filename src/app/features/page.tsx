@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
 import { TypingEffect } from "@/components/ui/typing-effect";
+import { SearchPromptSection } from "@/components/features/SearchPromptSection";
 
 export default async function FeaturesPage() {
   const t = await getTranslations("featuresPage");
@@ -96,42 +97,10 @@ export default async function FeaturesPage() {
                 {t("description")}
               </p>
 
-              <div className="relative max-w-2xl mx-auto w-full">
-                <div className="bg-[#154F77] rounded-full p-3 flex items-center">
-                  <input
-                    type="text"
-                    placeholder={t("searchPlaceholder")}
-                    className="bg-transparent flex-1 outline-none text-gray-300 px-4"
-                  />
-                </div>
-              </div>
-
-              <div className="flex flex-wrap justify-center gap-2 mt-8 max-w-3xl mx-auto">
-                <Link
-                  href="/support?idea=launch-seo-blog"
-                  className="bg-[#154F77] hover:bg-[#3E9BAE] rounded-full px-4 py-2 text-sm"
-                >
-                  {t("chip1")}
-                </Link>
-                <Link
-                  href="/support?idea=product-landing-page"
-                  className="bg-[#154F77] hover:bg-[#3E9BAE] rounded-full px-4 py-2 text-sm"
-                >
-                  {t("chip2")}
-                </Link>
-                <Link
-                  href="/support?idea=conversion-hero-section"
-                  className="bg-[#154F77] hover:bg-[#3E9BAE] rounded-full px-4 py-2 text-sm"
-                >
-                  {t("chip3")}
-                </Link>
-                <Link
-                  href="/support?idea=support-docs-pages"
-                  className="bg-[#154F77] hover:bg-[#3E9BAE] rounded-full px-4 py-2 text-sm"
-                >
-                  {t("chip4")}
-                </Link>
-              </div>
+              <SearchPromptSection
+                searchPlaceholder={t("searchPlaceholder")}
+                chipLabels={[t("chip1"), t("chip2"), t("chip3")]}
+              />
             </div>
           </div>
 
