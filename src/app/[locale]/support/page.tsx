@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, MessageSquare, LifeBuoy } from "lucide-react";
+import { Mail, MessageSquare, LifeBuoy, Phone, MapPin } from "lucide-react";
 import Link from "next/link";
 import { TypingEffect } from "@/components/ui/typing-effect";
 
@@ -20,7 +20,7 @@ const supportOptions = [
     description: "Send us details and we will get back within 24 hours.",
     icon: Mail,
     cta: "Email Us",
-    href: "mailto:sales@qrfds.com",
+    href: "mailto:support@qrfds.com",
   },
   {
     title: "Help Center",
@@ -78,6 +78,43 @@ export default function SupportPage() {
               </Card>
             ))}
           </div>
+
+          <section className="mt-16 max-w-3xl mx-auto">
+            <div className="rounded-2xl border border-border/60 bg-card/60 backdrop-blur-sm overflow-hidden">
+              <div className="px-6 py-4 border-b border-border/40 bg-primary/5">
+                <h2 className="text-lg font-semibold">Contact Information</h2>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border/40">
+                <div className="flex items-center gap-4 px-6 py-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Email</p>
+                    <p className="text-sm text-foreground">support@qrfds.com</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 px-6 py-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Phone</p>
+                    <p className="text-sm text-foreground">+201062034597</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 px-6 py-4">
+                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5 text-primary" />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Address</p>
+                    <p className="text-sm text-foreground">17 Abbas el Akkad, Nasr City, Cairo, Egypt</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </section>
       </main>
 
