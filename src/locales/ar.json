@@ -153,6 +153,10 @@
   "footer": {
     "tagline": "منصة إنشاء مواقع بالذكاء الاصطناعي تجعلك متصلاً بالإنترنت خلال دقائق لا أشهر.",
     "copyright": "© 2026 QwickSite. جميع الحقوق محفوظة.",
+    "contactUs": "تواصل معنا",
+    "email": "support@qrfds.com",
+    "phone": "+201062034597",
+    "address": "17 عباس العقاد، مدينة نصر، القاهرة، مصر",
     "product": "المنتج",
     "company": "الشركة",
     "support": "الدعم",
@@ -169,10 +173,12 @@
     "documentation": "التوثيق",
     "apiReference": "مرجع API",
     "status": "حالة الخدمة",
-    "privacy": "الخصوصية",
-    "terms": "الشروط",
-    "cookiePolicy": "سياسة الكوكيز",
-    "licenses": "التراخيص"
+      "privacy": "الخصوصية",
+      "terms": "الشروط",
+      "delivery": "التوصيل",
+      "refund": "الاسترداد",
+      "cookiePolicy": "سياسة الكوكيز",
+      "licenses": "التراخيص"
   },
   "featuresPage": {
     "badge": "المزايا",

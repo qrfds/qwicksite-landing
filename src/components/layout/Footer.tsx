@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Facebook, Instagram, Linkedin, MessageCircle } from "lucide-react";
+import { Facebook, Instagram, Linkedin, MapPin, Mail, Phone, MessageCircle } from "lucide-react";
 
 const Footer = () => {
   const t = useTranslations("footer");
@@ -51,6 +51,8 @@ const Footer = () => {
     legal: [
       { name: t("privacy"), href: "/privacy" },
       { name: t("terms"), href: "/terms" },
+      { name: t("delivery"), href: "/delivery" },
+      { name: t("refund"), href: "/refund" },
       { name: t("cookiePolicy"), href: "/cookie-policy" },
       { name: t("licenses"), href: "/licenses" },
     ],
@@ -59,7 +61,7 @@ const Footer = () => {
   return (
     <footer className="bg-card/50 border-t border-border/50">
       <div className="container py-12">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" aria-label="Go to homepage" className="inline-block mb-4">
@@ -86,6 +88,31 @@ const Footer = () => {
                 </a>
               ))}
             </div>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="font-semibold mb-4">{t("contactUs")}</h3>
+            <ul className="space-y-3">
+              <li>
+                <a href="mailto:support@qrfds.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
+                  <Mail className="h-4 w-4 shrink-0" />
+                  {t("email")}
+                </a>
+              </li>
+              <li>
+                <a href="tel:+201062034597" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
+                  <Phone className="h-4 w-4 shrink-0" />
+                  {t("phone")}
+                </a>
+              </li>
+              <li>
+                <span className="text-sm text-muted-foreground flex items-start gap-2">
+                  <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
+                  {t("address")}
+                </span>
+              </li>
+            </ul>
           </div>
 
           {/* Links */}

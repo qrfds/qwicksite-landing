@@ -153,6 +153,10 @@
   "footer": {
     "tagline": "The AI-powered website builder that gets you online in minutes, not months.",
     "copyright": "© 2026 QwickSite. All rights reserved.",
+    "contactUs": "Contact Us",
+    "email": "support@qrfds.com",
+    "phone": "+201062034597",
+    "address": "17 Abbas el Akkad, Nasr City, Cairo, Egypt",
     "product": "Product",
     "company": "Company",
     "support": "Support",
@@ -169,10 +173,12 @@
     "documentation": "Documentation",
     "apiReference": "API Reference",
     "status": "Status",
-    "privacy": "Privacy",
-    "terms": "Terms",
-    "cookiePolicy": "Cookie Policy",
-    "licenses": "Licenses"
+      "privacy": "Privacy",
+      "terms": "Terms",
+      "delivery": "Delivery",
+      "refund": "Refund",
+      "cookiePolicy": "Cookie Policy",
+      "licenses": "Licenses"
   },
   "featuresPage": {
     "badge": "Features",
