@@ -23,6 +23,7 @@ import {
 import { Link } from "@/i18n/navigation";
 import { TypingEffect } from "@/components/ui/typing-effect";
 import { SearchPromptSection } from "@/components/features/SearchPromptSection";
+import EyeLensShowcaseSection from "@/components/sections/EyeLensShowcaseSection";
 
 export default async function FeaturesPage() {
   const t = await getTranslations("featuresPage");
@@ -68,6 +69,13 @@ export default async function FeaturesPage() {
     ...category,
     icon: categoryIcons[index] ?? Blocks,
   }));
+
+  const lensOptions = t.raw("eyeLensShowcase.lensOptions") as Array<{
+    id: string;
+    label: string;
+    swatch: string;
+    imageSrc: string;
+  }>;
 
   return (
     <div className="min-h-screen">
@@ -181,6 +189,26 @@ export default async function FeaturesPage() {
               ))}
             </div>
           </div>
+
+          <EyeLensShowcaseSection
+            badge={t("eyeLensShowcase.badge")}
+            title={t("eyeLensShowcase.title")}
+            description={t("eyeLensShowcase.description")}
+            productName={t("eyeLensShowcase.productName")}
+            productDescription={t("eyeLensShowcase.productDescription")}
+            priceLabel={t("eyeLensShowcase.priceLabel")}
+            priceValue={t("eyeLensShowcase.priceValue")}
+            ctaLabel={t("eyeLensShowcase.cta")}
+            colorsLabel={t("eyeLensShowcase.colorsLabel")}
+            builderChrome={{
+              preview: t("eyeLensShowcase.builderChrome.preview"),
+              layers: t("eyeLensShowcase.builderChrome.layers"),
+              inspector: t("eyeLensShowcase.builderChrome.inspector"),
+              selectedState: t("eyeLensShowcase.builderChrome.selectedState"),
+              livePreview: t("eyeLensShowcase.builderChrome.livePreview"),
+            }}
+            lensOptions={lensOptions}
+          />
 
           <div className="mt-14 rounded-2xl border border-border/60 bg-card/50 p-8 text-center">
             <h3 className="text-2xl md:text-3xl font-semibold mb-3">

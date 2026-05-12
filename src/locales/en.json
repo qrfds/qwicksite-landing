@@ -222,6 +222,30 @@
         "blocks": ["Agenda", "Speakers", "Side Info"]
       }
     ],
+    "eyeLensShowcase": {
+      "badge": "Interactive Product Preview",
+      "title": "Showcase your lens product in a live editor view",
+      "description": "Present how each color lens changes the eye appearance in real-time while keeping the product card ready for conversion.",
+      "productName": "Aurora Color Lens",
+      "productDescription": "Natural-looking monthly lenses designed for daily comfort with breathable hydration and soft edge blending.",
+      "priceLabel": "Starting price",
+      "priceValue": "$29 / pair",
+      "cta": "Customize lens",
+      "colorsLabel": "Lens color options",
+      "builderChrome": {
+        "preview": "Preview",
+        "layers": "Layers",
+        "inspector": "Inspector",
+        "selectedState": "Product image selected",
+        "livePreview": "Live preview"
+      },
+      "lensOptions": [
+        { "id": "green", "label": "Emerald Green", "swatch": "#4A8D68", "imageSrc": "/Green.png" },
+        { "id": "hezulnut", "label": "Hazelnut", "swatch": "#8A6A45", "imageSrc": "/hezulnut.png" },
+        { "id": "blue", "label": "Ocean Blue", "swatch": "#5A8DCB", "imageSrc": "/blue.png" },
+        { "id": "brown", "label": "Warm Brown", "swatch": "#7A4B2F", "imageSrc": "/brown.png" }
+      ]
+    },
     "ctaTitle": "Ready to launch your SEO storefront faster?",
     "ctaDescription": "Start with drag-and-drop speed, then publish through a Next.js delivery layer built for discoverability and growth.",
     "pillars": {

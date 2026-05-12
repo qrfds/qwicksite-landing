@@ -222,6 +222,30 @@
         "blocks": ["جدول أعمال", "المتحدثون", "معلومات جانبية"]
       }
     ],
+    "eyeLensShowcase": {
+      "badge": "معاينة منتج تفاعلية",
+      "title": "اعرض منتج العدسات داخل واجهة تحرير مباشرة",
+      "description": "أظهر كيف يتغير لون العين فوراً حسب لون العدسة المختار مع بطاقة منتج جاهزة للتحويل.",
+      "productName": "عدسات Aurora الملونة",
+      "productDescription": "عدسات شهرية بمظهر طبيعي وراحة يومية مع ترطيب قابل للتنفس واندماج ناعم مع لون العين.",
+      "priceLabel": "السعر يبدأ من",
+      "priceValue": "29$ / للزوج",
+      "cta": "خصص العدسة",
+      "colorsLabel": "ألوان العدسات",
+      "builderChrome": {
+        "preview": "المعاينة",
+        "layers": "الطبقات",
+        "inspector": "المعاين",
+        "selectedState": "صورة المنتج محددة",
+        "livePreview": "معاينة مباشرة"
+      },
+      "lensOptions": [
+        { "id": "green", "label": "أخضر زمردي", "swatch": "#4A8D68", "imageSrc": "/Green.png" },
+        { "id": "hezulnut", "label": "عسلي", "swatch": "#8A6A45", "imageSrc": "/hezulnut.png" },
+        { "id": "blue", "label": "أزرق محيطي", "swatch": "#5A8DCB", "imageSrc": "/blue.png" },
+        { "id": "brown", "label": "بني دافئ", "swatch": "#7A4B2F", "imageSrc": "/brown.png" }
+      ]
+    },
     "ctaTitle": "جاهز لإطلاق متجر SEO أسرع؟",
     "ctaDescription": "ابدأ بسرعة السحب والإفلات ثم انشر عبر طبقة Next.js مهيأة للاكتشاف والنمو.",
     "pillars": {
