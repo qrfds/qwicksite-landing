@@ -401,5 +401,59 @@
         "expansion": "Included"
       }
     ]
+  },
+  "checkoutPage": {
+    "metaTitle": "QwickSite Checkout",
+    "metaDescription": "Review your selected QwickSite plan, billing details, included services, and next onboarding steps.",
+    "badge": "Secure Checkout",
+    "title": "Checkout for {plan}",
+    "description": "Review your subscription, confirm the business details we need for setup, and continue to create your QwickSite account.",
+    "backToPricing": "Back to pricing",
+    "checkoutDetails": "Checkout Details",
+    "fields": {
+      "fullName": "Full name",
+      "email": "Work email",
+      "company": "Business name",
+      "phone": "Phone or WhatsApp",
+      "notes": "Setup notes"
+    },
+    "placeholders": {
+      "fullName": "Ahmed Mohamed",
+      "email": "ahmed@example.com",
+      "company": "Your brand or company",
+      "phone": "+20 100 000 0000",
+      "notes": "Tell us about domains, products, WhatsApp, shipping, or integrations you want ready first."
+    },
+    "servicesTitle": "Platform Services Included",
+    "serviceHighlights": [
+      "AI website generation and visual builder access for public pages and storefronts.",
+      "Reusable component library with sections for links, media, reviews, FAQs, forms, maps, newsletters, and announcements.",
+      "Shop tools for products, categories, brands, cart, checkout, shipping, tax, discounts, and order management.",
+      "Payment method configuration, COD-friendly flows, WhatsApp widgets, and customer contact capture.",
+      "Custom domains, SEO metadata, analytics support, multilingual content, Arabic RTL, and theme controls.",
+      "Admin dashboard for plans, subscriptions, pages, products, orders, integrations, and domain setup."
+    ],
+    "nextStepsTitle": "What Happens Next",
+    "nextSteps": [
+      "Create or sign in to your QwickSite account.",
+      "We attach the selected plan and billing cycle to your workspace.",
+      "You start building immediately, then connect domains, products, payments, and shipping when ready."
+    ],
+    "dueToday": "Due today",
+    "yearlyBreakdown": "{monthly}/mo effective, regular yearly total {regular}",
+    "billingCycle": "Billing cycle",
+    "priceRegion": "Price region",
+    "regions": {
+      "egypt": "Egypt",
+      "gulf": "Gulf"
+    },
+    "includedTitle": "Selected Plan Includes",
+    "subtotal": "Subtotal",
+    "taxes": "Taxes and VAT",
+    "calculatedLater": "Calculated during setup",
+    "totalDue": "Total due today",
+    "paymentNote": "Card, transfer, or configured local payment options are handled during account setup.",
+    "supportNote": "Paid plans include onboarding help for domains, store setup, and commerce configuration.",
+    "continue": "Continue to Account Setup"
   }
 }

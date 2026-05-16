@@ -1,88 +1,15 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
-import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import PricingPlansSection from "@/components/sections/PricingPlansSection";
-
-type CurrencyView = "egypt" | "gulf";
-
-type Plan = {
-  name: string;
-  tagline: string;
-  description: string;
-  popular?: boolean;
-  cta: string;
-  href: string;
-  features: string[];
-  uniqueHighlights?: string[];
-  pricing: {
-    egypt: { monthly: number; currency: string; note?: string }; // EGP
-    gulf: { monthly: number; currency: string; note?: string }; // SAR/AED
-  };
-};
-
-async function isEgyptVisitor() {
-  const requestHeaders = await headers();
-  const countryHeader =
-    requestHeaders.get("x-vercel-ip-country") ??
-    requestHeaders.get("cf-ipcountry") ??
-    requestHeaders.get("x-country-code") ??
-    "";
-
-  // If geo headers are unavailable, default to Egypt pricing.
-  if (!countryHeader) {
-    return true;
-  }
-
-  return countryHeader.toUpperCase() === "EG";
-}
+import { getDefaultCurrencyView } from "@/lib/visitor-region";
+import { getPricingPlans } from "@/lib/pricing-plans";
 
 export default async function PricingPage() {
   const t = await getTranslations("pricingPage");
-  const currencyView: CurrencyView = (await isEgyptVisitor()) ? "egypt" : "gulf";
-
-  const plans: Plan[] = [
-    {
-      name: t("plans.launch.name"),
-      tagline: t("plans.launch.tagline"),
-      description: t("plans.launch.description"),
-      cta: t("plans.launch.cta"),
-      href: "https://vcboard.qrfds.com/register",
-      features: t.raw("planFeatures.launch") as string[],
-      pricing: {
-        egypt: { monthly: 0, currency: "EGP", note: t("pricingNotes.launch") },
-        gulf: { monthly: 0, currency: "SAR/AED", note: t("pricingNotes.launch") },
-      },
-    },
-    {
-      name: t("plans.growth.name"),
-      tagline: t("plans.growth.tagline"),
-      description: t("plans.growth.description"),
-      popular: true,
-      cta: t("plans.growth.cta"),
-      href: "https://vcboard.qrfds.com/register",
-      features: t.raw("planFeatures.growth") as string[],
-      uniqueHighlights: t.raw("highlightsList.growth") as string[],
-      pricing: {
-        egypt: { monthly: 1000, currency: "EGP", note: t("pricingNotes.growthEgypt") },
-        gulf: { monthly: 50, currency: "SAR/AED", note: t("pricingNotes.growthGulf") },
-      },
-    },
-    {
-      name: t("plans.expansion.name"),
-      tagline: t("plans.expansion.tagline"),
-      description: t("plans.expansion.description"),
-      cta: t("plans.expansion.cta"),
-      href: "https://vcboard.qrfds.com/register",
-      features: t.raw("planFeatures.expansion") as string[],
-      uniqueHighlights: t.raw("highlightsList.expansion") as string[],
-      pricing: {
-        egypt: { monthly: 4000, currency: "EGP", note: t("pricingNotes.expansionEgypt") },
-        gulf: { monthly: 250, currency: "SAR/AED", note: t("pricingNotes.expansionGulf") },
-      },
-    },
-  ];
+  const currencyView = await getDefaultCurrencyView();
+  const plans = getPricingPlans(t);
 
   const featureComparison = t.raw("comparisonRows") as Array<{
     feature: string;

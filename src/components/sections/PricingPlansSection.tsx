@@ -5,6 +5,8 @@ import { useLocale, useTranslations } from "next-intl";
 import { Check, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import type { BillingCycle, CurrencyView, Plan } from "@/lib/pricing-plans";
+import { formatAmount, getPriceMultiplier } from "@/lib/pricing-plans";
 import {
   Card,
   CardContent,
@@ -15,41 +17,10 @@ import {
 } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 
-type CurrencyView = "egypt" | "gulf";
-type BillingCycle = "monthly" | "yearly";
-
-type RegionPrice = {
-  monthly: number;
-  currency: string;
-  note?: string;
-};
-
-type Plan = {
-  name: string;
-  tagline: string;
-  description: string;
-  popular?: boolean;
-  cta: string;
-  href: string;
-  features: string[];
-  uniqueHighlights?: string[];
-  pricing: {
-    egypt: RegionPrice;
-    gulf: RegionPrice;
-  };
-};
-
 type Props = {
   plans: Plan[];
   currencyView: CurrencyView;
 };
-
-function formatAmount(currency: string, value: number, locale: string) {
-  const numberFormatter = new Intl.NumberFormat(locale === "ar" ? "ar-EG" : "en-US", {
-    maximumFractionDigits: 0,
-  });
-  return `${currency} ${numberFormatter.format(value)}`;
-}
 
 export default function PricingPlansSection({ plans, currencyView }: Props) {
   const t = useTranslations("pricingPage");
@@ -71,9 +42,7 @@ export default function PricingPlansSection({ plans, currencyView }: Props) {
     ? t("yearlyDiscountBadge")
     : "Save 20% yearly";
 
-  const priceMultiplier = useMemo(() => {
-    return billingCycle === "yearly" ? 12 * 0.8 : 1;
-  }, [billingCycle]);
+  const priceMultiplier = useMemo(() => getPriceMultiplier(billingCycle), [billingCycle]);
 
   return (
     <>
@@ -179,7 +148,7 @@ export default function PricingPlansSection({ plans, currencyView }: Props) {
 
               <CardFooter className="mt-auto">
                 <Button asChild variant={plan.popular ? "hero" : "outline"} size="lg" className="w-full">
-                  <Link href={plan.href} target="_blank" rel="noopener noreferrer">
+                  <Link href={`/checkout/${plan.id}?billing=${billingCycle}&region=${currencyView}`}>
                     {plan.cta}
                   </Link>
                 </Button>
