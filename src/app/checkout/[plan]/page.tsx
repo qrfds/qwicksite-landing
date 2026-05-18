@@ -27,7 +27,7 @@ type CheckoutPageProps = {
 export default async function CheckoutPage({ params, searchParams }: CheckoutPageProps) {
   const [{ plan: planParam }, query, t, locale, defaultCurrencyView] = await Promise.all([
     params,
-    searchParams ?? Promise.resolve({}),
+    searchParams ?? Promise.resolve({} as Record<string, string | string[] | undefined>),
     getTranslations("pricingPage"),
     getLocale(),
     getDefaultCurrencyView(),
