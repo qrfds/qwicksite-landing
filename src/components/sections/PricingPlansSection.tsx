@@ -148,7 +148,7 @@ export default function PricingPlansSection({ plans, currencyView }: Props) {
 
               <CardFooter className="mt-auto">
                 <Button asChild variant={plan.popular ? "hero" : "outline"} size="lg" className="w-full">
-                  <Link href={`/checkout/${plan.id}?billing=${billingCycle}&region=${currencyView}`}>
+                  <Link href={`/checkout/${plan.id}?billing=${billingCycle}`}>
                     {plan.cta}
                   </Link>
                 </Button>

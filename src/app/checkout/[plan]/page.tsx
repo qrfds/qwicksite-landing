@@ -12,7 +12,6 @@ import {
   getPricingPlans,
   isPlanId,
   normalizeBillingCycle,
-  normalizeCurrencyView,
 } from "@/lib/pricing-plans";
 import { getDefaultCurrencyView } from "@/lib/visitor-region";
 import { Check, CreditCard, Globe2, MessageCircle, ReceiptText, ShieldCheck } from "lucide-react";
@@ -21,13 +20,16 @@ import { notFound } from "next/navigation";
 
 type CheckoutPageProps = {
   params: Promise<{ plan: string }>;
-  searchParams?: Promise<Record<string, string | string[] | undefined>>;
+  searchParams?: Promise<CheckoutSearchParams>;
 };
 
+type CheckoutSearchParams = Record<string, string | string[] | undefined>;
+
 export default async function CheckoutPage({ params, searchParams }: CheckoutPageProps) {
-  const [{ plan: planParam }, query, t, locale, defaultCurrencyView] = await Promise.all([
+  const emptySearchParams: CheckoutSearchParams = {};
+  const [{ plan: planParam }, query, t, locale, currencyView] = await Promise.all([
     params,
-    searchParams ?? Promise.resolve({}),
+    searchParams ?? Promise.resolve(emptySearchParams),
     getTranslations("pricingPage"),
     getLocale(),
     getDefaultCurrencyView(),
@@ -38,7 +40,6 @@ export default async function CheckoutPage({ params, searchParams }: CheckoutPag
   }
 
   const billingCycle = normalizeBillingCycle(query.billing);
-  const currencyView = normalizeCurrencyView(query.region, defaultCurrencyView);
   const plans = getPricingPlans(t);
   const plan = plans.find((item) => item.id === planParam);
 
@@ -48,6 +49,7 @@ export default async function CheckoutPage({ params, searchParams }: CheckoutPag
 
   const checkout = await getTranslations("checkoutPage");
   const pricing = plan.pricing[currencyView];
+  const isFreePlan = pricing.monthly === 0;
   const subtotal = Math.round(pricing.monthly * getPriceMultiplier(billingCycle));
   const monthlyEquivalent =
     billingCycle === "yearly" && pricing.monthly > 0 ? Math.round(subtotal / 12) : pricing.monthly;
@@ -89,7 +91,7 @@ export default async function CheckoutPage({ params, searchParams }: CheckoutPag
               className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_380px]"
             >
               <input type="hidden" name="plan" value={plan.id} />
-              <input type="hidden" name="billing" value={billingCycle} />
+              {!isFreePlan ? <input type="hidden" name="billing" value={billingCycle} /> : null}
               <input type="hidden" name="region" value={currencyView} />
               <div className="space-y-6">
                 <Card className="border-border/60 bg-card/60">
@@ -201,45 +203,28 @@ export default async function CheckoutPage({ params, searchParams }: CheckoutPag
                       ) : null}
                     </div>
 
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">{checkout("billingCycle")}</span>
-                        <span className="font-medium">
-                          {billingCycle === "yearly" ? t("billingYearly") : t("billingMonthly")}
-                        </span>
+                    {!isFreePlan ? (
+                      <div className="space-y-3">
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-muted-foreground">{checkout("billingCycle")}</span>
+                          <span className="font-medium">
+                            {billingCycle === "yearly" ? t("billingYearly") : t("billingMonthly")}
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          <Button asChild variant={billingCycle === "monthly" ? "default" : "outline"} size="sm">
+                            <Link href={`/checkout/${plan.id}?billing=monthly`}>
+                              {t("billingMonthly")}
+                            </Link>
+                          </Button>
+                          <Button asChild variant={billingCycle === "yearly" ? "default" : "outline"} size="sm">
+                            <Link href={`/checkout/${plan.id}?billing=yearly`}>
+                              {t("billingYearly")}
+                            </Link>
+                          </Button>
+                        </div>
                       </div>
-                      <div className="grid grid-cols-2 gap-2">
-                        <Button asChild variant={billingCycle === "monthly" ? "default" : "outline"} size="sm">
-                          <Link href={`/checkout/${plan.id}?billing=monthly&region=${currencyView}`}>
-                            {t("billingMonthly")}
-                          </Link>
-                        </Button>
-                        <Button asChild variant={billingCycle === "yearly" ? "default" : "outline"} size="sm">
-                          <Link href={`/checkout/${plan.id}?billing=yearly&region=${currencyView}`}>
-                            {t("billingYearly")}
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
-
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">{checkout("priceRegion")}</span>
-                        <span className="font-medium">{checkout(`regions.${currencyView}`)}</span>
-                      </div>
-                      <div className="grid grid-cols-2 gap-2">
-                        <Button asChild variant={currencyView === "egypt" ? "default" : "outline"} size="sm">
-                          <Link href={`/checkout/${plan.id}?billing=${billingCycle}&region=egypt`}>
-                            {checkout("regions.egypt")}
-                          </Link>
-                        </Button>
-                        <Button asChild variant={currencyView === "gulf" ? "default" : "outline"} size="sm">
-                          <Link href={`/checkout/${plan.id}?billing=${billingCycle}&region=gulf`}>
-                            {checkout("regions.gulf")}
-                          </Link>
-                        </Button>
-                      </div>
-                    </div>
+                    ) : null}
 
                     <div className="rounded-lg border border-border/60 bg-background/40 p-4">
                       <h2 className="text-sm font-semibold">{checkout("includedTitle")}</h2>
