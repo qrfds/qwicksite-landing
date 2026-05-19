@@ -6,7 +6,10 @@ export async function isEgyptVisitor() {
   const countryHeader =
     requestHeaders.get("x-vercel-ip-country") ??
     requestHeaders.get("cf-ipcountry") ??
+    requestHeaders.get("x-country") ??
     requestHeaders.get("x-country-code") ??
+    requestHeaders.get("x-geo-country") ??
+    requestHeaders.get("x-client-country") ??
     "";
 
   if (!countryHeader) {
@@ -17,5 +20,5 @@ export async function isEgyptVisitor() {
 }
 
 export async function getDefaultCurrencyView(): Promise<CurrencyView> {
-  return (await isEgyptVisitor()) ? "egypt" : "gulf";
+  return (await isEgyptVisitor()) ? "egypt" : "global";
 }
