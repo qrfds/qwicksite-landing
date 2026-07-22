@@ -48,7 +48,7 @@ const FinalCTASection = () => {
               size="lg"
               className="text-lg px-12 py-6 h-auto bg-primary text-primary-foreground hover:bg-primary/90 shadow-strong"
             >
-              <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+              <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                 {t("primaryButton")}
                 <ArrowRight className="w-5 h-5 ms-2" />
               </Link>

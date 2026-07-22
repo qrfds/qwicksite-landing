@@ -57,7 +57,9 @@ export function FloatingHeader() {
         </div>
         <div className="flex items-center gap-2">
           <Button size="sm" asChild>
-            <Link href="/support">Login</Link>
+            <Link href="https://app.qwicksite.com/login" target="_blank" rel="noopener noreferrer">
+              Login
+            </Link>
           </Button>
           <Sheet open={open} onOpenChange={setOpen}>
             <Button
@@ -89,10 +91,12 @@ export function FloatingHeader() {
               </div>
               <SheetFooter>
                 <Button asChild variant="outline">
-                  <Link href="/support">Sign In</Link>
+                  <Link href="https://app.qwicksite.com/login" target="_blank" rel="noopener noreferrer">
+                    Sign In
+                  </Link>
                 </Button>
                 <Button asChild>
-                  <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                     Get Started
                   </Link>
                 </Button>

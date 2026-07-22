@@ -37,7 +37,7 @@ export function getPricingPlans(t: PricingMessages): Plan[] {
       tagline: t("plans.launch.tagline"),
       description: t("plans.launch.description"),
       cta: t("plans.launch.cta"),
-      href: "https://vcboard.qrfds.com/register",
+      href: "https://app.qwicksite.com/register",
       features: t.raw("planFeatures.launch") as string[],
       pricing: {
         egypt: { monthly: 0, currency: "EGP", note: t("pricingNotes.launch") },
@@ -51,7 +51,7 @@ export function getPricingPlans(t: PricingMessages): Plan[] {
       description: t("plans.growth.description"),
       popular: true,
       cta: t("plans.growth.cta"),
-      href: "https://vcboard.qrfds.com/register",
+      href: "https://app.qwicksite.com/register",
       features: t.raw("planFeatures.growth") as string[],
       uniqueHighlights: t.raw("highlightsList.growth") as string[],
       pricing: {
@@ -65,7 +65,7 @@ export function getPricingPlans(t: PricingMessages): Plan[] {
       tagline: t("plans.expansion.tagline"),
       description: t("plans.expansion.description"),
       cta: t("plans.expansion.cta"),
-      href: "https://vcboard.qrfds.com/register",
+      href: "https://app.qwicksite.com/register",
       features: t.raw("planFeatures.expansion") as string[],
       uniqueHighlights: t.raw("highlightsList.expansion") as string[],
       pricing: {
