@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { AnimatedGroup } from '@/components/ui/animated-group';
 import { cn } from '@/lib/utils';
 import { Link } from '@/i18n/navigation';
+import Image from 'next/image';
 
 const transitionVariants = {
   item: {
@@ -47,41 +48,6 @@ export function HeroSection({ withHeader = true }: { withHeader?: boolean }) {
         </div>
         <section>
           <div className="relative pt-0 md:pt-0">
-            <AnimatedGroup
-              variants={{
-                container: {
-                  visible: {
-                    transition: {
-                      delayChildren: 1,
-                    },
-                  },
-                },
-                item: {
-                  hidden: {
-                    opacity: 0,
-                    y: 20,
-                  },
-                  visible: {
-                    opacity: 1,
-                    y: 0,
-                    transition: {
-                      type: 'spring',
-                      bounce: 0.3,
-                      duration: 2,
-                    },
-                  },
-                },
-              }}
-              className="absolute inset-0 -z-20"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2200&q=80"
-                alt="background"
-                className="absolute inset-x-0 top-56 -z-20 hidden lg:top-32 dark:block"
-                width={2200}
-                height={1400}
-              />
-            </AnimatedGroup>
             <div
               aria-hidden
               className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,#000_75%)]"
@@ -174,12 +140,14 @@ export function HeroSection({ withHeader = true }: { withHeader?: boolean }) {
                   className="bg-gradient-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
                 />
                 <div className="inset-shadow-2xs ring-black dark:inset-shadow-white/20 bg-black relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
-                  <img
+                  <Image
                     className="z-2 border-border/25 aspect-15/8 relative w-full rounded-2xl border object-cover"
-                    src="/Bannerhero.png"
-                    alt="QwickSite hero banner"
-                    width={2400}
-                    height={1280}
+                    src="/images/qwicksite-ai-website-builder-dashboard.webp"
+                    alt="QwickSite AI website builder dashboard for an ecommerce storefront"
+                    width={1800}
+                    height={1039}
+                    sizes="(max-width: 768px) 100vw, 1152px"
+                    priority
                   />
                 </div>
               </div>

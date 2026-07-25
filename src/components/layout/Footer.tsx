@@ -2,7 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { Facebook, Instagram, Linkedin, MapPin, Mail, Phone, MessageCircle } from "lucide-react";
+import { MapPin, Mail, Phone, MessageCircle } from "lucide-react";
+import Image from "next/image";
 
 const Footer = () => {
   const t = useTranslations("footer");
@@ -11,21 +12,6 @@ const Footer = () => {
       name: "WhatsApp",
       href: "https://wa.me/201062034597",
       icon: MessageCircle,
-    },
-    {
-      name: "Instagram",
-      href: "#",
-      icon: Instagram,
-    },
-    {
-      name: "Facebook",
-      href: "#",
-      icon: Facebook,
-    },
-    {
-      name: "LinkedIn",
-      href: "#",
-      icon: Linkedin,
     },
   ];
 
@@ -65,9 +51,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" aria-label="Go to homepage" className="inline-block mb-4">
-              <img
-                src="/QRFDLOGO.png"
-                alt="QwickSite Logo"
+              <Image
+                src="/images/qwicksite-logo.webp"
+                alt="QwickSite AI website builder and ecommerce platform logo"
+                width={160}
+                height={154}
                 className="h-20 w-auto"
               />
             </Link>

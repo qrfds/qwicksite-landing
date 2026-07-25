@@ -99,6 +99,7 @@ export default async function CookiePolicyPage() {
 
   return (
     <LegalPage
+      slug="cookie-policy"
       title={isArabic ? "سياسة الكوكيز" : "Cookie Policy"}
       subtitle={
         isArabic

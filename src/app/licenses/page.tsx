@@ -91,6 +91,7 @@ export default async function LicensesPage() {
 
   return (
     <LegalPage
+      slug="licenses"
       title={isArabic ? "التراخيص" : "Licenses"}
       subtitle={
         isArabic

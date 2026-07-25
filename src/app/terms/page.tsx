@@ -149,6 +149,7 @@ export default async function TermsPage() {
 
   return (
     <LegalPage
+      slug="terms"
       title={isArabic ? "شروط الاستخدام" : "Terms of Service"}
       subtitle={isArabic ? "القواعد والشروط المنظمة لاستخدام QwickSite." : "Rules and conditions for using QwickSite."}
       lastUpdated="March 27, 2026"

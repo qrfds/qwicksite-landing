@@ -109,6 +109,10 @@ export function Testimonials() {
                   <img
                     src={testimonial.avatar}
                     alt={testimonial.author}
+                    width={32}
+                    height={32}
+                    loading="lazy"
+                    decoding="async"
                     className={cn(
                       "w-8 h-8 rounded-full object-cover",
                       "transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",

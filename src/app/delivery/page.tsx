@@ -121,6 +121,7 @@ export default async function DeliveryPage() {
 
   return (
     <LegalPage
+      slug="delivery"
       title={isArabic ? "سياسة التوصيل والشحن" : "Delivery and Shipping Policy"}
       subtitle={
         isArabic

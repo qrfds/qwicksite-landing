@@ -151,6 +151,7 @@ export default async function RefundPage() {
 
   return (
     <LegalPage
+      slug="refund"
       title={isArabic ? "سياسة الاسترداد والإلغاء" : "Refund and Cancellation Policy"}
       subtitle={
         isArabic

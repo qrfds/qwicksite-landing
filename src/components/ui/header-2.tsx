@@ -64,12 +64,11 @@ export function Header() {
       >
         <Link href="/" aria-label="Go to homepage">
           <Image
-            src="/QRFDLOGO.png"
-            alt="QwickSite logo"
+            src="/images/qwicksite-logo.webp"
+            alt="QwickSite AI website builder logo"
             width={180}
-            height={48}
+            height={173}
             className="h-10 w-auto"
-            priority
           />
         </Link>
 

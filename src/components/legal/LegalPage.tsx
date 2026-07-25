@@ -2,6 +2,11 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
+import { getLocale } from "next-intl/server";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import JsonLd from "@/components/seo/JsonLd";
+import { createBreadcrumbSchema, createWebPageSchema } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 type LegalSection = {
   title: string;
@@ -16,21 +21,38 @@ type LegalPageProps = {
   sections: LegalSection[];
   badgeLabel?: string;
   lastUpdatedLabel?: string;
+  slug: string;
 };
 
-export default function LegalPage({
+export default async function LegalPage({
   title,
   subtitle,
   lastUpdated,
   sections,
   badgeLabel = "Legal",
   lastUpdatedLabel = "Last updated",
+  slug,
 }: LegalPageProps) {
+  const locale = (await getLocale()) as AppLocale;
+  const path = `/${slug}`;
+  const breadcrumbs = [
+    { name: locale === "ar" ? "الرئيسية" : "Home", path: "/" },
+    { name: title, path },
+  ];
+
   return (
     <div className="min-h-screen">
+      <JsonLd
+        id={`qwicksite-${slug}-schema`}
+        data={[
+          createWebPageSchema({ locale, path, title, description: subtitle }),
+          createBreadcrumbSchema(locale, path, breadcrumbs),
+        ]}
+      />
       <Header />
+      <Breadcrumbs items={breadcrumbs} />
 
-      <main className="pt-20 pb-16">
+      <main className="pt-8 pb-16">
         <section className="container">
           <div className="max-w-4xl mx-auto">
             <div className="text-center space-y-5 mb-10">

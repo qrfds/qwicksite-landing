@@ -155,6 +155,7 @@ export default async function PrivacyPage() {
 
   return (
     <LegalPage
+      slug="privacy"
       title={isArabic ? "سياسة الخصوصية" : "Privacy Policy"}
       subtitle={
         isArabic

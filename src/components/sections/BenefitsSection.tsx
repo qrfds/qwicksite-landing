@@ -1,12 +1,10 @@
-"use client";
-
 import { Zap, ShoppingCart, MousePointer, ArrowRight } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-const BenefitsSection = () => {
-  const t = useTranslations("home.benefits");
+const BenefitsSection = async () => {
+  const t = await getTranslations("home.benefits");
   const benefits = [
     {
       icon: Zap,
