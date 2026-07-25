@@ -1,7 +1,7 @@
 const siteUrl = (process.env.SITE_URL || "").replace(/\/+$/, "");
 
 if (!/^https:\/\//.test(siteUrl)) {
-  console.error("SITE_URL must be the canonical HTTPS origin, for example https://qwicksite.ai");
+  console.error("SITE_URL must be the canonical HTTPS origin, for example https://qwicksite.com");
   process.exit(1);
 }
 

@@ -28,7 +28,7 @@ const supportOptions = [
     description: "Send us details and we will get back within 24 hours.",
     icon: Mail,
     cta: "Email Us",
-    href: "mailto:support@qrfds.com",
+    href: "mailto:support@qwicksite.com",
   },
   {
     title: "Help Center",
@@ -145,7 +145,7 @@ export default async function SupportPage({
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Email</p>
-                    <p className="text-sm text-foreground">support@qrfds.com</p>
+                    <p className="text-sm text-foreground">support@qwicksite.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 px-6 py-4">

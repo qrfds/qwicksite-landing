@@ -6,7 +6,7 @@ const sections = [
     title: "Who We Are",
     paragraphs: [
       "QwickSite is a website-building platform operated by QRFDS. This Privacy Policy explains how we collect, use, disclose, and protect personal information when you use our website, products, and services.",
-      "If you have privacy questions, you can contact us at support@qrfds.com.",
+      "If you have privacy questions, you can contact us at support@qwicksite.com.",
     ],
   },
   {
@@ -69,7 +69,7 @@ const sections = [
   {
     title: "Contact",
     paragraphs: [
-      "To exercise privacy rights or ask a privacy-related question, contact us at support@qrfds.com.",
+      "To exercise privacy rights or ask a privacy-related question, contact us at support@qwicksite.com.",
     ],
   },
 ];
@@ -84,7 +84,7 @@ export default async function PrivacyPage() {
           title: "من نحن",
           paragraphs: [
             "QwickSite منصة لإنشاء المواقع تديرها QRFDS. توضح هذه السياسة كيف نجمع البيانات الشخصية ونستخدمها ونحميها عند استخدامك لموقعنا وخدماتنا.",
-            "لأي استفسارات تتعلق بالخصوصية يمكنك التواصل عبر support@qrfds.com.",
+            "لأي استفسارات تتعلق بالخصوصية يمكنك التواصل عبر support@qwicksite.com.",
           ],
         },
         {
@@ -147,7 +147,7 @@ export default async function PrivacyPage() {
         {
           title: "التواصل",
           paragraphs: [
-            "لممارسة حقوق الخصوصية أو للاستفسارات المتعلقة بها، تواصل معنا عبر support@qrfds.com.",
+            "لممارسة حقوق الخصوصية أو للاستفسارات المتعلقة بها، تواصل معنا عبر support@qwicksite.com.",
           ],
         },
       ]

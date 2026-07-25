@@ -83,7 +83,7 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">{t("contactUs")}</h3>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:support@qrfds.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
+                <a href="mailto:support@qwicksite.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
                   <Mail className="h-4 w-4 shrink-0" />
                   {t("email")}
                 </a>

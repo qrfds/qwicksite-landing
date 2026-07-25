@@ -59,7 +59,7 @@ export const ShuffleHero = async () => {
         <h3 className="text-foreground text-4xl font-semibold md:text-6xl">{copy.title}</h3>
         <p className="my-4 text-base text-muted-foreground md:my-6 md:text-lg">{copy.description}</p>
         <a
-          href="https://vcboard.qrfds.com/register"
+          href="https://app.qwicksite.com/register"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(

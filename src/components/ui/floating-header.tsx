@@ -95,7 +95,7 @@ export function FloatingHeader() {
                   <Link href="/support">Sign In</Link>
                 </Button>
                 <Button asChild>
-                  <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                     Get Started
                   </Link>
                 </Button>

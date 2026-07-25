@@ -244,7 +244,7 @@ export default async function FeaturesPage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button asChild variant="hero" size="lg">
-                <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                   {tc("startFree")}
                 </Link>
               </Button>

@@ -33,7 +33,7 @@ type SoftwareOffer = {
   url: string;
 };
 
-const fallbackSiteUrl = "https://qwicksite.ai";
+const fallbackSiteUrl = "https://qwicksite.com";
 const configuredSiteUrl = process.env.SITE_URL?.trim() || fallbackSiteUrl;
 
 export const SITE_URL = configuredSiteUrl.replace(/\/+$/, "");
@@ -151,7 +151,7 @@ export function createOrganizationSchema(): JsonLdNode {
       width: 512,
       height: 493,
     },
-    email: "support@qrfds.com",
+    email: "support@qwicksite.com",
     telephone: "+201062034597",
     address: {
       "@type": "PostalAddress",
@@ -163,7 +163,7 @@ export function createOrganizationSchema(): JsonLdNode {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
-      email: "support@qrfds.com",
+      email: "support@qwicksite.com",
       telephone: "+201062034597",
       availableLanguage: ["English", "Arabic"],
       areaServed: ["EG", "Middle East and North Africa"],

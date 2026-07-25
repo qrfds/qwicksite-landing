@@ -52,7 +52,7 @@ const sections = [
   {
     title: "Contact",
     paragraphs: [
-      "For questions about service delivery or account management, contact us at support@qrfds.com.",
+      "For questions about service delivery or account management, contact us at support@qwicksite.com.",
     ],
   },
 ];
@@ -113,7 +113,7 @@ export default async function DeliveryPage() {
         {
           title: "التواصل",
           paragraphs: [
-            "للاستفسارات حول تقديم الخدمة أو إدارة الحساب، تواصل معنا عبر support@qrfds.com.",
+            "للاستفسارات حول تقديم الخدمة أو إدارة الحساب، تواصل معنا عبر support@qwicksite.com.",
           ],
         },
       ]

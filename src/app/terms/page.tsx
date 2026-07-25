@@ -66,7 +66,7 @@ const sections = [
   {
     title: "Contact",
     paragraphs: [
-      "If you have questions about these Terms, contact support@qrfds.com.",
+      "If you have questions about these Terms, contact support@qwicksite.com.",
     ],
   },
 ];
@@ -141,7 +141,7 @@ export default async function TermsPage() {
         {
           title: "التواصل",
           paragraphs: [
-            "إذا كان لديك أي استفسار حول هذه الشروط، تواصل معنا عبر support@qrfds.com.",
+            "إذا كان لديك أي استفسار حول هذه الشروط، تواصل معنا عبر support@qwicksite.com.",
           ],
         },
       ]

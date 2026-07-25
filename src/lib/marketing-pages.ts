@@ -1489,7 +1489,7 @@ export const marketingPages: MarketingPage[] = [
           {
             title: "Email and phone",
             paragraphs: [
-              "Email support@qrfds.com or call +20 106 203 4597. For faster context, include the website or account name and a concise description of the goal.",
+              "Email support@qwicksite.com or call +20 106 203 4597. For faster context, include the website or account name and a concise description of the goal.",
             ],
           },
           {
@@ -1511,7 +1511,7 @@ export const marketingPages: MarketingPage[] = [
           {
             title: "البريد والهاتف",
             paragraphs: [
-              "راسل support@qrfds.com أو اتصل على ‎+20 106 203 4597. أضف اسم الموقع أو الحساب ووصفاً مختصراً للهدف لتسريع المساعدة.",
+              "راسل support@qwicksite.com أو اتصل على ‎+20 106 203 4597. أضف اسم الموقع أو الحساب ووصفاً مختصراً للهدف لتسريع المساعدة.",
             ],
           },
           {
