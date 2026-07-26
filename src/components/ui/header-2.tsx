@@ -81,10 +81,12 @@ export function Header() {
           ))}
           <LanguageSwitcher />
           <Button asChild variant="outline">
-            <Link href="/support">{tc('signIn')}</Link>
+            <Link href="https://app.qwicksite.com/login" target="_blank" rel="noopener noreferrer">
+              {tc('signIn')}
+            </Link>
           </Button>
           <Button asChild>
-            <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+            <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
               {tc('getStarted')}
             </Link>
           </Button>
@@ -129,13 +131,18 @@ export function Header() {
               <LanguageSwitcher />
             </div>
             <Button asChild variant="outline" className="w-full">
-              <Link href="/support" onClick={() => setOpen(false)}>
+              <Link
+                href="https://app.qwicksite.com/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+              >
                 {tc('signIn')}
               </Link>
             </Button>
             <Button asChild className="w-full">
               <Link
-                href="https://vcboard.qrfds.com/register"
+                href="https://app.qwicksite.com/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
