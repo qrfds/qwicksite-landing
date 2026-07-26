@@ -306,10 +306,10 @@
     "yearlySavingsLine": "Regular yearly total: {base}",
     "pricingNotes": {
       "launch": "Forever Free",
-      "growthEgypt": "~$15/mo",
-      "growthGulf": "WhatsApp Commerce ready",
-      "expansionEgypt": "~SAR/AED 250/mo",
-      "expansionGulf": "Regional scale plan"
+      "growthEgypt": "~$20/mo",
+      "growthGlobal": "WhatsApp Commerce ready",
+      "expansionEgypt": "~$80/mo",
+      "expansionGlobal": "Regional scale plan"
     },
     "plans": {
       "launch": {
@@ -327,7 +327,7 @@
       "expansion": {
         "name": "Expansion Engine",
         "tagline": "Regional Scale",
-        "description": "For professional regional merchants scaling across the Gulf.",
+        "description": "For professional merchants scaling across regions.",
         "cta": "Scale with Expansion"
       }
     },
@@ -442,11 +442,6 @@
     "dueToday": "Due today",
     "yearlyBreakdown": "{monthly}/mo effective, regular yearly total {regular}",
     "billingCycle": "Billing cycle",
-    "priceRegion": "Price region",
-    "regions": {
-      "egypt": "Egypt",
-      "gulf": "Gulf"
-    },
     "includedTitle": "Selected Plan Includes",
     "subtotal": "Subtotal",
     "taxes": "Taxes and VAT",
