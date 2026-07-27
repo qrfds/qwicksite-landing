@@ -80,7 +80,9 @@ export function Header() {
           ))}
           <LanguageSwitcher />
           <Button asChild variant="outline">
-            <Link href="/support">{tc('signIn')}</Link>
+            <Link href="https://app.qwicksite.com/login" target="_blank" rel="noopener noreferrer">
+              {tc('signIn')}
+            </Link>
           </Button>
           <Button asChild>
             <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
@@ -128,7 +130,12 @@ export function Header() {
               <LanguageSwitcher />
             </div>
             <Button asChild variant="outline" className="w-full">
-              <Link href="/support" onClick={() => setOpen(false)}>
+              <Link
+                href="https://app.qwicksite.com/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+              >
                 {tc('signIn')}
               </Link>
             </Button>
