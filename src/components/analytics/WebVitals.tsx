@@ -14,10 +14,12 @@ export default function WebVitals() {
       event_category: "Web Vitals",
       event_label: metric.id,
       value: Math.round(metric.name === "CLS" ? metric.value * 1000 : metric.value),
+      metric_delta: metric.delta,
+      metric_rating: metric.rating,
+      metric_value: metric.value,
       non_interaction: true,
     });
   });
 
   return null;
 }
-

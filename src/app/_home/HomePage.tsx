@@ -17,7 +17,7 @@ export default async function HomePage() {
     <div className="min-h-screen">
       <Header />
       <main>
-        <HeroSection withHeader={false} />
+        <HeroSection />
         <TrustSection />
         <ShuffleHero />
         <BenefitsSection />

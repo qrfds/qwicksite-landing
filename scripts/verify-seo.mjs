@@ -6,22 +6,35 @@ if (!/^https:\/\//.test(siteUrl)) {
 }
 
 const failures = [];
-const requiredPaths = [
-  "/en",
-  "/en/pricing",
-  "/en/features",
-  "/en/about",
-  "/en/contact",
-  "/en/blog",
-  "/en/qwicksite-not-amazon-quicksight",
-  "/ar",
-  "/ar/pricing",
-  "/ar/features",
-  "/ar/about",
-  "/ar/contact",
-  "/ar/blog",
-  "/ar/qwicksite-not-amazon-quicksight",
+const locales = ["en", "ar"];
+const requiredPagePaths = [
+  "",
+  "/pricing",
+  "/features",
+  "/about",
+  "/contact",
+  "/blog",
+  "/what-is-qwicksite",
+  "/history-of-qwicksite",
+  "/why-qwicksite-was-built",
+  "/ai-website-builder-egypt",
+  "/ai-website-builder-saudi-arabia",
+  "/ai-website-builder-uae",
+  "/ecommerce-platform-egypt",
+  "/ecommerce-platform-mena",
+  "/arabic-website-builder",
+  "/qwicksite-vs-shopify",
+  "/qwicksite-vs-wix",
+  "/qwicksite-vs-wordpress",
+  "/qwicksite-vs-zid",
+  "/qwicksite-vs-salla",
+  "/ai-store-builder",
+  "/online-store-builder-egypt",
+  "/qwicksite-not-amazon-quicksight",
 ];
+const requiredPaths = locales.flatMap((locale) =>
+  requiredPagePaths.map((path) => `/${locale}${path}`),
+);
 
 function decodeXml(value) {
   return value
@@ -37,6 +50,42 @@ function canonicalFromHtml(html) {
     html.match(/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']+)["']/i)?.[1] ||
     html.match(/<link[^>]+href=["']([^"']+)["'][^>]+rel=["']canonical["']/i)?.[1]
   );
+}
+
+function schemaNodesFromHtml(html, url) {
+  const nodes = [];
+  const blocks = [
+    ...html.matchAll(
+      /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi,
+    ),
+  ];
+
+  if (!blocks.length) {
+    failures.push(`${url} has no JSON-LD structured data`);
+    return nodes;
+  }
+
+  for (const block of blocks) {
+    try {
+      const payload = JSON.parse(block[1]);
+      if (Array.isArray(payload?.["@graph"])) {
+        nodes.push(...payload["@graph"]);
+      } else {
+        nodes.push(payload);
+      }
+    } catch {
+      failures.push(`${url} contains invalid JSON-LD`);
+    }
+  }
+
+  return nodes;
+}
+
+function hasSchemaType(nodes, expectedTypes) {
+  return nodes.some((node) => {
+    const types = Array.isArray(node?.["@type"]) ? node["@type"] : [node?.["@type"]];
+    return expectedTypes.some((type) => types.includes(type));
+  });
 }
 
 const [robotsResponse, sitemapResponse] = await Promise.all([
@@ -62,6 +111,9 @@ const urls = [...sitemapBody.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) =>
 );
 if (!urls.length) {
   failures.push("sitemap.xml contains no URLs");
+}
+if (new Set(urls).size !== urls.length) {
+  failures.push("sitemap.xml contains duplicate URLs");
 }
 
 for (const path of requiredPaths) {
@@ -103,27 +155,14 @@ for (const url of urls) {
   if (/<meta[^>]+(?:name|property)=["']robots["'][^>]+noindex/i.test(html)) {
     failures.push(`${url} contains a noindex meta tag`);
   }
-  const jsonLdBlocks = [
-    ...html.matchAll(
-      /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi,
-    ),
-  ];
-  if (!jsonLdBlocks.length) {
-    failures.push(`${url} has no JSON-LD structured data`);
-  } else {
-    for (const block of jsonLdBlocks) {
-      try {
-        JSON.parse(block[1]);
-      } catch {
-        failures.push(`${url} contains invalid JSON-LD`);
-      }
-    }
-  }
   if (!/<meta[^>]+name=["']viewport["']/i.test(html)) {
     failures.push(`${url} has no mobile viewport metadata`);
   }
   if (!/<meta[^>]+name=["']description["']/i.test(html)) {
     failures.push(`${url} has no meta description`);
+  }
+  if (!/<title>[^<]+<\/title>/i.test(html)) {
+    failures.push(`${url} has no document title`);
   }
   if (!/<h1(?:\s|>)/i.test(html)) {
     failures.push(`${url} has no H1`);
@@ -131,6 +170,88 @@ for (const url of urls) {
   const expectedLocale = parsed.pathname.split("/")[1];
   if (!new RegExp(`<html[^>]+lang=["']${expectedLocale}["']`, "i").test(html)) {
     failures.push(`${url} has an incorrect html lang attribute`);
+  }
+
+  const schemaNodes = schemaNodesFromHtml(html, url);
+  if (
+    !hasSchemaType(schemaNodes, [
+      "WebPage",
+      "AboutPage",
+      "ContactPage",
+      "CollectionPage",
+    ])
+  ) {
+    failures.push(`${url} has no page-level WebPage schema`);
+  }
+  if (parsed.pathname !== `/${expectedLocale}` && !hasSchemaType(schemaNodes, ["BreadcrumbList"])) {
+    failures.push(`${url} has no BreadcrumbList schema`);
+  }
+  if (/\/blog\/[^/]+$/.test(parsed.pathname) && !hasSchemaType(schemaNodes, ["BlogPosting"])) {
+    failures.push(`${url} has no BlogPosting schema`);
+  }
+
+  if (parsed.pathname === "/en" || parsed.pathname === "/ar") {
+    const organization = schemaNodes.find((node) => node?.["@type"] === "Organization");
+    const founder = schemaNodes.find((node) => node?.["@type"] === "Person");
+    const website = schemaNodes.find((node) => node?.["@type"] === "WebSite");
+    const software = schemaNodes.find((node) => node?.["@type"] === "SoftwareApplication");
+
+    if (!organization) {
+      failures.push(`${url} has no Organization schema`);
+    } else {
+      for (const field of [
+        "name",
+        "logo",
+        "url",
+        "foundingDate",
+        "founder",
+        "contactPoint",
+        "email",
+        "areaServed",
+        "sameAs",
+      ]) {
+        if (!organization[field]) {
+          failures.push(`${url} Organization schema is missing ${field}`);
+        }
+      }
+    }
+    if (!founder) {
+      failures.push(`${url} has no founder Person schema`);
+    } else if (
+      founder.worksFor?.["@id"] !== organization?.["@id"] ||
+      organization?.founder?.["@id"] !== founder?.["@id"]
+    ) {
+      failures.push(`${url} does not link Founder and Organization in both directions`);
+    }
+    if (!website) {
+      failures.push(`${url} has no WebSite schema`);
+    }
+    if (!software) {
+      failures.push(`${url} has no SoftwareApplication schema`);
+    } else {
+      if (
+        software.name !== "QwickSite" ||
+        software.applicationCategory !== "BusinessApplication" ||
+        software.operatingSystem !== "Web" ||
+        !software.description ||
+        !software.url
+      ) {
+        failures.push(`${url} SoftwareApplication schema has incomplete core fields`);
+      }
+      if (!Array.isArray(software.offers) || software.offers.length !== 3) {
+        failures.push(`${url} SoftwareApplication schema does not contain three offers`);
+      }
+    }
+
+    if (!/<meta[^>]+name=["']google-site-verification["']/i.test(html)) {
+      failures.push(`${url} has no Google Search Console verification metadata`);
+    }
+    if (!/<script[^>]+id=["']qwicksite-ga4["']/i.test(html)) {
+      failures.push(`${url} has no GA4 integration`);
+    }
+    if (!/<script[^>]+id=["']qwicksite-clarity["']/i.test(html)) {
+      failures.push(`${url} has no Microsoft Clarity integration`);
+    }
   }
 }
 
@@ -185,13 +306,47 @@ if (httpResponse.status !== 301) {
   failures.push(`HTTP redirect points to ${httpResponse.headers.get("location")}`);
 }
 
-const compressionResponse = await fetch(`${siteUrl}/en`, {
-  headers: { "accept-encoding": "br" },
-});
-if (compressionResponse.headers.get("content-encoding") !== "br") {
+const alternateHostUrl = new URL(siteUrl);
+alternateHostUrl.hostname = alternateHostUrl.hostname.startsWith("www.")
+  ? alternateHostUrl.hostname.slice(4)
+  : `www.${alternateHostUrl.hostname}`;
+try {
+  const alternateHostResponse = await fetch(`${alternateHostUrl.origin}/en`, {
+    redirect: "manual",
+  });
+  if (
+    alternateHostResponse.status !== 301 ||
+    alternateHostResponse.headers.get("location") !== `${siteUrl}/en`
+  ) {
+    failures.push(
+      `Alternate host redirects with ${alternateHostResponse.status} to ${
+        alternateHostResponse.headers.get("location") || "(missing)"
+      }`,
+    );
+  }
+} catch {
+  failures.push(`Alternate host ${alternateHostUrl.hostname} could not be reached`);
+}
+
+const [brotliResponse, gzipResponse] = await Promise.all([
+  fetch(`${siteUrl}/en`, {
+    headers: { "accept-encoding": "br" },
+  }),
+  fetch(`${siteUrl}/en`, {
+    headers: { "accept-encoding": "gzip" },
+  }),
+]);
+if (brotliResponse.headers.get("content-encoding") !== "br") {
   failures.push(
     `Brotli check returned Content-Encoding: ${
-      compressionResponse.headers.get("content-encoding") || "(missing)"
+      brotliResponse.headers.get("content-encoding") || "(missing)"
+    }`,
+  );
+}
+if (gzipResponse.headers.get("content-encoding") !== "gzip") {
+  failures.push(
+    `Gzip check returned Content-Encoding: ${
+      gzipResponse.headers.get("content-encoding") || "(missing)"
     }`,
   );
 }

@@ -1,12 +1,10 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { MapPin, Mail, Phone, MessageCircle } from "lucide-react";
 import Image from "next/image";
 
-const Footer = () => {
-  const t = useTranslations("footer");
+const Footer = async () => {
+  const t = await getTranslations("footer");
   const socialLinks = [
     {
       name: "WhatsApp",
