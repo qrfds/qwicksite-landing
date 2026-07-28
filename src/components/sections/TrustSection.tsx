@@ -57,7 +57,9 @@ const TrustSection = () => {
                       alt={setIndex === 0 ? logo.alt : ""}
                       width={176}
                       height={64}
-                      className="h-16 w-44 object-contain"
+                      className={`h-16 w-44 object-contain ${
+                        logo.src === "/images/clients/addressinvestments.png" ? "invert" : ""
+                      }`}
                     />
                   </div>
                 ))}
