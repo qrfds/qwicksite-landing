@@ -8,7 +8,7 @@ const clientLogos = [
   { src: "/images/clients/addressinvestments.png", alt: "Address Investments" },
   { src: "/images/clients/Optimum_oil.png", alt: "Optimum Oil" },
   { src: "/images/clients/hn.svg", alt: "HN" },
-  { src: "/images/clients/colorplay.PNG", alt: "Color Play" },
+  { src: "/images/clients/colorplay.png", alt: "Color Play" },
   { src: "/images/clients/allianz.svg", alt: "Allianz" },
   { src: "/images/clients/lensaura.svg", alt: "Lens Aura" },
   { src: "/images/clients/bfas.png", alt: "BFAS" },
@@ -50,7 +50,7 @@ const TrustSection = () => {
                 {clientLogos.map((logo) => (
                   <div
                     key={logo.src}
-                    className="flex h-28 w-56 shrink-0 items-center justify-center rounded-xl border border-border/50 bg-card/80 px-6 py-4 shadow-soft backdrop-blur-sm transition-all duration-300 transform hover:-translate-y-1 hover:shadow-medium"
+                    className="flex h-28 w-56 shrink-0 items-center justify-center rounded-xl border border-black/10 bg-white px-6 py-4 shadow-soft transition-all duration-300 transform hover:-translate-y-1 hover:shadow-medium"
                   >
                     <Image
                       src={logo.src}
