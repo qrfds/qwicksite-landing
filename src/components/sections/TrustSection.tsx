@@ -40,7 +40,7 @@ const TrustSection = () => {
         {/* Marquee Container */}
         <div className="relative overflow-hidden bg-gradient-to-r from-transparent via-card/20 to-transparent rounded-3xl py-8 mb-16">
           {/* Marquee */}
-          <div className="flex animate-marquee whitespace-nowrap">
+          <div className="flex w-max animate-marquee whitespace-nowrap">
             {[0, 1].map((setIndex) => (
               <div
                 key={setIndex}
