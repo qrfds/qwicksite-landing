@@ -1,4 +1,21 @@
 import { Testimonials } from "@/components/ui/unique-testimonial";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+
+const clientLogos = [
+  { src: "/images/clients/addressinvestments.png", alt: "Address Investments" },
+  { src: "/images/clients/Optimum_oil.png", alt: "Optimum Oil" },
+  { src: "/images/clients/hn.svg", alt: "HN" },
+  { src: "/images/clients/colorplay.png", alt: "Color Play" },
+  { src: "/images/clients/allianz.svg", alt: "Allianz" },
+  { src: "/images/clients/lensaura.svg", alt: "Lens Aura" },
+  { src: "/images/clients/bfas.png", alt: "BFAS" },
+  { src: "/images/clients/Atomic_Rides.png", alt: "Atomic Rides" },
+  { src: "/images/clients/11_11.png", alt: "11:11" },
+];
+
+const TrustSection = () => {
+  const t = useTranslations("home.trust");
 import { getTranslations } from "next-intl/server";
 
 const TrustSection = async () => {
@@ -25,50 +42,31 @@ const TrustSection = async () => {
         {/* Marquee Container */}
         <div className="relative overflow-hidden bg-gradient-to-r from-transparent via-card/20 to-transparent rounded-3xl py-8 mb-16">
           {/* Marquee */}
-          <div className="flex animate-marquee whitespace-nowrap">
-            {/* First set of logos */}
-            <div className="flex items-center space-x-12 px-6">
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">TechCorp</span>
+          <div className="flex w-max animate-marquee whitespace-nowrap">
+            {[0, 1].map((setIndex) => (
+              <div
+                key={setIndex}
+                className="flex items-center space-x-12 px-6"
+                aria-hidden={setIndex === 1}
+              >
+                {clientLogos.map((logo) => (
+                  <div
+                    key={logo.src}
+                    className="flex h-28 w-56 shrink-0 items-center justify-center rounded-xl border border-black/10 bg-white px-6 py-4 shadow-soft transition-all duration-300 transform hover:-translate-y-1 hover:shadow-medium"
+                  >
+                    <Image
+                      src={logo.src}
+                      alt={setIndex === 0 ? logo.alt : ""}
+                      width={176}
+                      height={64}
+                      className={`h-16 w-44 object-contain ${
+                        logo.src === "/images/clients/addressinvestments.png" ? "invert" : ""
+                      }`}
+                    />
+                  </div>
+                ))}
               </div>
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">InnovateLab</span>
-              </div>
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">FutureTech</span>
-              </div>
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">DigitalFlow</span>
-              </div>
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">CloudNine</span>
-              </div>
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">SmartScale</span>
-              </div>
-            </div>
-            
-            {/* Duplicate set for seamless loop */}
-            <div className="flex items-center space-x-12 px-6">
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">TechCorp</span>
-              </div>
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">InnovateLab</span>
-              </div>
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">FutureTech</span>
-              </div>
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">DigitalFlow</span>
-              </div>
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">CloudNine</span>
-              </div>
-              <div className="bg-card/80 backdrop-blur-sm rounded-xl px-6 py-4 border border-border/50 shadow-soft hover:shadow-medium transition-all duration-300 transform hover:-translate-y-1">
-                <span className="text-lg font-semibold text-foreground">SmartScale</span>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
