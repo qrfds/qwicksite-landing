@@ -1,6 +1,6 @@
 import { Testimonials } from "@/components/ui/unique-testimonial";
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
 const clientLogos = [
   { src: "/images/clients/addressinvestments.png", alt: "Address Investments" },
@@ -13,10 +13,6 @@ const clientLogos = [
   { src: "/images/clients/Atomic_Rides.png", alt: "Atomic Rides" },
   { src: "/images/clients/11_11.png", alt: "11:11" },
 ];
-
-const TrustSection = () => {
-  const t = useTranslations("home.trust");
-import { getTranslations } from "next-intl/server";
 
 const TrustSection = async () => {
   const t = await getTranslations("home.trust");
