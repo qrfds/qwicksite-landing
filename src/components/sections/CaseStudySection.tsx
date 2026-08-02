@@ -1,13 +1,11 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
-const CaseStudySection = () => {
-  const t = useTranslations("home.caseStudy");
+const CaseStudySection = async () => {
+  const t = await getTranslations("home.caseStudy");
 
   return (
     <section className="py-20">
@@ -94,7 +92,7 @@ const CaseStudySection = () => {
                   {t("cta.description")}
                 </p>
                 <Button asChild size="lg" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 shadow-soft">
-                  <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                     {t("cta.button")}
                   </Link>
                 </Button>

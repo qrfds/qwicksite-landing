@@ -6,6 +6,7 @@ import { MenuIcon } from 'lucide-react';
 import { Sheet, SheetContent, SheetFooter } from '@/components/ui/sheet';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 export function FloatingHeader() {
   const [open, setOpen] = React.useState(false);
@@ -38,9 +39,11 @@ export function FloatingHeader() {
           href="/"
           className="hover:bg-accent flex cursor-pointer items-center gap-2 rounded-md px-2 py-1 duration-100"
         >
-          <img
-            src="/QRFDLOGO.png"
-            alt="QwickSite Logo"
+          <Image
+            src="/images/qwicksite-logo.webp"
+            alt="QwickSite AI website builder logo"
+            width={120}
+            height={116}
             className="h-14 w-auto"
           />
         </Link>
@@ -57,7 +60,9 @@ export function FloatingHeader() {
         </div>
         <div className="flex items-center gap-2">
           <Button size="sm" asChild>
-            <Link href="/support">Login</Link>
+            <Link href="https://app.qwicksite.com/login" target="_blank" rel="noopener noreferrer">
+              Login
+            </Link>
           </Button>
           <Sheet open={open} onOpenChange={setOpen}>
             <Button
@@ -89,10 +94,12 @@ export function FloatingHeader() {
               </div>
               <SheetFooter>
                 <Button asChild variant="outline">
-                  <Link href="/support">Sign In</Link>
+                  <Link href="https://app.qwicksite.com/login" target="_blank" rel="noopener noreferrer">
+                    Sign In
+                  </Link>
                 </Button>
                 <Button asChild>
-                  <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                     Get Started
                   </Link>
                 </Button>

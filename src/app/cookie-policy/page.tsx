@@ -41,7 +41,7 @@ const sections = [
   {
     title: "Contact",
     paragraphs: [
-      "If you have cookie or tracking questions, contact support@qrfds.com.",
+      "If you have cookie or tracking questions, contact support@qwicksite.com.",
     ],
   },
 ];
@@ -91,7 +91,7 @@ export default async function CookiePolicyPage() {
         {
           title: "التواصل",
           paragraphs: [
-            "لأي استفسار متعلق بالكوكيز أو التتبع، تواصل معنا عبر support@qrfds.com.",
+            "لأي استفسار متعلق بالكوكيز أو التتبع، تواصل معنا عبر support@qwicksite.com.",
           ],
         },
       ]
@@ -99,6 +99,7 @@ export default async function CookiePolicyPage() {
 
   return (
     <LegalPage
+      slug="cookie-policy"
       title={isArabic ? "سياسة الكوكيز" : "Cookie Policy"}
       subtitle={
         isArabic

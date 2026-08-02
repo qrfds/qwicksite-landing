@@ -1,5 +1,3 @@
-"use client";
-
 import { Testimonials } from "@/components/ui/unique-testimonial";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
@@ -18,6 +16,10 @@ const clientLogos = [
 
 const TrustSection = () => {
   const t = useTranslations("home.trust");
+import { getTranslations } from "next-intl/server";
+
+const TrustSection = async () => {
+  const t = await getTranslations("home.trust");
 
   return (
     <section className="py-16 overflow-hidden relative">

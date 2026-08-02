@@ -37,7 +37,7 @@ const sections = [
   {
     title: "How to Request Full Attribution List",
     paragraphs: [
-      "To request a complete third-party attribution list for a specific release, contact support@qrfds.com and include your release version or deployment date.",
+      "To request a complete third-party attribution list for a specific release, contact support@qwicksite.com and include your release version or deployment date.",
     ],
   },
 ];
@@ -83,7 +83,7 @@ export default async function LicensesPage() {
         {
           title: "طلب قائمة إسناد كاملة",
           paragraphs: [
-            "لطلب قائمة كاملة بمكونات الطرف الثالث لإصدار محدد، تواصل معنا عبر support@qrfds.com مع ذكر رقم الإصدار أو تاريخ النشر.",
+            "لطلب قائمة كاملة بمكونات الطرف الثالث لإصدار محدد، تواصل معنا عبر support@qwicksite.com مع ذكر رقم الإصدار أو تاريخ النشر.",
           ],
         },
       ]
@@ -91,6 +91,7 @@ export default async function LicensesPage() {
 
   return (
     <LegalPage
+      slug="licenses"
       title={isArabic ? "التراخيص" : "Licenses"}
       subtitle={
         isArabic

@@ -1,12 +1,17 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import PricingPlansSection from "@/components/sections/PricingPlansSection";
 import { getDefaultCurrencyView } from "@/lib/visitor-region";
 import { getPricingPlans } from "@/lib/pricing-plans";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import JsonLd from "@/components/seo/JsonLd";
+import { createBreadcrumbSchema, createWebPageSchema } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 export default async function PricingPage() {
+  const locale = (await getLocale()) as AppLocale;
   const t = await getTranslations("pricingPage");
   const currencyView = await getDefaultCurrencyView();
   const plans = getPricingPlans(t);
@@ -20,7 +25,28 @@ export default async function PricingPage() {
 
   return (
     <div className="min-h-screen">
+      <JsonLd
+        id="qwicksite-pricing-schema"
+        data={[
+          createWebPageSchema({
+            locale,
+            path: "/pricing",
+            title: `${t("titlePrefix")} ${t("titleHighlight")}`,
+            description: t("description"),
+          }),
+          createBreadcrumbSchema(locale, "/pricing", [
+            { name: locale === "ar" ? "الرئيسية" : "Home", path: "/" },
+            { name: t("badge"), path: "/pricing" },
+          ]),
+        ]}
+      />
       <Header />
+      <Breadcrumbs
+        items={[
+          { name: locale === "ar" ? "الرئيسية" : "Home", path: "/" },
+          { name: t("badge"), path: "/pricing" },
+        ]}
+      />
 
       <main className="pb-16">
         <section className="container">

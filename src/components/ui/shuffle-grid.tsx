@@ -1,10 +1,7 @@
-"use client";
-
-import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
-import { useLocale } from "next-intl";
+import { getLocale } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { images } from "@/components/scrolling-card-section/images";
+import Image from "next/image";
 
 type ImageTile = {
   id: number;
@@ -18,34 +15,20 @@ const baseTiles: ImageTile[] = images.slice(0, 16).map((img, index) => ({
   alt: img.alt,
 }));
 
-const shuffle = (array: ImageTile[]) => {
-  const copied = [...array];
-  let currentIndex = copied.length;
-
-  while (currentIndex !== 0) {
-    const randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-    [copied[currentIndex], copied[randomIndex]] = [copied[randomIndex], copied[currentIndex]];
-  }
-
-  return copied;
-};
-
 const generateSquares = (items: ImageTile[]) =>
   items.map((sq) => (
-    <motion.div
+    <div
       key={sq.id}
-      layout
-      transition={{ duration: 0.9, type: "spring" }}
-      className="h-full w-full overflow-hidden rounded-md bg-muted"
-      style={{
-        backgroundImage: `url(${sq.src})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-      aria-label={sq.alt}
-      role="img"
-    />
+      className="relative h-full w-full overflow-hidden rounded-md bg-muted"
+    >
+      <Image
+        src={sq.src}
+        alt={sq.alt}
+        fill
+        sizes="(max-width: 768px) 25vw, 150px"
+        className="object-cover"
+      />
+    </div>
   ));
 
 const contentByLocale = {
@@ -65,8 +48,8 @@ const contentByLocale = {
   },
 } as const;
 
-export const ShuffleHero = () => {
-  const locale = useLocale();
+export const ShuffleHero = async () => {
+  const locale = await getLocale();
   const copy = locale === "ar" ? contentByLocale.ar : contentByLocale.en;
 
   return (
@@ -76,7 +59,7 @@ export const ShuffleHero = () => {
         <h3 className="text-foreground text-4xl font-semibold md:text-6xl">{copy.title}</h3>
         <p className="my-4 text-base text-muted-foreground md:my-6 md:text-lg">{copy.description}</p>
         <a
-          href="https://vcboard.qrfds.com/register"
+          href="https://app.qwicksite.com/register"
           target="_blank"
           rel="noopener noreferrer"
           className={cn(
@@ -94,23 +77,9 @@ export const ShuffleHero = () => {
 };
 
 const ShuffleGrid = () => {
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [tiles, setTiles] = useState<ImageTile[]>(baseTiles);
-
-  useEffect(() => {
-    const shuffleSquares = () => {
-      setTiles(shuffle(baseTiles));
-      timeoutRef.current = setTimeout(shuffleSquares, 3000);
-    };
-
-    timeoutRef.current = setTimeout(shuffleSquares, 3000);
-
-    return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
-
-  return <div className="grid h-[450px] grid-cols-4 grid-rows-4 gap-1">{generateSquares(tiles)}</div>;
+  return (
+    <div className="grid h-[450px] grid-cols-3 grid-rows-3 gap-1">
+      {generateSquares(baseTiles)}
+    </div>
+  );
 };

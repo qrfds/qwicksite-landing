@@ -3,7 +3,7 @@ import Footer from "@/components/layout/Footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import {
   BarChart3,
   Blocks,
@@ -21,11 +21,15 @@ import {
   Workflow,
 } from "lucide-react";
 import { Link } from "@/i18n/navigation";
-import { TypingEffect } from "@/components/ui/typing-effect";
 import { SearchPromptSection } from "@/components/features/SearchPromptSection";
 import EyeLensShowcaseSection from "@/components/sections/EyeLensShowcaseSection";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import JsonLd from "@/components/seo/JsonLd";
+import { createBreadcrumbSchema, createWebPageSchema } from "@/lib/seo";
+import type { AppLocale } from "@/i18n/routing";
 
 export default async function FeaturesPage() {
+  const locale = (await getLocale()) as AppLocale;
   const t = await getTranslations("featuresPage");
   const tc = await getTranslations("common");
 
@@ -79,7 +83,28 @@ export default async function FeaturesPage() {
 
   return (
     <div className="min-h-screen">
+      <JsonLd
+        id="qwicksite-features-schema"
+        data={[
+          createWebPageSchema({
+            locale,
+            path: "/features",
+            title: t("title"),
+            description: t("description"),
+          }),
+          createBreadcrumbSchema(locale, "/features", [
+            { name: locale === "ar" ? "الرئيسية" : "Home", path: "/" },
+            { name: t("badge"), path: "/features" },
+          ]),
+        ]}
+      />
       <Header />
+      <Breadcrumbs
+        items={[
+          { name: locale === "ar" ? "الرئيسية" : "Home", path: "/" },
+          { name: t("badge"), path: "/features" },
+        ]}
+      />
 
       <main className="pb-16">
         <section className="container">
@@ -99,7 +124,7 @@ export default async function FeaturesPage() {
               </div>
 
               <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-                <TypingEffect text={t("title")} speed={60} />
+                {t("title")}
               </h1>
               <p className="text-base md:text-lg text-white/80 max-w-2xl mx-auto">
                 {t("description")}
@@ -219,7 +244,7 @@ export default async function FeaturesPage() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
               <Button asChild variant="hero" size="lg">
-                <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                   {tc("startFree")}
                 </Link>
               </Button>

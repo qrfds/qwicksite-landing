@@ -1,31 +1,15 @@
-"use client";
-
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { Facebook, Instagram, Linkedin, MapPin, Mail, Phone, MessageCircle } from "lucide-react";
+import { MapPin, Mail, Phone, MessageCircle } from "lucide-react";
+import Image from "next/image";
 
-const Footer = () => {
-  const t = useTranslations("footer");
+const Footer = async () => {
+  const t = await getTranslations("footer");
   const socialLinks = [
     {
       name: "WhatsApp",
       href: "https://wa.me/201062034597",
       icon: MessageCircle,
-    },
-    {
-      name: "Instagram",
-      href: "#",
-      icon: Instagram,
-    },
-    {
-      name: "Facebook",
-      href: "#",
-      icon: Facebook,
-    },
-    {
-      name: "LinkedIn",
-      href: "#",
-      icon: Linkedin,
     },
   ];
 
@@ -65,9 +49,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" aria-label="Go to homepage" className="inline-block mb-4">
-              <img
-                src="/QRFDLOGO.png"
-                alt="QwickSite Logo"
+              <Image
+                src="/images/qwicksite-logo.webp"
+                alt="QwickSite AI website builder and ecommerce platform logo"
+                width={160}
+                height={154}
                 className="h-20 w-auto"
               />
             </Link>
@@ -95,7 +81,7 @@ const Footer = () => {
             <h3 className="font-semibold mb-4">{t("contactUs")}</h3>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:support@qrfds.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
+                <a href="mailto:support@qwicksite.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
                   <Mail className="h-4 w-4 shrink-0" />
                   {t("email")}
                 </a>
