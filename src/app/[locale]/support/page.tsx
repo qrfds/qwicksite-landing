@@ -1,11 +1,19 @@
+import type { Metadata } from "next";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import JsonLd from "@/components/seo/JsonLd";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, MessageSquare, LifeBuoy, Phone, MapPin } from "lucide-react";
-import Link from "next/link";
-import { TypingEffect } from "@/components/ui/typing-effect";
+import { Link } from "@/i18n/navigation";
+import type { AppLocale } from "@/i18n/routing";
+import {
+  createBreadcrumbSchema,
+  createPageMetadata,
+  createWebPageSchema,
+} from "@/lib/seo";
 
 const supportOptions = [
   {
@@ -20,7 +28,7 @@ const supportOptions = [
     description: "Send us details and we will get back within 24 hours.",
     icon: Mail,
     cta: "Email Us",
-    href: "mailto:support@qrfds.com",
+    href: "mailto:support@qwicksite.com",
   },
   {
     title: "Help Center",
@@ -31,23 +39,69 @@ const supportOptions = [
   },
 ];
 
-export default function SupportPage() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const localeKey = locale as AppLocale;
+  return createPageMetadata({
+    locale: localeKey,
+    path: "/support",
+    title: localeKey === "ar" ? "دعم QwickSite ومعلومات التواصل" : "QwickSite Support & Contact Information",
+    description:
+      localeKey === "ar"
+        ? "احصل على مساعدة بشأن إعداد QwickSite والفوترة والمواقع والمتاجر الإلكترونية."
+        : "Get help with QwickSite setup, billing, websites, and online stores.",
+  });
+}
+
+export default async function SupportPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const localeKey = locale as AppLocale;
+  const title = localeKey === "ar" ? "مركز دعم QwickSite" : "QwickSite Support Center";
+  const description =
+    localeKey === "ar"
+      ? "هل تحتاج إلى مساعدة في الإعداد أو الفوترة أو موقعك؟ تواصل معنا وسيساعدك فريقنا."
+      : "Need help with setup, billing, or your website? Reach out and our team will assist you quickly.";
+  const breadcrumbs = [
+    { name: localeKey === "ar" ? "الرئيسية" : "Home", path: "/" },
+    { name: localeKey === "ar" ? "الدعم" : "Support", path: "/support" },
+  ];
+
   return (
     <div className="min-h-screen">
+      <JsonLd
+        id="qwicksite-support-schema"
+        data={[
+          createWebPageSchema({
+            locale: localeKey,
+            path: "/support",
+            title,
+            description,
+          }),
+          createBreadcrumbSchema(localeKey, "/support", breadcrumbs),
+        ]}
+      />
       <Header />
+      <Breadcrumbs items={breadcrumbs} />
 
-      <main className="pt-20 pb-16">
+      <main className="pt-8 pb-16">
         <section className="container">
           <div className="max-w-3xl mx-auto text-center space-y-5 mb-12 md:mb-16">
             <Badge variant="outline" className="px-3 py-1 text-sm bg-card/40 border-primary/30">
-              We are here to help
+              {localeKey === "ar" ? "نحن هنا للمساعدة" : "We are here to help"}
             </Badge>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-              <TypingEffect text="QwickSite Support Center" speed={60} />
+              {title}
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
-              Need help with setup, billing, or your website? Reach out and our team will assist
-              you quickly.
+              {description}
             </p>
           </div>
 
@@ -91,7 +145,7 @@ export default function SupportPage() {
                   </div>
                   <div className="min-w-0">
                     <p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Email</p>
-                    <p className="text-sm text-foreground">support@qrfds.com</p>
+                    <p className="text-sm text-foreground">support@qwicksite.com</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 px-6 py-4">
