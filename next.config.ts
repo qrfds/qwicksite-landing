@@ -11,6 +11,19 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/.well-known/http-message-signatures-directory",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/http-message-signatures-directory+json",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400",
+          },
+        ],
+      },
+      {
         source: "/images/:path*",
         headers: [
           {
