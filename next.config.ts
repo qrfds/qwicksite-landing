@@ -11,6 +11,23 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/.well-known/agent-skills/index.json",
+        headers: [
+          {
+            key: "Content-Type",
+            value: "application/json; charset=utf-8",
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400",
+          },
+          {
+            key: "Access-Control-Allow-Origin",
+            value: "*",
+          },
+        ],
+      },
+      {
         source: "/.well-known/api-catalog",
         headers: [
           {
