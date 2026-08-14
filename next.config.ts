@@ -11,6 +11,25 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
+        source: "/.well-known/api-catalog",
+        headers: [
+          {
+            key: "Content-Type",
+            value:
+              'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"',
+          },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=86400",
+          },
+          {
+            key: "Link",
+            value:
+              '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
+          },
+        ],
+      },
+      {
         source: "/.well-known/http-message-signatures-directory",
         headers: [
           {
