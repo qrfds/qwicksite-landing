@@ -49,6 +49,9 @@ export async function HeroSection() {
                 <h1 className="mt-10 max-w-4xl mx-auto text-balance text-6xl md:mt-14 md:text-7xl lg:mt-16 xl:text-[5.25rem]">
                   {t('title')}
                 </h1>
+                <p className="mx-auto mt-4 max-w-4xl text-balance text-2xl font-medium text-white/90 md:text-4xl">
+                  {t('subtitle')}
+                </p>
                 <p className="mx-auto mt-8 max-w-2xl text-balance text-lg">
                   {t('description')}
                 </p>
