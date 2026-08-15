@@ -38,9 +38,21 @@ export const metadata: Metadata = {
   authors: [{ name: "QwickSite Team" }],
   creator: "QwickSite",
   publisher: "QwickSite",
-  verification: process.env.GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
-    : undefined,
+  verification:
+    process.env.GOOGLE_SITE_VERIFICATION || process.env.BING_SITE_VERIFICATION
+      ? {
+          ...(process.env.GOOGLE_SITE_VERIFICATION
+            ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+            : {}),
+          ...(process.env.BING_SITE_VERIFICATION
+            ? {
+                other: {
+                  "msvalidate.01": process.env.BING_SITE_VERIFICATION,
+                },
+              }
+            : {}),
+        }
+      : undefined,
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -58,6 +70,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={isArabic ? "rtl" : "ltr"} suppressHydrationWarning>
+      <head>
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
+      </head>
       <body
         className={`${geistSans.variable} ${cairo.variable} antialiased`}
         suppressHydrationWarning={true}

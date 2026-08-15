@@ -68,6 +68,8 @@ Set the following values in the production hosting platform before building:
 SITE_URL=https://www.qwicksite.com
 
 GOOGLE_SITE_VERIFICATION=<google-verification-token>
+BING_SITE_VERIFICATION=<bing-verification-token>
+INDEXNOW_KEY=<public-indexnow-key>
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 NEXT_PUBLIC_CLARITY_PROJECT_ID=<clarity-project-id>
 
@@ -82,6 +84,8 @@ Requirements:
 - `SITE_URL` must contain one HTTPS origin with no path or trailing slash.
 - `NEXT_PUBLIC_*` values must be available during `npm run build`.
 - Founder, founding date, profile, and social URLs must be approved public facts.
+- `INDEXNOW_KEY` must contain 8–128 letters, numbers, or hyphens. It is intentionally public for
+  ownership verification and is served from `/indexnow-key.txt`.
 - Social URLs must use HTTPS and must not contain placeholders.
 - Do not put private Google credentials, service-account keys, API secrets, or OAuth tokens in
   `NEXT_PUBLIC_*`.
@@ -159,7 +163,13 @@ Both responses must return `200`.
 
 `robots.txt` must:
 
-- Allow public pages to be crawled.
+- Explicitly allow Googlebot, Bingbot, OAI-SearchBot, PerplexityBot, Claude-SearchBot, and
+  Claude-User.
+- Preserve the current policy of allowing search discovery while disallowing GPTBot and ClaudeBot
+  model-training access.
+- Set `ai-input=yes` so retrieval, grounding, and agentic use are permitted while `ai-train=no`
+  keeps model training separate.
+- Allow all other public pages to be crawled.
 - Disallow only `/api/`.
 - Reference `https://www.qwicksite.com/sitemap.xml`.
 - Declare `https://www.qwicksite.com` as the host.
@@ -254,6 +264,11 @@ curl -sSI https://www.qwicksite.com/en | grep -i x-robots-tag
 
 The command should produce no `noindex` header.
 
+At the CDN/WAF, allow the approved search and answer-engine crawlers without CAPTCHA or browser
+challenges. Validate crawler requests against each provider's current published IP ranges or
+reverse-DNS procedure; do not trust the user-agent string alone. Review `403` and `429` logs after
+deployment and whenever bot-management rules change.
+
 ---
 
 ## 8. Google Search Console
@@ -293,6 +308,52 @@ The SEO or DevOps owner must:
    - Canonical and `noindex` exclusions
 
 Do not use Google's specialized Indexing API for ordinary blog articles.
+
+---
+
+## 8A. Bing Webmaster Tools and IndexNow
+
+The SEO or DevOps owner must:
+
+1. Verify the canonical site in Bing Webmaster Tools and keep `BING_SITE_VERIFICATION` configured
+   as the HTML-verification method.
+2. Submit `https://www.qwicksite.com/sitemap.xml` and confirm Bing can read it.
+3. Generate one public IndexNow key, configure it as `INDEXNOW_KEY`, deploy, and confirm
+   `https://www.qwicksite.com/indexnow-key.txt` returns that key with HTTP `200`.
+4. Add this command to the successful post-deployment publishing workflow for meaningful canonical
+   content creates, updates, redirects, and removals:
+
+   ```bash
+   SITE_URL=https://www.qwicksite.com INDEXNOW_KEY=<public-indexnow-key> npm run indexnow:submit
+   ```
+
+   With no URL arguments, the command submits current sitemap URLs. Append specific paths or
+   absolute canonical URLs to submit only the URLs affected by a release.
+5. Review Bing crawl errors, indexed pages, and AI Performance citations/grounding queries weekly.
+
+Do not submit preview, checkout, parameterized, redirected, or `noindex` URLs.
+
+---
+
+## 8B. AI search and agent discovery
+
+After deployment:
+
+- Confirm `/llms.txt` returns `200`, identifies QwickSite accurately, and links only to maintained
+  canonical pages.
+- Confirm public page HTML contains `rel="describedby"` for `/llms.txt`.
+- Check verified crawler traffic and WAF outcomes for OAI-SearchBot, PerplexityBot,
+  Claude-SearchBot, and Claude-User.
+- Track `utm_source=chatgpt.com` and other AI referral sources in GA4 without sending form or
+  personal data.
+- Maintain a fixed benchmark of real English and Arabic customer questions. Record mentions,
+  citations, linked pages, factual accuracy, and conversions across major answer engines before
+  and after meaningful content changes.
+- Review the declarative WebMCP form and registered browser tools as progressive enhancements; the
+  underlying links and forms must remain usable without agent APIs.
+
+`llms.txt` and WebMCP do not replace crawlable HTML, canonical metadata, the sitemap, or structured
+data.
 
 ---
 
@@ -384,7 +445,8 @@ SITE_URL=https://www.qwicksite.com npm run seo:verify
 
 The command checks:
 
-- `robots.txt` and sitemap availability
+- `robots.txt`, sitemap, `llms.txt`, and IndexNow key availability
+- Explicit AI-search crawler access and the separate no-training policy
 - All required English and Arabic SEO pages
 - HTTP `200` on canonical sitemap URLs
 - Canonical URLs
@@ -392,7 +454,8 @@ The command checks:
 - Metadata and H1 presence
 - Page-level and entity structured data
 - Founder ↔ Organization linking
-- GA4, Clarity, and Search Console output
+- GA4, Clarity, Google Search Console, and Bing Webmaster Tools output
+- Organization description and declarative WebMCP markup
 - UTM canonical stripping
 - Checkout `noindex`
 - Unknown-route `404`
@@ -426,6 +489,8 @@ Complete and attach evidence for every item:
 - [ ] Canonical HTTPS pages return `200`.
 - [ ] `/robots.txt` returns `200` with the canonical sitemap.
 - [ ] `/sitemap.xml` returns `200`.
+- [ ] `/llms.txt` returns `200` and contains maintained canonical links.
+- [ ] `/indexnow-key.txt` returns `200` with the configured public key.
 - [ ] Every sitemap URL returns `200` and self-canonicalizes.
 - [ ] Public pages have no accidental meta/header `noindex`.
 - [ ] Brotli and Gzip both work.
@@ -433,6 +498,8 @@ Complete and attach evidence for every item:
 - [ ] GA4 page views, Web Vitals, and 404 events are received.
 - [ ] Microsoft Clarity receives production sessions.
 - [ ] Search Console Domain property is verified.
+- [ ] Bing Webmaster Tools is verified and receives the sitemap.
+- [ ] IndexNow accepts a post-deployment submission.
 - [ ] Sitemap is submitted and successfully read.
 - [ ] Priority English and Arabic URLs are inspected/requested.
 - [ ] Indexing is reviewed after 24 and 72 hours.
@@ -440,6 +507,7 @@ Complete and attach evidence for every item:
 - [ ] Mobile behavior is checked.
 - [ ] LCP, CLS, and INP evidence is recorded.
 - [ ] Weekly SEO monitoring and ranking owners are assigned.
+- [ ] AI crawler/WAF logs, AI referrals, and the English/Arabic citation benchmark have owners.
 - [ ] `SITE_URL=https://www.qwicksite.com npm run seo:verify` passes with zero failures.
 
 Record the deployment owner, commit SHA, timestamp, verification output, Search Console evidence,
