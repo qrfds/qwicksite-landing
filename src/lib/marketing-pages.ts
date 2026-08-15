@@ -242,7 +242,7 @@ export const marketingPages: MarketingPage[] = [
   },
   {
     slug: "about",
-    dateModified: "2026-07-25",
+    dateModified: "2026-08-15",
     relatedSlugs: ["what-is-qwicksite", "history-of-qwicksite", "why-qwicksite-was-built"],
     content: {
       en: {
@@ -257,6 +257,7 @@ export const marketingPages: MarketingPage[] = [
             title: "Our mission",
             paragraphs: [
               "We want entrepreneurs and teams to spend more time serving customers and less time coordinating hosting, design, code, plugins, and disconnected commerce tools.",
+              "QwickSite helps founders move from a business idea to a responsive Arabic or English website, then keep improving it as the business grows.",
             ],
           },
           {
@@ -285,6 +286,7 @@ export const marketingPages: MarketingPage[] = [
             title: "رسالتنا",
             paragraphs: [
               "نريد أن يقضي رواد الأعمال والفرق وقتاً أطول في خدمة العملاء ووقتاً أقل في تنسيق الاستضافة والتصميم والكود والإضافات وأدوات التجارة المنفصلة.",
+              "يساعد QwickSite رواد الأعمال على تحويل فكرة النشاط إلى موقع متجاوب بالعربية أو الإنجليزية، ثم مواصلة تطويره مع نمو النشاط.",
             ],
           },
           {
