@@ -30,6 +30,8 @@ Set these values in the deployment platform. Do not commit credentials or privat
 ```text
 SITE_URL=https://the-approved-canonical-host
 GOOGLE_SITE_VERIFICATION=google-verification-token
+BING_SITE_VERIFICATION=bing-verification-token
+INDEXNOW_KEY=public-indexnow-key
 NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 NEXT_PUBLIC_CLARITY_PROJECT_ID=clarity-project-id
 QWICKSITE_FOUNDING_DATE=YYYY-MM-DD
@@ -40,22 +42,26 @@ QWICKSITE_SOCIAL_URLS=https://official-profile-one,https://official-profile-two
 
 `SITE_URL` must be the canonical HTTPS origin without a path or trailing slash. The founder,
 founding-date, and social values are required for complete Organization and Person schema. GA4,
-Clarity, and Google verification remain disabled until their public identifiers are configured.
+Clarity, search-engine verification, and IndexNow remain disabled until their public identifiers are
+configured. `INDEXNOW_KEY` is a public ownership-verification key, not an API secret.
 
 After every production deployment:
 
 1. Run `SITE_URL=https://canonical-host npm run seo:verify`.
-2. Confirm the alternate hostname redirects in one 301 hop to the canonical hostname.
-3. Validate the Homepage, Pricing, Features, Blog, one content page, and every new article with
+2. Run `SITE_URL=https://canonical-host INDEXNOW_KEY=public-key npm run indexnow:submit` after
+   deploying meaningful canonical content changes. Pass specific absolute URLs or paths after the
+   command to submit only changed, created, or removed URLs.
+3. Confirm the alternate hostname redirects in one 301 hop to the canonical hostname.
+4. Validate the Homepage, Pricing, Features, Blog, one content page, and every new article with
    Schema Markup Validator and mobile PageSpeed Insights.
-4. In Google Search Console, confirm the Domain property, submit `/sitemap.xml`, and inspect/request
+5. In Google Search Console and Bing Webmaster Tools, verify the properties, submit `/sitemap.xml`, and inspect/request
    indexing for both locales of Homepage, Pricing, Features, About, Contact, Blog, and every new
    article.
-5. Recheck indexing after 24 and 72 hours. Review crawl errors, 404s, sitemap coverage, indexing
+6. Recheck indexing after 24 and 72 hours. Review crawl errors, 404s, sitemap coverage, indexing
    issues, branded impressions, and Core Web Vitals weekly.
-6. Confirm field performance at the 75th percentile for mobile and desktop: LCP below 2.5 seconds,
+7. Confirm field performance at the 75th percentile for mobile and desktop: LCP below 2.5 seconds,
    CLS below 0.1, and INP below 200 milliseconds.
-7. Track QwickSite, QwickSite Egypt, QwickSite AI, AI Website Builder Egypt, Ecommerce Platform
+8. Track QwickSite, QwickSite Egypt, QwickSite AI, AI Website Builder Egypt, Ecommerce Platform
    Egypt, and Arabic Website Builder for the approved target locations.
 
 The SoftwareApplication offers must match the visible pricing plans. Do not relabel the current

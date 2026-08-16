@@ -143,6 +143,8 @@ export function createOrganizationSchema(): JsonLdNode {
     "@id": ORGANIZATION_ID,
     name: SITE_NAME,
     legalName: "QRFDS",
+    description:
+      "QwickSite is an AI website builder and ecommerce platform for businesses in Egypt and the Middle East and North Africa.",
     url: SITE_URL,
     logo: {
       "@type": "ImageObject",
