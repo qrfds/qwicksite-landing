@@ -55,8 +55,8 @@ export const metadata: Metadata = {
         }
       : undefined,
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/qwicksite.ico",
+    shortcut: "/qwicksite.ico",
     apple: "/qwicksite.ico",
   },
 };
