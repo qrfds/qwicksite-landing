@@ -19,6 +19,7 @@ const cairo = Cairo({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  generator: "Powered By QRFDS",
   title: {
     default: "QwickSite | AI Website Builder & Ecommerce Platform",
     template: "%s",
