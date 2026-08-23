@@ -159,9 +159,9 @@ const Footer = async () => {
           <p className="text-sm text-muted-foreground">
             {t("copyright")}
           </p>
-          {/* <p className="text-sm text-muted-foreground mt-2 sm:mt-0">
-            Made with ❤️ for entrepreneurs worldwide
-          </p> */}
+          <p className="text-sm text-muted-foreground mt-2 sm:mt-0">
+            Powered By QRFDS
+          </p>
         </div>
       </div>
     </footer>

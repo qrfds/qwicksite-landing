@@ -19,6 +19,7 @@ const cairo = Cairo({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  generator: "Powered By QRFDS",
   title: {
     default: "QwickSite | AI Website Builder & Ecommerce Platform",
     template: "%s",
@@ -54,8 +55,8 @@ export const metadata: Metadata = {
         }
       : undefined,
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/qwicksite.ico",
+    shortcut: "/qwicksite.ico",
     apple: "/qwicksite.ico",
   },
 };
