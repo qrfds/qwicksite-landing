@@ -46,7 +46,7 @@ Clarity, search-engine verification, and IndexNow remain disabled until their pu
 configured. `INDEXNOW_KEY` is a public ownership-verification key, not an API secret.
 
 After every production deployment:
-
+collection
 1. Run `SITE_URL=https://canonical-host npm run seo:verify`.
 2. Run `SITE_URL=https://canonical-host INDEXNOW_KEY=public-key npm run indexnow:submit` after
    deploying meaningful canonical content changes. Pass specific absolute URLs or paths after the
