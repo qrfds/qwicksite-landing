@@ -190,7 +190,8 @@
       "delivery": "Delivery",
       "refund": "Refund",
       "cookiePolicy": "Cookie Policy",
-      "licenses": "Licenses"
+      "licenses": "Licenses",
+      "dataDeletion": "Data Deletion"
   },
   "featuresPage": {
     "badge": "Features",

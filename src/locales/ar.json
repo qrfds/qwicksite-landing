@@ -190,7 +190,8 @@
       "delivery": "التوصيل",
       "refund": "الاسترداد",
       "cookiePolicy": "سياسة الكوكيز",
-      "licenses": "التراخيص"
+      "licenses": "التراخيص",
+      "dataDeletion": "حذف البيانات"
   },
   "featuresPage": {
     "badge": "المزايا",

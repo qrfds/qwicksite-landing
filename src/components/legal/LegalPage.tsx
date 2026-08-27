@@ -12,6 +12,8 @@ type LegalSection = {
   title: string;
   paragraphs?: string[];
   bullets?: string[];
+  steps?: string[];
+  concludingParagraphs?: string[];
 };
 
 type LegalPageProps = {
@@ -83,6 +85,18 @@ export default async function LegalPage({
                         ))}
                       </ul>
                     ) : null}
+                    {section.steps ? (
+                      <ol className="list-decimal ps-5 space-y-2 text-muted-foreground">
+                        {section.steps.map((step) => (
+                          <li key={step}>{step}</li>
+                        ))}
+                      </ol>
+                    ) : null}
+                    {section.concludingParagraphs?.map((paragraph) => (
+                      <p key={paragraph} className="text-muted-foreground leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
                   </section>
                 ))}
               </CardContent>
