@@ -7,6 +7,8 @@ import BenefitsSection from "@/components/sections/BenefitsSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CaseStudySection from "@/components/sections/CaseStudySection";
 import FinalCTASection from "@/components/sections/FinalCTASection";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 
 export default async function HomePage() {
@@ -34,6 +36,17 @@ export default async function HomePage() {
                     {paragraph}
                   </p>
                 ))}
+              </div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button asChild>
+                  <Link href="/ai-website-builder-egypt">{t("websiteBuilderLink")}</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/ecommerce-platform-egypt">{t("ecommerceLink")}</Link>
+                </Button>
+                <Button asChild variant="ghost">
+                  <Link href="/about">{t("aboutLink")}</Link>
+                </Button>
               </div>
             </div>
           </div>

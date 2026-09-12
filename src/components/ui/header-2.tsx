@@ -91,12 +91,21 @@ export function Header() {
           </Button>
         </div>
 
-        <Button size="icon" variant="outline" onClick={() => setOpen(!open)} className="md:hidden">
+        <Button
+          size="icon"
+          variant="outline"
+          onClick={() => setOpen(!open)}
+          className="md:hidden"
+          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-controls="mobile-navigation-menu"
+          aria-expanded={open}
+        >
           <MenuToggleIcon open={open} className="size-5" duration={300} />
         </Button>
       </nav>
 
       <div
+        id="mobile-navigation-menu"
         className={cn(
           'bg-background/90 fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y md:hidden',
           open ? 'block' : 'hidden',

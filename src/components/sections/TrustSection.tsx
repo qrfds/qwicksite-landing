@@ -3,7 +3,6 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
 const clientLogos = [
-  { src: "/images/clients/addressinvestments.png", alt: "Address Investments" },
   { src: "/images/clients/Optimum_oil.png", alt: "Optimum Oil" },
   { src: "/images/clients/hn.svg", alt: "HN" },
   { src: "/images/clients/colorplay.png", alt: "Color Play" },
@@ -55,9 +54,7 @@ const TrustSection = async () => {
                       alt={setIndex === 0 ? logo.alt : ""}
                       width={176}
                       height={64}
-                      className={`h-16 w-44 object-contain ${
-                        logo.src === "/images/clients/addressinvestments.png" ? "invert" : ""
-                      }`}
+                      className="h-16 w-44 object-contain"
                     />
                   </div>
                 ))}

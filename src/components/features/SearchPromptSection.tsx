@@ -29,17 +29,36 @@ export function SearchPromptSection({
   return (
     <>
       <form
+        {...{
+          toolname: "start_qwicksite_website",
+          tooldescription:
+            "Opens QwickSite registration with a description of the website the user wants to create.",
+        }}
         onSubmit={handleSearchSubmit}
         className="relative max-w-2xl mx-auto w-full"
       >
+        <label htmlFor="website-description" className="sr-only">
+          {searchPlaceholder}
+        </label>
         <div className="bg-[#154F77] rounded-full p-3 flex items-center">
           <input
+            {...{
+              toolparamdescription:
+                "A short description of the business and website to create.",
+            }}
+            id="website-description"
+            name="prompt"
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder={searchPlaceholder}
+            autoComplete="off"
+            required
             className="bg-transparent flex-1 outline-none text-gray-300 px-4"
           />
+          <button type="submit" className="sr-only">
+            Start building this website
+          </button>
         </div>
       </form>
 

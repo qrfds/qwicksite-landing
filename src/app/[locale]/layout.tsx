@@ -3,6 +3,7 @@ import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
+import WebMcpProvider from "@/components/WebMcpProvider";
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -27,6 +28,7 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <WebMcpProvider />
       <section lang={locale} dir={isArabic ? "rtl" : "ltr"} className={isArabic ? "font-[var(--font-cairo)]" : ""}>
         {children}
       </section>

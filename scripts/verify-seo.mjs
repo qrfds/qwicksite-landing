@@ -88,9 +88,11 @@ function hasSchemaType(nodes, expectedTypes) {
   });
 }
 
-const [robotsResponse, sitemapResponse] = await Promise.all([
+const [robotsResponse, sitemapResponse, llmsResponse, indexNowKeyResponse] = await Promise.all([
   fetch(`${siteUrl}/robots.txt`, { redirect: "manual" }),
   fetch(`${siteUrl}/sitemap.xml`, { redirect: "manual" }),
+  fetch(`${siteUrl}/llms.txt`, { redirect: "manual" }),
+  fetch(`${siteUrl}/indexnow-key.txt`, { redirect: "manual" }),
 ]);
 
 if (robotsResponse.status !== 200) {
@@ -99,11 +101,47 @@ if (robotsResponse.status !== 200) {
 if (sitemapResponse.status !== 200) {
   failures.push(`/sitemap.xml returned ${sitemapResponse.status}`);
 }
+if (llmsResponse.status !== 200) {
+  failures.push(`/llms.txt returned ${llmsResponse.status}`);
+}
+if (indexNowKeyResponse.status !== 200) {
+  failures.push(`/indexnow-key.txt returned ${indexNowKeyResponse.status}`);
+}
 
 const robotsBody = await robotsResponse.text();
 const sitemapBody = await sitemapResponse.text();
+const llmsBody = await llmsResponse.text();
+const indexNowKeyBody = (await indexNowKeyResponse.text()).trim();
 if (!robotsBody.includes(`${siteUrl}/sitemap.xml`)) {
   failures.push("robots.txt does not reference the canonical sitemap URL");
+}
+for (const crawler of [
+  "Googlebot",
+  "Bingbot",
+  "OAI-SearchBot",
+  "PerplexityBot",
+  "Claude-SearchBot",
+  "Claude-User",
+]) {
+  const block = new RegExp(`User-agent: ${crawler}\\s+Allow: /`, "i");
+  if (!block.test(robotsBody)) {
+    failures.push(`robots.txt does not explicitly allow ${crawler}`);
+  }
+}
+for (const crawler of ["GPTBot", "ClaudeBot"]) {
+  const block = new RegExp(`User-agent: ${crawler}\\s+Disallow: /`, "i");
+  if (!block.test(robotsBody)) {
+    failures.push(`robots.txt does not preserve the no-training policy for ${crawler}`);
+  }
+}
+if (!/Content-Signal: ai-train=no, search=yes, ai-input=yes/i.test(robotsBody)) {
+  failures.push("robots.txt does not allow real-time AI grounding while disallowing training");
+}
+if (!llmsBody.startsWith("# QwickSite") || !llmsBody.includes(`${siteUrl}/en/what-is-qwicksite`)) {
+  failures.push("llms.txt is missing the QwickSite identity or canonical product link");
+}
+if (!/^[A-Za-z0-9-]{8,128}$/.test(indexNowKeyBody)) {
+  failures.push("indexnow-key.txt does not expose a valid IndexNow key");
 }
 
 const urls = [...sitemapBody.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) =>
@@ -164,6 +202,10 @@ for (const url of urls) {
   if (!/<title>[^<]+<\/title>/i.test(html)) {
     failures.push(`${url} has no document title`);
   }
+  const describedByTag = html.match(/<link[^>]+rel=["']describedby["'][^>]*>/i)?.[0];
+  if (!describedByTag || !/href=["']\/llms\.txt["']/i.test(describedByTag)) {
+    failures.push(`${url} does not advertise /llms.txt`);
+  }
   if (!/<h1(?:\s|>)/i.test(html)) {
     failures.push(`${url} has no H1`);
   }
@@ -201,6 +243,7 @@ for (const url of urls) {
     } else {
       for (const field of [
         "name",
+        "description",
         "logo",
         "url",
         "foundingDate",
@@ -246,12 +289,24 @@ for (const url of urls) {
     if (!/<meta[^>]+name=["']google-site-verification["']/i.test(html)) {
       failures.push(`${url} has no Google Search Console verification metadata`);
     }
+    if (!/<meta[^>]+name=["']msvalidate\.01["']/i.test(html)) {
+      failures.push(`${url} has no Bing Webmaster Tools verification metadata`);
+    }
     if (!/<script[^>]+id=["']qwicksite-ga4["']/i.test(html)) {
       failures.push(`${url} has no GA4 integration`);
     }
     if (!/<script[^>]+id=["']qwicksite-clarity["']/i.test(html)) {
       failures.push(`${url} has no Microsoft Clarity integration`);
     }
+  }
+
+  if (
+    parsed.pathname === "/en/features" &&
+    (!html.includes('toolname="start_qwicksite_website"') ||
+      !html.includes('name="prompt"') ||
+      !html.includes('toolparamdescription='))
+  ) {
+    failures.push(`${url} is missing the declarative WebMCP form contract`);
   }
 }
 

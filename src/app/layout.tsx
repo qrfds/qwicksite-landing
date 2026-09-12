@@ -25,6 +25,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
+  generator: "Powered By QRFDS",
   title: {
     default: "QwickSite | AI Website Builder & Ecommerce Platform",
     template: "%s",
@@ -44,12 +45,24 @@ export const metadata: Metadata = {
   authors: [{ name: "QwickSite Team" }],
   creator: "QwickSite",
   publisher: "QwickSite",
-  verification: process.env.GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
-    : undefined,
+  verification:
+    process.env.GOOGLE_SITE_VERIFICATION || process.env.BING_SITE_VERIFICATION
+      ? {
+          ...(process.env.GOOGLE_SITE_VERIFICATION
+            ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+            : {}),
+          ...(process.env.BING_SITE_VERIFICATION
+            ? {
+                other: {
+                  "msvalidate.01": process.env.BING_SITE_VERIFICATION,
+                },
+              }
+            : {}),
+        }
+      : undefined,
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
+    icon: "/qwicksite.ico",
+    shortcut: "/qwicksite.ico",
     apple: "/qwicksite.ico",
   },
 };
@@ -64,6 +77,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={isArabic ? "rtl" : "ltr"} suppressHydrationWarning>
+      <head>
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
+      </head>
       <body
         className={`${geistSans.variable} ${cairo.variable} ${plusJakarta.variable} antialiased`}
         suppressHydrationWarning={true}
