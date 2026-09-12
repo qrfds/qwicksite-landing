@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cairo, Geist } from "next/font/google";
+import { Cairo, Geist, Plus_Jakarta_Sans } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import Analytics from "@/components/analytics/Analytics";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -14,7 +14,13 @@ const geistSans = Geist({
 const cairo = Cairo({
   variable: "--font-cairo",
   subsets: ["arabic", "latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -59,7 +65,7 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={isArabic ? "rtl" : "ltr"} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${cairo.variable} antialiased`}
+        className={`${geistSans.variable} ${cairo.variable} ${plusJakarta.variable} antialiased`}
         suppressHydrationWarning={true}
       >
         <ThemeProvider

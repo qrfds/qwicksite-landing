@@ -19,10 +19,11 @@
     "switchToEnglish": "EN"
   },
   "hero": {
-    "badge": "AI website builder and ecommerce platform",
-    "title": "QwickSite — AI Website Builder for Egypt & MENA",
-    "description": "Use QwickSite to build an Arabic business website or online store for customers in Egypt and across MENA.",
-    "footnote": "Free forever plan available • No credit card required • Cancel anytime"
+    "badge": "Built for merchants in Egypt & MENA",
+    "title": "Your online store",
+    "titleAccent": "live in 5 minutes",
+    "description": "No code. Arabic-first. Cash on delivery ready. Turn your idea into a store you can build and manage with AI.",
+    "footnote": "No credit card required · Start with the free plan"
   },
   "home": {
     "seoOverview": {

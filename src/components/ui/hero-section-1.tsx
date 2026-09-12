@@ -1,29 +1,26 @@
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
+import { getLocale, getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
+import { HeroBannerBackground } from '@/components/ui/hero-banner-background';
 import { Link } from '@/i18n/navigation';
 
 export async function HeroSection() {
+  const locale = await getLocale();
+  const isArabic = locale === 'ar';
   const t = await getTranslations('hero');
   const tc = await getTranslations('common');
+  const heroFont = isArabic ? 'font-[family-name:var(--font-cairo)]' : 'font-[family-name:var(--font-display)]';
 
   return (
-    <div className="overflow-hidden bg-black text-white">
+    <div className="relative overflow-hidden bg-[#050508] text-white">
+      <HeroBannerBackground />
       <div
         aria-hidden
-        className="z-[2] absolute inset-0 pointer-events-none isolate opacity-50 contain-strict hidden lg:block"
-      >
-        <div className="w-[35rem] h-[80rem] -translate-y-[350px] absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
-        <div className="h-[80rem] absolute left-0 top-0 w-56 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
-        <div className="h-[80rem] -translate-y-[350px] absolute left-0 top-0 w-56 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
-      </div>
-      <section>
+        className="pointer-events-none absolute inset-0 z-[2] bg-[radial-gradient(ellipse_at_50%_35%,transparent_0%,rgba(0,0,0,0.35)_85%)]"
+      />
+      <section className="relative z-10">
         <div className="relative pt-0 md:pt-0">
-          <div
-            aria-hidden
-            className="absolute inset-0 -z-10 size-full [background:radial-gradient(125%_125%_at_50%_100%,transparent_0%,#000_75%)]"
-          />
           <div className="mx-auto max-w-7xl px-6">
             <div className="text-center sm:mx-auto lg:me-auto lg:mt-0">
               <div>
@@ -46,10 +43,17 @@ export async function HeroSection() {
                   </div>
                 </Link>
 
-                <h1 className="mt-10 max-w-4xl mx-auto text-balance text-6xl md:mt-14 md:text-7xl lg:mt-16 xl:text-[5.25rem]">
-                  {t('title')}
+                <h1
+                  className={`mx-auto mt-8 max-w-5xl text-balance md:mt-12 lg:mt-14 ${heroFont}`}
+                >
+                  <span className="block text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white/90 md:font-semibold">
+                    {t('title')}
+                  </span>
+                  <span className="mt-1 block bg-gradient-to-br from-[#BFDBFE] via-[#3B82F6] to-[#14B8A6] bg-clip-text text-[clamp(2.75rem,8vw,5.25rem)] font-extrabold leading-[0.95] tracking-[-0.045em] text-transparent drop-shadow-[0_0_50px_rgba(59,130,246,0.4)] md:mt-2">
+                    {t('titleAccent')}
+                  </span>
                 </h1>
-                <p className="mx-auto mt-8 max-w-2xl text-balance text-lg">
+                <p className={`mx-auto mt-7 max-w-xl text-balance text-[clamp(1rem,2.2vw,1.2rem)] font-medium leading-relaxed text-white/70 md:mt-8 ${heroFont}`}>
                   {t('description')}
                 </p>
               </div>
@@ -81,12 +85,8 @@ export async function HeroSection() {
           </div>
 
           <div>
-            <div className="relative mt-8 overflow-hidden px-2 sm:mt-12 md:mt-20">
-              <div
-                aria-hidden
-                className="bg-gradient-to-b to-background absolute inset-0 z-10 from-transparent from-35%"
-              />
-              <div className="inset-shadow-2xs ring-black dark:inset-shadow-white/20 bg-black relative mx-auto max-w-6xl overflow-hidden rounded-2xl border p-4 shadow-lg shadow-zinc-950/15 ring-1">
+            <div className="relative mt-8 px-2 sm:mt-12 md:mt-20">
+              <div className="inset-shadow-2xs ring-black/20 dark:inset-shadow-white/20 relative mx-auto max-w-6xl overflow-hidden rounded-2xl border border-white/10 bg-black/20 p-4 shadow-lg shadow-zinc-950/15 ring-1 backdrop-blur-[2px]">
                 <Image
                   className="z-2 border-border/25 aspect-15/8 relative w-full rounded-2xl border object-cover"
                   src="/images/qwicksite-ai-website-builder-dashboard.webp"
