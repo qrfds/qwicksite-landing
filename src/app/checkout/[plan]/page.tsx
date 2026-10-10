@@ -8,9 +8,8 @@ import { Label } from "@/components/ui/label";
 import { Link } from "@/i18n/navigation";
 import {
   formatAmount,
-  getPriceMultiplier,
+  getPlanTotal,
   getPricingPlans,
-  isPlanId,
   normalizeBillingCycle,
 } from "@/lib/pricing-plans";
 import { getDefaultCurrencyView } from "@/lib/visitor-region";
@@ -35,12 +34,8 @@ export default async function CheckoutPage({ params, searchParams }: CheckoutPag
     getDefaultCurrencyView(),
   ]);
 
-  if (!isPlanId(planParam)) {
-    notFound();
-  }
-
   const billingCycle = normalizeBillingCycle(query.billing);
-  const plans = getPricingPlans(t);
+  const { plans } = await getPricingPlans(t);
   const plan = plans.find((item) => item.id === planParam);
 
   if (!plan) {
@@ -50,7 +45,7 @@ export default async function CheckoutPage({ params, searchParams }: CheckoutPag
   const checkout = await getTranslations("checkoutPage");
   const pricing = plan.pricing[currencyView];
   const isFreePlan = pricing.monthly === 0;
-  const subtotal = Math.round(pricing.monthly * getPriceMultiplier(billingCycle));
+  const subtotal = getPlanTotal(pricing, billingCycle);
   const monthlyEquivalent =
     billingCycle === "yearly" && pricing.monthly > 0 ? Math.round(subtotal / 12) : pricing.monthly;
   const regularYearly = Math.round(pricing.monthly * 12);

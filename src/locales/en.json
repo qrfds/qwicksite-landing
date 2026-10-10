@@ -21,7 +21,7 @@
   "hero": {
     "badge": "Built for merchants in Egypt & MENA",
     "title": "Your online store",
-    "titleAccent": "live in 5 minutes",
+    "titleAccent": "live in 30 seconds",
     "description": "No code. Arabic-first. Cash on delivery ready. Turn your idea into a store you can build and manage with AI.",
     "footnote": "No credit card required · Start with the free plan"
   },
@@ -62,24 +62,48 @@
       ]
     },
     "benefits": {
-      "title": "Why choose QwickSite?",
-      "description": "Built for entrepreneurs who want to focus on growing their business, not building technology.",
-      "learnMore": "Learn more",
-      "items": [
+      "title": "Everything you need to sell online",
+      "description": "From AI site generation to checkout, social commerce, and growth tools — all in one platform built for Egypt and MENA.",
+      "categories": [
         {
-          "title": "AI Website Generation",
-          "description": "Create a complete site or store in under 60 seconds. Our AI analyzes your business and builds everything automatically.",
-          "feature": "60-second setup"
+          "title": "Build & design",
+          "features": [
+            "AI website generation from a simple business description",
+            "Drag-and-drop page and website builder with live preview",
+            "67+ components: banners, forms, galleries, reviews, FAQs, and more",
+            "Shop, portfolio, wedding, events, and creator layout templates",
+            "Theme gallery, custom domains, and Arabic-first RTL support"
+          ]
         },
         {
-          "title": "E-commerce Ready",
-          "description": "Payments, inventory, checkout, and shipping built-in. Start selling immediately with zero setup headaches.",
-          "feature": "Built-in payments"
+          "title": "E-commerce & checkout",
+          "features": [
+            "Product catalog with variants, inventory, and virtual products",
+            "Cart, multi-step checkout, and order management",
+            "Cash on delivery plus InstaPay, bank transfer, and mobile wallets",
+            "Discount codes, tax rules, and Dlvago shipping for Egypt",
+            "Payment slip upload and guest checkout with order tracking"
+          ]
         },
         {
-          "title": "No Code, No Stress",
-          "description": "Drag, drop, and edit instantly. Make changes in real-time without touching a single line of code.",
-          "feature": "Visual editor"
+          "title": "Integrations & social commerce",
+          "features": [
+            "WhatsApp Business and Instagram DM commerce",
+            "Shopify and WooCommerce product sync",
+            "Social commerce inbox with chat checkout and handover",
+            "WhatsApp widget, live chat embed, and Meta catalog sync",
+            "Transactional order emails via Resend"
+          ]
+        },
+        {
+          "title": "Growth & operations",
+          "features": [
+            "SEO storefront with sitemap, structured data, and on-demand revalidation",
+            "Analytics, insights dashboard, and UTM tracking",
+            "A/B experiments and visual commerce flow builder",
+            "Blog posts with authors and categories",
+            "AI shop assistant for products, orders, and inventory"
+          ]
         }
       ]
     },
@@ -150,7 +174,7 @@
       "title": "Your business online in minutes, not months",
       "description": "Stop losing customers to competitors with better websites. Join thousands of entrepreneurs who chose the faster, smarter way to build online.",
       "features": [
-        "AI generates your site in 60 seconds",
+        "AI generates your site in 30 seconds",
         "Built-in e-commerce & payment processing",
         "Drag-and-drop editor (no coding)",
         "Mobile-responsive & SEO optimized",
@@ -305,6 +329,7 @@
     "titleHighlight": "local growth",
     "description": "Start free, grow with WhatsApp-first commerce, and scale into regional operations with COD and VAT-ready workflows.",
     "mostPopular": "Most Popular",
+    "genericCta": "Get Started",
     "highlights": "You will unlock",
     "compareFeatures": "Compare Features",
     "compareDescription": "Quick view of what unlocks at each stage of growth.",
@@ -318,7 +343,7 @@
     "yearlySavingsLine": "Regular yearly total: {base}",
     "pricingNotes": {
       "launch": "Forever Free",
-      "growthEgypt": "~$20/mo",
+      "growthEgypt": "Local pricing for Egypt merchants",
       "growthGlobal": "WhatsApp Commerce ready",
       "expansionEgypt": "~$80/mo",
       "expansionGlobal": "Regional scale plan"

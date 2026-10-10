@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import {
   formatAmount,
-  getPriceMultiplier,
+  getFallbackPricingPlans,
+  getPlanTotal,
   getPricingPlans,
   type BillingCycle,
   type CurrencyView,
+  type Plan,
 } from "@/lib/pricing-plans";
 
 type ToolInput = Record<string, unknown>;
@@ -95,8 +97,24 @@ export default function WebMcpProvider() {
   const pricing = useTranslations("pricingPage");
   const router = useRouter();
 
+  // Starts from the static fallback so the tool is registered immediately,
+  // then swaps in the live catalog once the (client-side, CORS-open) fetch
+  // resolves -- same live-pricing source as the rest of the site, see
+  // getPricingPlans's doc comment in lib/pricing-plans.ts.
+  const [plans, setPlans] = useState<Plan[]>(() => getFallbackPricingPlans(pricing));
+
+  useEffect(() => {
+    let cancelled = false;
+    getPricingPlans(pricing).then(({ plans: live }) => {
+      if (!cancelled) setPlans(live);
+    });
+    return () => {
+      cancelled = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [locale]);
+
   const tools = useMemo<WebMcpTool[]>(() => {
-    const plans = getPricingPlans(pricing);
 
     return [
       {
@@ -166,15 +184,13 @@ export default function WebMcpProvider() {
             billingCycles,
             "billingCycle",
           ) as BillingCycle;
-          const multiplier = getPriceMultiplier(billingCycle);
-
           return {
             market,
             billingCycle,
             yearlyDiscountPercent: billingCycle === "yearly" ? 20 : 0,
             plans: plans.map((plan) => {
               const pricingForMarket = plan.pricing[market];
-              const amount = Math.round(pricingForMarket.monthly * multiplier);
+              const amount = getPlanTotal(pricingForMarket, billingCycle);
 
               return {
                 id: plan.id,
@@ -238,7 +254,7 @@ export default function WebMcpProvider() {
         annotations: { readOnlyHint: false },
       },
     ];
-  }, [locale, pricing, router]);
+  }, [locale, pricing, router, plans]);
 
   useEffect(() => registerWebMcpTools(tools), [tools]);
 

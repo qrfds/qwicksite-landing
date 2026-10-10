@@ -57,7 +57,7 @@ export default async function LocalizedHomePage({
   const meta = await getTranslations("meta");
   const faq = await getTranslations("home.faq");
   const pricing = await getTranslations("pricingPage");
-  const plans = getPricingPlans(pricing);
+  const { plans } = await getPricingPlans(pricing);
   const description = meta("description");
 
   return (

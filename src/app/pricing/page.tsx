@@ -14,14 +14,20 @@ export default async function PricingPage() {
   const locale = (await getLocale()) as AppLocale;
   const t = await getTranslations("pricingPage");
   const currencyView = await getDefaultCurrencyView();
-  const plans = getPricingPlans(t);
+  const { plans, isLive } = await getPricingPlans(t);
 
-  const featureComparison = t.raw("comparisonRows") as Array<{
-    feature: string;
-    launch: string;
-    growth: string;
-    expansion: string;
-  }>;
+  // The hand-authored comparison table below assumes the fixed
+  // launch/growth/expansion shape (translated per-tier rows) -- it can't
+  // honestly represent an arbitrary live plan count, so it only renders on
+  // the static fallback path. See PricingPlansResult's isLive doc comment.
+  const featureComparison = isLive
+    ? []
+    : (t.raw("comparisonRows") as Array<{
+        feature: string;
+        launch: string;
+        growth: string;
+        expansion: string;
+      }>);
 
   return (
     <div className="min-h-screen">
@@ -67,37 +73,39 @@ export default async function PricingPage() {
 
           <PricingPlansSection plans={plans} currencyView={currencyView} />
 
-          <div className="mt-14 overflow-hidden rounded-2xl border border-border/60 bg-card/50">
-            <div className="border-b border-border/60 px-6 py-4">
-              <h2 className="text-2xl font-semibold md:text-3xl">{t("compareFeatures")}</h2>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {t("compareDescription")}
-              </p>
-            </div>
+          {featureComparison.length > 0 ? (
+            <div className="mt-14 overflow-hidden rounded-2xl border border-border/60 bg-card/50">
+              <div className="border-b border-border/60 px-6 py-4">
+                <h2 className="text-2xl font-semibold md:text-3xl">{t("compareFeatures")}</h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  {t("compareDescription")}
+                </p>
+              </div>
 
-            <div className="overflow-x-auto">
-              <table className="w-full min-w-[780px] text-left">
-                <thead>
-                  <tr className="bg-background/40 text-sm">
-                    <th className="px-6 py-4 font-semibold">{t("featureHeader")}</th>
-                    <th className="px-6 py-4 font-semibold">{t("plans.launch.name")}</th>
-                    <th className="px-6 py-4 font-semibold">{t("plans.growth.name")}</th>
-                    <th className="px-6 py-4 font-semibold">{t("plans.expansion.name")}</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {featureComparison.map((row) => (
-                    <tr key={row.feature} className="border-t border-border/50 text-sm md:text-base">
-                      <td className="px-6 py-4 font-medium">{row.feature}</td>
-                      <td className="px-6 py-4 text-muted-foreground">{row.launch}</td>
-                      <td className="px-6 py-4 text-muted-foreground">{row.growth}</td>
-                      <td className="px-6 py-4 text-muted-foreground">{row.expansion}</td>
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[780px] text-left">
+                  <thead>
+                    <tr className="bg-background/40 text-sm">
+                      <th className="px-6 py-4 font-semibold">{t("featureHeader")}</th>
+                      <th className="px-6 py-4 font-semibold">{t("plans.launch.name")}</th>
+                      <th className="px-6 py-4 font-semibold">{t("plans.growth.name")}</th>
+                      <th className="px-6 py-4 font-semibold">{t("plans.expansion.name")}</th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {featureComparison.map((row) => (
+                      <tr key={row.feature} className="border-t border-border/50 text-sm md:text-base">
+                        <td className="px-6 py-4 font-medium">{row.feature}</td>
+                        <td className="px-6 py-4 text-muted-foreground">{row.launch}</td>
+                        <td className="px-6 py-4 text-muted-foreground">{row.growth}</td>
+                        <td className="px-6 py-4 text-muted-foreground">{row.expansion}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-          </div>
+          ) : null}
         </section>
       </main>
 

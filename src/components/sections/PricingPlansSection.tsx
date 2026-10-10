@@ -1,12 +1,12 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { Check, Star } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import type { BillingCycle, CurrencyView, Plan } from "@/lib/pricing-plans";
-import { formatAmount, getPriceMultiplier } from "@/lib/pricing-plans";
+import { formatAmount, getPlanTotal } from "@/lib/pricing-plans";
 import {
   Card,
   CardContent,
@@ -42,8 +42,6 @@ export default function PricingPlansSection({ plans, currencyView }: Props) {
     ? t("yearlyDiscountBadge")
     : "Save 20% yearly";
 
-  const priceMultiplier = useMemo(() => getPriceMultiplier(billingCycle), [billingCycle]);
-
   return (
     <>
       <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
@@ -73,16 +71,20 @@ export default function PricingPlansSection({ plans, currencyView }: Props) {
         </Badge>
       </div>
 
-      <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-3 mt-12">
+      {/* Card count is whatever the live catalog returns (see
+          getPricingPlans's isLive doc comment) -- sm:2/xl:4 wraps
+          reasonably for any count rather than assuming a fixed 3. */}
+      <div className="grid grid-cols-1 items-stretch gap-6 sm:grid-cols-2 xl:grid-cols-4 mt-12">
         {plans.map((plan) => {
           const pricing = plan.pricing[currencyView];
-          const calculated = Math.round(pricing.monthly * priceMultiplier);
+          const calculated = getPlanTotal(pricing, billingCycle);
           const displayedAmount = formatAmount(pricing.currency, calculated, locale);
           const yearlyBase = Math.round(pricing.monthly * 12);
+          const showYearlySavings = billingCycle === "yearly" && pricing.monthly > 0 && calculated < yearlyBase;
 
           return (
             <Card
-              key={plan.name}
+              key={plan.id}
               className={`relative h-full border-border/60 bg-card/60 backdrop-blur-sm ${
                 plan.popular
                   ? "border-primary/60 shadow-medium lg:-translate-y-2"
@@ -108,7 +110,7 @@ export default function PricingPlansSection({ plans, currencyView }: Props) {
                   <span className="text-4xl font-bold">{displayedAmount}</span>
                   <span className="mb-1 text-muted-foreground">{periodLabel}</span>
                 </div>
-                {billingCycle === "yearly" && pricing.monthly > 0 ? (
+                {showYearlySavings ? (
                   <p className="text-xs font-medium text-primary">
                     {t.has("yearlySavingsLine")
                       ? t("yearlySavingsLine", {
