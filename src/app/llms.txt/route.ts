@@ -27,6 +27,7 @@ export function GET() {
 - [Terms](${SITE_URL}/en/terms): Terms governing use of QwickSite.
 - [Delivery Policy](${SITE_URL}/en/delivery): Service delivery information.
 - [Refund Policy](${SITE_URL}/en/refund): Refund rules and conditions.
+- [Data Deletion Instructions](${SITE_URL}/en/data-deletion): How to request deletion of personal data from QwickSite.
 
 ## Arabic
 

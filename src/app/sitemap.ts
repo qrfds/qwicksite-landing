@@ -16,6 +16,7 @@ const fixedPaths = [
   "/refund",
   "/cookie-policy",
   "/licenses",
+  "/data-deletion",
 ];
 
 const contentUpdatedAt = new Date("2026-07-25T00:00:00.000Z");
@@ -43,7 +44,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
           ? new Date(article.dateModified)
           : marketingPage
             ? new Date(marketingPage.dateModified)
-            : contentUpdatedAt,
+            : path === "/data-deletion"
+              ? new Date("2026-08-26T00:00:00.000Z")
+              : contentUpdatedAt,
         changeFrequency: path === "/" ? ("weekly" as const) : ("monthly" as const),
         priority: path === "/" ? 1 : path === "/pricing" || path === "/features" ? 0.9 : 0.7,
         alternates: {

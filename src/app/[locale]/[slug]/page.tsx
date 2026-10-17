@@ -38,6 +38,7 @@ const reservedSlugs = new Set([
   "refund",
   "cookie-policy",
   "licenses",
+  "data-deletion",
   "checkout",
   "hero-section-1",
 ]);

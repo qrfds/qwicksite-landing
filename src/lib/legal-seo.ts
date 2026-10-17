@@ -27,6 +27,10 @@ const legalSeo = {
     en: ["Licenses | QwickSite", "Third-party software and licensing information used by QwickSite."],
     ar: ["التراخيص | QwickSite", "معلومات البرامج الخارجية والتراخيص المستخدمة في QwickSite."],
   },
+  "data-deletion": {
+    en: ["Data Deletion Instructions | QwickSite", "How to request deletion of your personal data from QwickSite."],
+    ar: ["تعليمات حذف البيانات | QwickSite", "كيفية طلب حذف بياناتك الشخصية من QwickSite."],
+  },
 } satisfies Record<string, Record<AppLocale, [string, string]>>;
 
 export function createLegalMetadata(locale: AppLocale, slug: keyof typeof legalSeo): Metadata {

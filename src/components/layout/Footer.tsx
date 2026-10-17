@@ -39,6 +39,7 @@ const Footer = async () => {
       { name: t("refund"), href: "/refund" },
       { name: t("cookiePolicy"), href: "/cookie-policy" },
       { name: t("licenses"), href: "/licenses" },
+      { name: t("dataDeletion"), href: "/data-deletion" },
     ],
   };
 
