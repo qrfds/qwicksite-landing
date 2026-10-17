@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "QwickSite | AI Website Builder & Ecommerce Platform for Egypt & MENA",
-    "description": "QwickSite is an AI Website Builder and Ecommerce Platform for Egypt and MENA, helping businesses launch Arabic websites and online stores quickly."
+    "title": "QwickSite | AI Website Builder for Egypt & MENA",
+    "description": "Build Arabic and English websites and stores with QwickSite. AI tools for businesses in Egypt and MENA, with no coding required."
   },
   "common": {
     "startFree": "Start Free Now",
@@ -15,6 +15,7 @@
     "pricing": "Pricing",
     "support": "Support",
     "languageLabel": "Language",
+    "skipToContent": "Skip to main content",
     "switchToArabic": "عربي",
     "switchToEnglish": "EN"
   },

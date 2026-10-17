@@ -33,7 +33,7 @@ type SoftwareOffer = {
   url: string;
 };
 
-const fallbackSiteUrl = "https://qwicksite.com";
+const fallbackSiteUrl = "https://www.qwicksite.com";
 const configuredSiteUrl = process.env.SITE_URL?.trim() || fallbackSiteUrl;
 
 export const SITE_URL = configuredSiteUrl.replace(/\/+$/, "");

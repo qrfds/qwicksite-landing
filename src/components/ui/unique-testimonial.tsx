@@ -99,7 +99,7 @@ export function Testimonials() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 className={cn(
-                  "relative flex items-center gap-0 rounded-full cursor-pointer",
+                  "relative flex min-h-11 min-w-11 items-center justify-center gap-0 rounded-full cursor-pointer",
                   "transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
                   isActive ? "bg-foreground shadow-lg" : "bg-transparent hover:bg-muted/80",
                   showName ? "pr-4 pl-2 py-2" : "p-0.5"

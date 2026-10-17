@@ -95,6 +95,7 @@ export async function HeroSection() {
                   height={1039}
                   sizes="(max-width: 768px) 100vw, 1152px"
                   priority
+                  fetchPriority="high"
                 />
               </div>
             </div>

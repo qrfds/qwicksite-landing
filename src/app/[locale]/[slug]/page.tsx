@@ -155,7 +155,7 @@ export default async function LocalizedStaticContentPage({
       <Header />
       <Breadcrumbs items={breadcrumbs} />
 
-      <main className="pb-16 pt-8">
+      <main id="main-content" tabIndex={-1} className="pb-16 pt-8">
         <section className="container">
           <div className="mx-auto mb-12 max-w-4xl text-center">
             <Badge

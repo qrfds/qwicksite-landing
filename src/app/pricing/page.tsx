@@ -54,7 +54,7 @@ export default async function PricingPage() {
         ]}
       />
 
-      <main className="pb-16">
+      <main id="main-content" tabIndex={-1} className="pb-16">
         <section className="container">
           <div className="mx-auto mb-12 max-w-4xl space-y-5 text-center md:mb-16">
             <Badge variant="outline" className="border-primary/30 bg-card/40 px-3 py-1 text-sm mt-12">

@@ -91,7 +91,7 @@ export default async function SupportPage({
       <Header />
       <Breadcrumbs items={breadcrumbs} />
 
-      <main className="pt-8 pb-16">
+      <main id="main-content" tabIndex={-1} className="pt-8 pb-16">
         <section className="container">
           <div className="max-w-3xl mx-auto text-center space-y-5 mb-12 md:mb-16">
             <Badge variant="outline" className="px-3 py-1 text-sm bg-card/40 border-primary/30">
