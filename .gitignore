@@ -41,3 +41,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Local SEO audit tooling, browser downloads, reports, and history
+/.cache/
+/.seomator/
+/seo-reports/
+

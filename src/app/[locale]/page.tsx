@@ -4,7 +4,6 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import JsonLd from "@/components/seo/JsonLd";
 import { routing, type AppLocale } from "@/i18n/routing";
-import { getPricingPlans } from "@/lib/pricing-plans";
 import {
   createFaqSchema,
   createFounderSchema,
@@ -13,8 +12,6 @@ import {
   createSoftwareApplicationSchema,
   createWebPageSchema,
   createWebsiteSchema,
-  absoluteUrl,
-  localizedPath,
 } from "@/lib/seo";
 import HomePage from "../_home/HomePage";
 
@@ -56,8 +53,6 @@ export default async function LocalizedHomePage({
   setRequestLocale(localeKey);
   const meta = await getTranslations("meta");
   const faq = await getTranslations("home.faq");
-  const pricing = await getTranslations("pricingPage");
-  const { plans } = await getPricingPlans(pricing);
   const description = meta("description");
 
   return (
@@ -68,15 +63,7 @@ export default async function LocalizedHomePage({
           createOrganizationSchema(),
           createFounderSchema(),
           createWebsiteSchema(),
-          createSoftwareApplicationSchema(
-            description,
-            plans.map((plan) => ({
-              name: plan.name,
-              price: plan.pricing.egypt.monthly,
-              priceCurrency: plan.pricing.egypt.currency,
-              url: `${absoluteUrl(localizedPath(localeKey, "/pricing"))}#${plan.id}`,
-            })),
-          ),
+          createSoftwareApplicationSchema(description),
           createWebPageSchema({
             locale: localeKey,
             title: meta("title"),

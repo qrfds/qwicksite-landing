@@ -7,7 +7,13 @@ import { getDefaultCurrencyView } from "@/lib/visitor-region";
 import { getPricingPlans } from "@/lib/pricing-plans";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import JsonLd from "@/components/seo/JsonLd";
-import { createBreadcrumbSchema, createWebPageSchema } from "@/lib/seo";
+import {
+  absoluteUrl,
+  createBreadcrumbSchema,
+  createSoftwareApplicationSchema,
+  createWebPageSchema,
+  localizedPath,
+} from "@/lib/seo";
 import type { AppLocale } from "@/i18n/routing";
 
 export default async function PricingPage() {
@@ -34,6 +40,15 @@ export default async function PricingPage() {
       <JsonLd
         id="qwicksite-pricing-schema"
         data={[
+          createSoftwareApplicationSchema(
+            t("description"),
+            plans.map((plan) => ({
+              name: plan.name,
+              price: plan.pricing[currencyView].monthly,
+              priceCurrency: plan.pricing[currencyView].currency,
+              url: `${absoluteUrl(localizedPath(locale, "/pricing"))}#${plan.id}`,
+            })),
+          ),
           createWebPageSchema({
             locale,
             path: "/pricing",

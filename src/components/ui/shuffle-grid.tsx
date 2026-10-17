@@ -2,6 +2,7 @@ import { getLocale } from "next-intl/server";
 import { cn } from "@/lib/utils";
 import { images } from "@/components/scrolling-card-section/images";
 import Image from "next/image";
+import { Link } from "@/i18n/navigation";
 
 type ImageTile = {
   id: number;
@@ -58,7 +59,7 @@ export const ShuffleHero = async () => {
         <span className="mb-4 block text-xs font-medium text-primary md:text-sm">{copy.badge}</span>
         <h3 className="text-foreground text-4xl font-semibold md:text-6xl">{copy.title}</h3>
         <p className="my-4 text-base text-muted-foreground md:my-6 md:text-lg">{copy.description}</p>
-        <a
+        <Link
           href="https://app.qwicksite.com/register"
           target="_blank"
           rel="noopener noreferrer"
@@ -69,7 +70,7 @@ export const ShuffleHero = async () => {
           )}
         >
           {copy.cta}
-        </a>
+        </Link>
       </div>
       <ShuffleGrid />
     </section>

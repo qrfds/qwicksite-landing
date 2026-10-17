@@ -4,11 +4,11 @@ import { getTranslations } from "next-intl/server";
 
 const clientLogos = [
   { src: "/images/clients/Optimum_oil.png", alt: "Optimum Oil" },
-  { src: "/images/clients/hn.svg", alt: "HN" },
+  { src: "/images/clients/hn.svg", alt: "HN logo" },
   { src: "/images/clients/colorplay.png", alt: "Color Play" },
   { src: "/images/clients/allianz.svg", alt: "Allianz" },
   { src: "/images/clients/lensaura.svg", alt: "Lens Aura" },
-  { src: "/images/clients/bfas.png", alt: "BFAS" },
+  { src: "/images/clients/bfas.png", alt: "BFAS logo" },
   { src: "/images/clients/Atomic_Rides.png", alt: "Atomic Rides" },
   { src: "/images/clients/11_11.png", alt: "11:11" },
 ];

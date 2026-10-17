@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export function Testimonials() {
@@ -106,11 +107,12 @@ export function Testimonials() {
                 )}
               >
                 <div className="relative flex-shrink-0">
-                  <img
+                  <Image
                     src={testimonial.avatar}
                     alt={testimonial.author}
                     width={32}
                     height={32}
+                    sizes="32px"
                     loading="lazy"
                     decoding="async"
                     className={cn(
