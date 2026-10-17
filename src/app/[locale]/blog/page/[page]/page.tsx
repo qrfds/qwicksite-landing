@@ -114,7 +114,7 @@ export default async function PaginatedBlogPage({
       />
       <Header />
       <Breadcrumbs items={breadcrumbs} />
-      <main className="container pb-16 pt-8">
+      <main id="main-content" tabIndex={-1} className="container pb-16 pt-8">
         <h1 className="text-center text-4xl font-bold md:text-5xl">{title}</h1>
         <div className="mx-auto mt-10 grid max-w-5xl gap-6 md:grid-cols-2">
           {posts.map((post) => (

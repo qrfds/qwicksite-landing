@@ -62,7 +62,7 @@ const Footer = async () => {
             </p>
             <div className="flex items-center gap-3">
               {socialLinks.map((social) => (
-                <a
+                <Link
                   key={social.name}
                   href={social.href}
                   target="_blank"
@@ -71,7 +71,7 @@ const Footer = async () => {
                   className="flex h-9 w-9 items-center justify-center rounded-md border border-border/60 bg-card/40 text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50"
                 >
                   <social.icon className="h-4 w-4" />
-                </a>
+                </Link>
               ))}
             </div>
           </div>
@@ -81,16 +81,16 @@ const Footer = async () => {
             <h3 className="font-semibold mb-4">{t("contactUs")}</h3>
             <ul className="space-y-3">
               <li>
-                <a href="mailto:support@qwicksite.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
+                <Link href="mailto:support@qwicksite.com" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
                   <Mail className="h-4 w-4 shrink-0" />
                   {t("email")}
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="tel:+201062034597" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
+                <Link href="tel:+201062034597" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-2">
                   <Phone className="h-4 w-4 shrink-0" />
                   {t("phone")}
-                </a>
+                </Link>
               </li>
               <li>
                 <span className="text-sm text-muted-foreground flex items-start gap-2">

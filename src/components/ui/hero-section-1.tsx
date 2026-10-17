@@ -48,7 +48,7 @@ export async function HeroSection() {
                 >
                   <span className="block text-[clamp(1.75rem,3.8vw,2.65rem)] font-bold leading-[1.15] tracking-[-0.02em] text-white/90 md:font-semibold">
                     {t('title')}
-                  </span>
+                  </span>{' '}
                   <span className="mt-1 block bg-gradient-to-br from-[#BFDBFE] via-[#3B82F6] to-[#14B8A6] bg-clip-text text-[clamp(2.75rem,8vw,5.25rem)] font-extrabold leading-[0.95] tracking-[-0.045em] text-transparent drop-shadow-[0_0_50px_rgba(59,130,246,0.4)] md:mt-2">
                     {t('titleAccent')}
                   </span>
@@ -95,6 +95,7 @@ export async function HeroSection() {
                   height={1039}
                   sizes="(max-width: 768px) 100vw, 1152px"
                   priority
+                  fetchPriority="high"
                 />
               </div>
             </div>

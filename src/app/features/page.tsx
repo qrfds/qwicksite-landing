@@ -106,7 +106,7 @@ export default async function FeaturesPage() {
         ]}
       />
 
-      <main className="pb-16">
+      <main id="main-content" tabIndex={-1} className="pb-16">
         <section className="container">
           <div className="relative overflow-hidden rounded-3xl bg-[#00000] text-white px-6 py-14 md:py-20 mb-14">
             <div className="flex gap-[8rem] rotate-[-20deg] absolute top-[-34rem] right-[-26rem] z-0 blur-[4rem] skew-[-40deg] opacity-50 pointer-events-none">

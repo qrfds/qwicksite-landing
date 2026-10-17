@@ -18,7 +18,7 @@ export default async function HomePage() {
   return (
     <div className="min-h-screen">
       <Header />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <HeroSection />
         <TrustSection />
         <ShuffleHero />

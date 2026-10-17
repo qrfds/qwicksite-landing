@@ -111,7 +111,7 @@ export default async function BlogArticlePage({
       />
       <Header />
       <Breadcrumbs items={breadcrumbs} />
-      <main className="pb-16 pt-8">
+      <main id="main-content" tabIndex={-1} className="pb-16 pt-8">
         <article className="container max-w-4xl">
           <header className="mb-10 text-center">
             <p className="text-sm text-muted-foreground">

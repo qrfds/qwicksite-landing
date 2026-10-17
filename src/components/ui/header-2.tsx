@@ -54,6 +54,13 @@ export function Header() {
         },
       )}
     >
+      <Link
+        href="#main-content"
+        prefetch={false}
+        className="sr-only focus:not-sr-only focus:fixed focus:start-4 focus:top-4 focus:z-[100] focus:rounded-md focus:bg-primary focus:px-4 focus:py-3 focus:text-primary-foreground"
+      >
+        {t('skipToContent')}
+      </Link>
       <nav
         className={cn(
           'flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out',
@@ -69,6 +76,8 @@ export function Header() {
             width={180}
             height={173}
             className="h-10 w-auto"
+            priority
+            fetchPriority="high"
           />
         </Link>
 

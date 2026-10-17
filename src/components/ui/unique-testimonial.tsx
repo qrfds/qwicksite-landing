@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 export function Testimonials() {
@@ -99,18 +100,19 @@ export function Testimonials() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 className={cn(
-                  "relative flex items-center gap-0 rounded-full cursor-pointer",
+                  "relative flex min-h-11 min-w-11 items-center justify-center gap-0 rounded-full cursor-pointer",
                   "transition-all duration-500 ease-[cubic-bezier(0.4,0,0.2,1)]",
                   isActive ? "bg-foreground shadow-lg" : "bg-transparent hover:bg-muted/80",
                   showName ? "pr-4 pl-2 py-2" : "p-0.5"
                 )}
               >
                 <div className="relative flex-shrink-0">
-                  <img
+                  <Image
                     src={testimonial.avatar}
                     alt={testimonial.author}
                     width={32}
                     height={32}
+                    sizes="32px"
                     loading="lazy"
                     decoding="async"
                     className={cn(

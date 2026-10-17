@@ -85,6 +85,7 @@ export default function PricingPlansSection({ plans, currencyView }: Props) {
           return (
             <Card
               key={plan.id}
+              id={plan.id}
               className={`relative h-full border-border/60 bg-card/60 backdrop-blur-sm ${
                 plan.popular
                   ? "border-primary/60 shadow-medium lg:-translate-y-2"

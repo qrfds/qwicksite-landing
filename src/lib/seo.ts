@@ -33,7 +33,7 @@ type SoftwareOffer = {
   url: string;
 };
 
-const fallbackSiteUrl = "https://qwicksite.com";
+const fallbackSiteUrl = "https://www.qwicksite.com";
 const configuredSiteUrl = process.env.SITE_URL?.trim() || fallbackSiteUrl;
 
 export const SITE_URL = configuredSiteUrl.replace(/\/+$/, "");
@@ -83,7 +83,7 @@ export function createPageMetadata({
   return {
     title,
     description,
-    alternates: localizedAlternates(locale, path),
+    alternates: indexable ? localizedAlternates(locale, path) : { canonical: url },
     robots: indexable
       ? {
           index: true,
@@ -223,7 +223,7 @@ export function createWebsiteSchema(): JsonLdNode {
 
 export function createSoftwareApplicationSchema(
   description: string,
-  offers: SoftwareOffer[],
+  offers: SoftwareOffer[] = [],
 ): JsonLdNode {
   return {
     "@type": "SoftwareApplication",
@@ -240,14 +240,18 @@ export function createSoftwareApplicationSchema(
     provider: {
       "@id": ORGANIZATION_ID,
     },
-    offers: offers.map((offer) => ({
-      "@type": "Offer",
-      name: offer.name,
-      price: offer.price,
-      priceCurrency: offer.priceCurrency,
-      url: offer.url,
-      availability: "https://schema.org/InStock",
-    })),
+    ...(offers.length
+      ? {
+          offers: offers.map((offer) => ({
+            "@type": "Offer",
+            name: offer.name,
+            price: offer.price,
+            priceCurrency: offer.priceCurrency,
+            url: offer.url,
+            availability: "https://schema.org/InStock",
+          })),
+        }
+      : {}),
   };
 }
 

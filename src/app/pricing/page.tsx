@@ -7,7 +7,13 @@ import { getDefaultCurrencyView } from "@/lib/visitor-region";
 import { getPricingPlans } from "@/lib/pricing-plans";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import JsonLd from "@/components/seo/JsonLd";
-import { createBreadcrumbSchema, createWebPageSchema } from "@/lib/seo";
+import {
+  absoluteUrl,
+  createBreadcrumbSchema,
+  createSoftwareApplicationSchema,
+  createWebPageSchema,
+  localizedPath,
+} from "@/lib/seo";
 import type { AppLocale } from "@/i18n/routing";
 
 export default async function PricingPage() {
@@ -34,6 +40,15 @@ export default async function PricingPage() {
       <JsonLd
         id="qwicksite-pricing-schema"
         data={[
+          createSoftwareApplicationSchema(
+            t("description"),
+            plans.map((plan) => ({
+              name: plan.name,
+              price: plan.pricing[currencyView].monthly,
+              priceCurrency: plan.pricing[currencyView].currency,
+              url: `${absoluteUrl(localizedPath(locale, "/pricing"))}#${plan.id}`,
+            })),
+          ),
           createWebPageSchema({
             locale,
             path: "/pricing",
@@ -54,7 +69,7 @@ export default async function PricingPage() {
         ]}
       />
 
-      <main className="pb-16">
+      <main id="main-content" tabIndex={-1} className="pb-16">
         <section className="container">
           <div className="mx-auto mb-12 max-w-4xl space-y-5 text-center md:mb-16">
             <Badge variant="outline" className="border-primary/30 bg-card/40 px-3 py-1 text-sm mt-12">
