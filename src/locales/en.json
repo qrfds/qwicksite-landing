@@ -65,6 +65,24 @@
     "benefits": {
       "title": "Everything you need to sell online",
       "description": "From AI site generation to checkout, social commerce, and growth tools — all in one platform built for Egypt and MENA.",
+      "learnMore": "Learn more",
+      "items": [
+        {
+          "title": "AI Website Generation",
+          "description": "Create a complete site or store in under 60 seconds. Our AI analyzes your business and builds everything automatically.",
+          "feature": "60-second setup"
+        },
+        {
+          "title": "E-commerce Ready",
+          "description": "Payments, inventory, checkout, and shipping built-in. Start selling immediately with zero setup headaches.",
+          "feature": "Built-in payments"
+        },
+        {
+          "title": "No Code, No Stress",
+          "description": "Drag, drop, and edit instantly. Make changes in real-time without touching a single line of code.",
+          "feature": "Visual editor"
+        }
+      ],
       "categories": [
         {
           "title": "Build & design",
