@@ -1,7 +1,12 @@
 import Script from "next/script";
 import WebVitals from "./WebVitals";
 
-const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
+// QwickSite's GA4 property, shared with the dashboard at app.qwicksite.com so one visitor is followed from the landing page into sign-up.
+// The env var still overrides it; `next dev` sends nothing unless the env var is set.
+const DEFAULT_GA_MEASUREMENT_ID = "G-5L0E8HPPKF";
+const gaMeasurementId =
+  process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() ||
+  (process.env.NODE_ENV === "production" ? DEFAULT_GA_MEASUREMENT_ID : undefined);
 const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID?.trim();
 const validGaId = gaMeasurementId && /^G-[A-Z0-9]+$/.test(gaMeasurementId);
 const validClarityId = clarityProjectId && /^[a-z0-9]+$/i.test(clarityProjectId);
