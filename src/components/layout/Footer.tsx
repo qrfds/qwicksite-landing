@@ -25,8 +25,7 @@ const Footer = async () => {
       { name: t("blog"), href: "/blog" },
       { name: t("careers"), href: "/careers" },
       { name: t("contact"), href: "/contact" },
-      // The partner program lives in the app, so this one is an external link.
-      { name: t("partners"), href: "https://app.qwicksite.com/partners/join", external: true },
+      { name: t("partners"), href: "/partners" },
     ] as { name: string; href: string; external?: boolean }[],
     support: [
       { name: t("helpCenter"), href: "/help-center" },

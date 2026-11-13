@@ -9,6 +9,7 @@ const fixedPaths = [
   "/features",
   "/pricing",
   "/support",
+  "/partners",
   "/blog",
   "/privacy",
   "/terms",
