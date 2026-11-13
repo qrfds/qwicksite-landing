@@ -1,22 +1,17 @@
 import { headers } from "next/headers";
 import type { CurrencyView } from "@/lib/pricing-plans";
+import { readVisitorCountry } from "@/lib/visitor-country";
 
 export async function isEgyptVisitor() {
   const requestHeaders = await headers();
-  const countryHeader =
-    requestHeaders.get("x-vercel-ip-country") ??
-    requestHeaders.get("cf-ipcountry") ??
-    requestHeaders.get("x-country") ??
-    requestHeaders.get("x-country-code") ??
-    requestHeaders.get("x-geo-country") ??
-    requestHeaders.get("x-client-country") ??
-    "";
+  const country = readVisitorCountry((name) => requestHeaders.get(name));
 
-  if (!countryHeader) {
+  // No country header at all (local development, a direct call): default to Egypt, the primary market.
+  if (!country) {
     return true;
   }
 
-  return countryHeader.toUpperCase() === "EG";
+  return country === "EG";
 }
 
 export async function getDefaultCurrencyView(): Promise<CurrencyView> {
