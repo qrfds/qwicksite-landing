@@ -1,17 +1,23 @@
-export type CurrencyView = "egypt" | "gulf";
+import { fetchPublicPlans, type PublicPlan } from "./public-plans";
+
+export type CurrencyView = "egypt" | "global";
 export type BillingCycle = "monthly" | "yearly";
-export type PlanId = "launch" | "growth" | "expansion";
+/** A real backend Plan's Mongo _id (live plans) or one of the static
+ *  fallback ids below -- no longer a fixed 3-value union, since the set of
+ *  plans is now whatever the admin has published. */
+export type PlanId = string;
 
 export type RegionPrice = {
   monthly: number;
   currency: string;
   note?: string;
+  yearly?: number;
 };
 
 export type Plan = {
   id: PlanId;
   name: string;
-  tagline: string;
+  tagline?: string;
   description: string;
   popular?: boolean;
   cta: string;
@@ -20,16 +26,49 @@ export type Plan = {
   uniqueHighlights?: string[];
   pricing: {
     egypt: RegionPrice;
-    gulf: RegionPrice;
+    global: RegionPrice;
   };
 };
 
 type PricingMessages = {
-  (key: string): string;
+  (key: string, values?: Record<string, string | number>): string;
   raw(key: string): unknown;
+  has(key: string): boolean;
 };
 
-export function getPricingPlans(t: PricingMessages): Plan[] {
+function mapPublicPlanToPlan(p: PublicPlan, t: PricingMessages): Plan {
+  const cta = t.has("genericCta") ? t("genericCta") : "Get Started";
+  return {
+    id: p.id,
+    name: p.name,
+    description: p.description,
+    popular: p.isRecommended,
+    cta,
+    href: "https://app.qwicksite.com/register",
+    features: p.features,
+    pricing: {
+      egypt: {
+        monthly: p.price,
+        yearly: Math.round(p.yearlyPerMonth * 12),
+        currency: "EGP",
+      },
+      global: {
+        monthly: p.priceUsd,
+        yearly: Math.round(p.yearlyPerMonthUsd * 12),
+        currency: "USD",
+      },
+    },
+  };
+}
+
+/**
+ * Static 3-tier catalog, used ONLY when the live backend fetch fails or
+ * returns nothing (see getPricingPlans below) -- keeps the page from
+ * breaking if the API is briefly unreachable. NOT shown under normal
+ * operation; prices here will drift from the real catalog over time since
+ * nothing keeps them in sync.
+ */
+export function getFallbackPricingPlans(t: PricingMessages): Plan[] {
   return [
     {
       id: "launch",
@@ -41,7 +80,7 @@ export function getPricingPlans(t: PricingMessages): Plan[] {
       features: t.raw("planFeatures.launch") as string[],
       pricing: {
         egypt: { monthly: 0, currency: "EGP", note: t("pricingNotes.launch") },
-        gulf: { monthly: 0, currency: "SAR/AED", note: t("pricingNotes.launch") },
+        global: { monthly: 0, currency: "USD", note: t("pricingNotes.launch") },
       },
     },
     {
@@ -55,8 +94,8 @@ export function getPricingPlans(t: PricingMessages): Plan[] {
       features: t.raw("planFeatures.growth") as string[],
       uniqueHighlights: t.raw("highlightsList.growth") as string[],
       pricing: {
-        egypt: { monthly: 1000, currency: "EGP", note: t("pricingNotes.growthEgypt") },
-        gulf: { monthly: 50, currency: "SAR/AED", note: t("pricingNotes.growthGulf") },
+        egypt: { monthly: 1000, yearly: 12000, currency: "EGP", note: t("pricingNotes.growthEgypt") },
+        global: { monthly: 15, currency: "USD", note: t("pricingNotes.growthGlobal") },
       },
     },
     {
@@ -70,29 +109,51 @@ export function getPricingPlans(t: PricingMessages): Plan[] {
       uniqueHighlights: t.raw("highlightsList.expansion") as string[],
       pricing: {
         egypt: { monthly: 4000, currency: "EGP", note: t("pricingNotes.expansionEgypt") },
-        gulf: { monthly: 250, currency: "SAR/AED", note: t("pricingNotes.expansionGulf") },
+        global: { monthly: 69, currency: "USD", note: t("pricingNotes.expansionGlobal") },
       },
     },
   ];
 }
 
-export function isPlanId(value: string): value is PlanId {
-  return value === "launch" || value === "growth" || value === "expansion";
+export interface PricingPlansResult {
+  plans: Plan[];
+  /** false only when the live fetch failed/returned nothing and this is the
+   *  static 3-tier fallback -- lets a caller skip UI (like the hand-authored
+   *  feature comparison table) that assumes the fixed launch/growth/
+   *  expansion shape and can't honestly represent an arbitrary live catalog. */
+  isLive: boolean;
+}
+
+/**
+ * Live plan catalog mapped to the UI's Plan shape -- however many public
+ * plans the admin has published, that many cards render; no fixed tier
+ * count or id mapping. Falls back to the static 3-tier catalog above only
+ * if the live fetch fails or returns zero plans.
+ */
+export async function getPricingPlans(t: PricingMessages): Promise<PricingPlansResult> {
+  const live = await fetchPublicPlans();
+  if (live.length === 0) {
+    return { plans: getFallbackPricingPlans(t), isLive: false };
+  }
+  return { plans: live.map((p) => mapPublicPlanToPlan(p, t)), isLive: true };
 }
 
 export function normalizeBillingCycle(value: string | string[] | undefined): BillingCycle {
   return value === "yearly" ? "yearly" : "monthly";
 }
 
-export function normalizeCurrencyView(
-  value: string | string[] | undefined,
-  fallback: CurrencyView
-): CurrencyView {
-  return value === "gulf" || value === "egypt" ? value : fallback;
-}
-
 export function getPriceMultiplier(billingCycle: BillingCycle) {
   return billingCycle === "yearly" ? 12 * 0.8 : 1;
+}
+
+export function getPlanTotal(pricing: RegionPrice, billingCycle: BillingCycle) {
+  if (billingCycle === "yearly") {
+    if (pricing.yearly != null) {
+      return pricing.yearly;
+    }
+    return Math.round(pricing.monthly * getPriceMultiplier("yearly"));
+  }
+  return pricing.monthly;
 }
 
 export function formatAmount(currency: string, value: number, locale: string) {

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
-import { Cairo, Geist, Geist_Mono } from "next/font/google";
+import { Cairo, Geist, Plus_Jakarta_Sans } from "next/font/google";
+import { getLocale } from "next-intl/server";
+import Analytics from "@/components/analytics/Analytics";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -8,45 +11,59 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 const cairo = Cairo({
   variable: "--font-cairo",
   subsets: ["arabic", "latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["600", "700", "800"],
 });
 
 export const metadata: Metadata = {
-  title: "QwickSite - AI Website Builder | Launch in Minutes",
-  description: "AI builds your site instantly, so you can focus on growing your business, not building tech. Create a professional website or online store in minutes — no coding needed.",
-  keywords: ["AI website builder", "website builder", "e-commerce", "no-code", "AI", "website creation"],
+  metadataBase: new URL(SITE_URL),
+  generator: "Powered By QRFDS",
+  title: {
+    default: "QwickSite | AI Website Builder & Ecommerce Platform",
+    template: "%s",
+  },
+  description:
+    "QwickSite is an AI website builder and ecommerce platform for businesses in Egypt and MENA.",
+  applicationName: "QwickSite",
+  keywords: [
+    "QwickSite",
+    "AI website builder",
+    "ecommerce platform",
+    "online store builder",
+    "Egypt",
+    "MENA",
+    "Arabic website builder",
+  ],
   authors: [{ name: "QwickSite Team" }],
+  creator: "QwickSite",
+  publisher: "QwickSite",
+  verification:
+    process.env.GOOGLE_SITE_VERIFICATION || process.env.BING_SITE_VERIFICATION
+      ? {
+          ...(process.env.GOOGLE_SITE_VERIFICATION
+            ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+            : {}),
+          ...(process.env.BING_SITE_VERIFICATION
+            ? {
+                other: {
+                  "msvalidate.01": process.env.BING_SITE_VERIFICATION,
+                },
+              }
+            : {}),
+        }
+      : undefined,
   icons: {
-    icon: "/qrfd.ico",
-    shortcut: "/qrfd.ico",
-    apple: "/qrfd.ico",
-  },
-  openGraph: {
-    title: "QwickSite - AI Website Builder",
-    description: "Launch a professional website or online store in minutes — no coding needed.",
-    type: "website",
-    images: [
-      {
-        url: "/quicksite-hero.jpg",
-        width: 1200,
-        height: 630,
-        alt: "QwickSite AI website builder hero preview",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "QwickSite - AI Website Builder",
-    description: "Launch a professional website or online store in minutes — no coding needed.",
-    images: ["/quicksite-hero.jpg"],
+    icon: "/qwicksite.ico",
+    shortcut: "/qwicksite.ico",
+    apple: "/qwicksite.ico",
   },
 };
 
@@ -55,10 +72,16 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const isArabic = locale === "ar";
+
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang={locale} dir={isArabic ? "rtl" : "ltr"} suppressHydrationWarning>
+      <head>
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
+      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${cairo.variable} antialiased`}
+        className={`${geistSans.variable} ${cairo.variable} ${plusJakarta.variable} antialiased`}
         suppressHydrationWarning={true}
       >
         <ThemeProvider
@@ -93,6 +116,7 @@ export default async function RootLayout({
             <div className="relative z-10">{children}</div>
           </div>
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

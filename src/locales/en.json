@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "QwickSite | AI Website Builder for Egypt & Gulf",
-    "description": "Launch your AI-powered storefront in minutes. Built for Egyptian and GCC businesses with SEO-ready pages, WhatsApp Commerce, and cash-on-delivery workflows."
+    "title": "QwickSite | AI Website Builder & Ecommerce Platform for Egypt & MENA",
+    "description": "QwickSite is an AI Website Builder and Ecommerce Platform for Egypt and MENA, helping businesses launch Arabic websites and online stores quickly."
   },
   "common": {
     "startFree": "Start Free Now",
@@ -19,12 +19,24 @@
     "switchToEnglish": "EN"
   },
   "hero": {
-    "badge": "Build your professional store in 30 seconds",
-    "title": "Build your professional store in 30 seconds",
-    "description": "QwickSite builds your store instantly, so you can focus on growing your business.",
-    "footnote": "Free forever plan available • No credit card required • Cancel anytime"
+    "badge": "Built for merchants in Egypt & MENA",
+    "title": "Your online store",
+    "titleAccent": "live in 30 seconds",
+    "description": "No code. Arabic-first. Cash on delivery ready. Turn your idea into a store you can build and manage with AI.",
+    "footnote": "No credit card required · Start with the free plan"
   },
   "home": {
+    "seoOverview": {
+      "eyebrow": "Built for local commerce",
+      "title": "One QwickSite platform for websites, stores, and growth",
+      "paragraphs": [
+        "QwickSite is an AI website builder for founders and teams in Egypt and MENA. Create a responsive Arabic or English business website, then edit and publish it without coding.",
+        "Need to sell online? The same ecommerce platform connects your storefront, products, checkout, and customer journey so you can launch and grow from one place."
+      ],
+      "websiteBuilderLink": "Explore the website builder",
+      "ecommerceLink": "Explore ecommerce",
+      "aboutLink": "About QwickSite"
+    },
     "trust": {
       "title": "Trusted by leading businesses worldwide",
       "description": "Join thousands of companies that trust QwickSite to power their online presence."
@@ -50,24 +62,48 @@
       ]
     },
     "benefits": {
-      "title": "Why choose QwickSite?",
-      "description": "Built for entrepreneurs who want to focus on growing their business, not building technology.",
-      "learnMore": "Learn more",
-      "items": [
+      "title": "Everything you need to sell online",
+      "description": "From AI site generation to checkout, social commerce, and growth tools — all in one platform built for Egypt and MENA.",
+      "categories": [
         {
-          "title": "AI Website Generation",
-          "description": "Create a complete site or store in under 60 seconds. Our AI analyzes your business and builds everything automatically.",
-          "feature": "60-second setup"
+          "title": "Build & design",
+          "features": [
+            "AI website generation from a simple business description",
+            "Drag-and-drop page and website builder with live preview",
+            "67+ components: banners, forms, galleries, reviews, FAQs, and more",
+            "Shop, portfolio, wedding, events, and creator layout templates",
+            "Theme gallery, custom domains, and Arabic-first RTL support"
+          ]
         },
         {
-          "title": "E-commerce Ready",
-          "description": "Payments, inventory, checkout, and shipping built-in. Start selling immediately with zero setup headaches.",
-          "feature": "Built-in payments"
+          "title": "E-commerce & checkout",
+          "features": [
+            "Product catalog with variants, inventory, and virtual products",
+            "Cart, multi-step checkout, and order management",
+            "Cash on delivery plus InstaPay, bank transfer, and mobile wallets",
+            "Discount codes, tax rules, and Dlvago shipping for Egypt",
+            "Payment slip upload and guest checkout with order tracking"
+          ]
         },
         {
-          "title": "No Code, No Stress",
-          "description": "Drag, drop, and edit instantly. Make changes in real-time without touching a single line of code.",
-          "feature": "Visual editor"
+          "title": "Integrations & social commerce",
+          "features": [
+            "WhatsApp Business and Instagram DM commerce",
+            "Shopify and WooCommerce product sync",
+            "Social commerce inbox with chat checkout and handover",
+            "WhatsApp widget, live chat embed, and Meta catalog sync",
+            "Transactional order emails via Resend"
+          ]
+        },
+        {
+          "title": "Growth & operations",
+          "features": [
+            "SEO storefront with sitemap, structured data, and on-demand revalidation",
+            "Analytics, insights dashboard, and UTM tracking",
+            "A/B experiments and visual commerce flow builder",
+            "Blog posts with authors and categories",
+            "AI shop assistant for products, orders, and inventory"
+          ]
         }
       ]
     },
@@ -138,7 +174,7 @@
       "title": "Your business online in minutes, not months",
       "description": "Stop losing customers to competitors with better websites. Join thousands of entrepreneurs who chose the faster, smarter way to build online.",
       "features": [
-        "AI generates your site in 60 seconds",
+        "AI generates your site in 30 seconds",
         "Built-in e-commerce & payment processing",
         "Drag-and-drop editor (no coding)",
         "Mobile-responsive & SEO optimized",
@@ -154,7 +190,7 @@
     "tagline": "The AI-powered website builder that gets you online in minutes, not months.",
     "copyright": "© 2026 QwickSite. All rights reserved.",
     "contactUs": "Contact Us",
-    "email": "support@qrfds.com",
+    "email": "support@qwicksite.com",
     "phone": "+201062034597",
     "address": "17 Abbas el Akkad, Nasr City, Cairo, Egypt",
     "product": "Product",
@@ -241,10 +277,10 @@
         "livePreview": "Live preview"
       },
       "lensOptions": [
-        { "id": "green", "label": "Emerald Green", "swatch": "#4A8D68", "imageSrc": "/Green.png" },
-        { "id": "hezulnut", "label": "Hazelnut", "swatch": "#8A6A45", "imageSrc": "/hezulnut.png" },
-        { "id": "blue", "label": "Ocean Blue", "swatch": "#5A8DCB", "imageSrc": "/blue.png" },
-        { "id": "brown", "label": "Warm Brown", "swatch": "#7A4B2F", "imageSrc": "/brown.png" }
+        { "id": "green", "label": "Emerald Green", "swatch": "#4A8D68", "imageSrc": "/images/qwicksite-emerald-lens-product-preview.webp" },
+        { "id": "hezulnut", "label": "Hazelnut", "swatch": "#8A6A45", "imageSrc": "/images/qwicksite-hazelnut-lens-product-preview.webp" },
+        { "id": "blue", "label": "Ocean Blue", "swatch": "#5A8DCB", "imageSrc": "/images/qwicksite-ocean-blue-lens-product-preview.webp" },
+        { "id": "brown", "label": "Warm Brown", "swatch": "#7A4B2F", "imageSrc": "/images/qwicksite-warm-brown-lens-product-preview.webp" }
       ]
     },
     "ctaTitle": "Ready to launch your SEO storefront faster?",
@@ -294,6 +330,7 @@
     "titleHighlight": "local growth",
     "description": "Start free, grow with WhatsApp-first commerce, and scale into regional operations with COD and VAT-ready workflows.",
     "mostPopular": "Most Popular",
+    "genericCta": "Get Started",
     "highlights": "You will unlock",
     "compareFeatures": "Compare Features",
     "compareDescription": "Quick view of what unlocks at each stage of growth.",
@@ -307,10 +344,10 @@
     "yearlySavingsLine": "Regular yearly total: {base}",
     "pricingNotes": {
       "launch": "Forever Free",
-      "growthEgypt": "~$15/mo",
-      "growthGulf": "WhatsApp Commerce ready",
-      "expansionEgypt": "~SAR/AED 250/mo",
-      "expansionGulf": "Regional scale plan"
+      "growthEgypt": "Local pricing for Egypt merchants",
+      "growthGlobal": "WhatsApp Commerce ready",
+      "expansionEgypt": "~$80/mo",
+      "expansionGlobal": "Regional scale plan"
     },
     "plans": {
       "launch": {
@@ -328,7 +365,7 @@
       "expansion": {
         "name": "Expansion Engine",
         "tagline": "Regional Scale",
-        "description": "For professional regional merchants scaling across the Gulf.",
+        "description": "For professional merchants scaling across regions.",
         "cta": "Scale with Expansion"
       }
     },
@@ -336,7 +373,7 @@
       "launch": [
         "1 AI-Generated Site",
         "Basic RTL (Arabic) Support",
-        "qwicksite.ai subdomain",
+        "qwicksite.com subdomain",
         "Standard Component Library"
       ],
       "growth": [
@@ -443,11 +480,6 @@
     "dueToday": "Due today",
     "yearlyBreakdown": "{monthly}/mo effective, regular yearly total {regular}",
     "billingCycle": "Billing cycle",
-    "priceRegion": "Price region",
-    "regions": {
-      "egypt": "Egypt",
-      "gulf": "Gulf"
-    },
     "includedTitle": "Selected Plan Includes",
     "subtotal": "Subtotal",
     "taxes": "Taxes and VAT",

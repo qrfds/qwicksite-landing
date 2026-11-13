@@ -64,12 +64,11 @@ export function Header() {
       >
         <Link href="/" aria-label="Go to homepage">
           <Image
-            src="/QRFDLOGO.png"
-            alt="QwickSite logo"
+            src="/images/qwicksite-logo.webp"
+            alt="QwickSite AI website builder logo"
             width={180}
-            height={48}
+            height={173}
             className="h-10 w-auto"
-            priority
           />
         </Link>
 
@@ -81,7 +80,9 @@ export function Header() {
           ))}
           <LanguageSwitcher />
           <Button asChild variant="outline">
-            <Link href="/support">{tc('signIn')}</Link>
+            <Link href="https://app.qwicksite.com/login" target="_blank" rel="noopener noreferrer">
+              {tc('signIn')}
+            </Link>
           </Button>
           <Button asChild>
             <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
@@ -90,12 +91,21 @@ export function Header() {
           </Button>
         </div>
 
-        <Button size="icon" variant="outline" onClick={() => setOpen(!open)} className="md:hidden">
+        <Button
+          size="icon"
+          variant="outline"
+          onClick={() => setOpen(!open)}
+          className="md:hidden"
+          aria-label={open ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-controls="mobile-navigation-menu"
+          aria-expanded={open}
+        >
           <MenuToggleIcon open={open} className="size-5" duration={300} />
         </Button>
       </nav>
 
       <div
+        id="mobile-navigation-menu"
         className={cn(
           'bg-background/90 fixed top-14 right-0 bottom-0 left-0 z-50 flex flex-col overflow-hidden border-y md:hidden',
           open ? 'block' : 'hidden',
@@ -129,7 +139,12 @@ export function Header() {
               <LanguageSwitcher />
             </div>
             <Button asChild variant="outline" className="w-full">
-              <Link href="/support" onClick={() => setOpen(false)}>
+              <Link
+                href="https://app.qwicksite.com/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+              >
                 {tc('signIn')}
               </Link>
             </Button>

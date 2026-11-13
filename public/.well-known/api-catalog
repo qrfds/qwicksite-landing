@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://api.qwicksite.com/api",
+      "service-desc": [
+        {
+          "href": "https://api.qwicksite.com/api/docs/json",
+          "type": "application/json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://api.qwicksite.com/api/docs",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.qwicksite.com/health",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

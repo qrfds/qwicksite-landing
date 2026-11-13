@@ -1,13 +1,11 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
-const CaseStudySection = () => {
-  const t = useTranslations("home.caseStudy");
+const CaseStudySection = async () => {
+  const t = await getTranslations("home.caseStudy");
 
   return (
     <section className="py-20">

@@ -26,7 +26,7 @@ const sections = [
       "Refunds are processed within 5-10 business days to the original payment method.",
       "Subscription renewals are non-refundable unless required by applicable law.",
       "Partial refunds may be considered for documented technical issues that significantly impaired service.",
-      "Refund requests must be submitted through support@qrfds.com with account details and reason.",
+      "Refund requests must be submitted through support@qwicksite.com with account details and reason.",
     ],
   },
   {
@@ -51,7 +51,7 @@ const sections = [
     title: "Account Deletion and Data",
     paragraphs: [
       "Upon account deletion, all your data including websites and content will be permanently removed after a 30-day grace period.",
-      "You may request a data export before account deletion through support@qrfds.com.",
+      "You may request a data export before account deletion through support@qwicksite.com.",
       "Data recovery after the grace period is not possible.",
     ],
   },
@@ -66,7 +66,7 @@ const sections = [
   {
     title: "Contact",
     paragraphs: [
-      "For refund requests or cancellation assistance, contact us at support@qrfds.com.",
+      "For refund requests or cancellation assistance, contact us at support@qwicksite.com.",
       "Please include your account email and subscription details in your request.",
     ],
   },
@@ -102,7 +102,7 @@ export default async function RefundPage() {
             "تتم معالجة الاستردادات خلال 5-10 أيام عمل إلى طريقة الدفع الأصلية.",
             "تجديدات الاشتراك غير قابلة للاسترداد ما لم يقتضي القانون خلاف ذلك.",
             "قد يُنظر في الاستردادات الجزبية للمشكلات التقنية الموثقة التي أثرت بشكل كبير على الخدمة.",
-            "يجب تقديم طلبات الاسترداد عبر support@qrfds.com مع تفاصيل الحساب والسبب.",
+            "يجب تقديم طلبات الاسترداد عبر support@qwicksite.com مع تفاصيل الحساب والسبب.",
           ],
         },
         {
@@ -127,7 +127,7 @@ export default async function RefundPage() {
           title: "حذف الحساب والبيانات",
           paragraphs: [
             "عند حذف الحساب، ستُزال جميع بياناتك بما في ذلك المواقع والمحتوى بشكل دائم بعد فترة سماح مدتها 30 يوماً.",
-            "يمكنك طلب تصدير البيانات قبل حذف الحساب عبر support@qrfds.com.",
+            "يمكنك طلب تصدير البيانات قبل حذف الحساب عبر support@qwicksite.com.",
             "استعادة البيانات بعد فترة السماح غير ممكنة.",
           ],
         },
@@ -142,7 +142,7 @@ export default async function RefundPage() {
         {
           title: "التواصل",
           paragraphs: [
-            "لطلبات الاسترداد أو مساعدة الإلغاء، تواصل معنا عبر support@qrfds.com.",
+            "لطلبات الاسترداد أو مساعدة الإلغاء، تواصل معنا عبر support@qwicksite.com.",
             "يرجى تضمين بريد حسابك وتفاصيل الاشتراك في طلبك.",
           ],
         },
@@ -151,6 +151,7 @@ export default async function RefundPage() {
 
   return (
     <LegalPage
+      slug="refund"
       title={isArabic ? "سياسة الاسترداد والإلغاء" : "Refund and Cancellation Policy"}
       subtitle={
         isArabic

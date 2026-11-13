@@ -1,12 +1,10 @@
-"use client";
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Check } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 
-const FinalCTASection = () => {
-  const t = useTranslations("home.finalCta");
+const FinalCTASection = async () => {
+  const t = await getTranslations("home.finalCta");
   const features = t.raw("features") as string[];
 
   return (
