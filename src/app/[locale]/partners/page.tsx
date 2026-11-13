@@ -6,6 +6,8 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import JsonLd from "@/components/seo/JsonLd";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import PartnerJoinLink from "@/components/layout/PartnerJoinLink";
+import PartnerHeroCopy from "@/components/partners/PartnerHeroCopy";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { AppLocale } from "@/i18n/routing";
 import { PARTNER_JOIN_URL, PARTNER_LOGIN_URL, fetchPartnerProgram, partnerEarnRate } from "@/lib/partner-program";
@@ -95,15 +97,21 @@ export default async function PartnersPage({ params }: { params: Promise<{ local
               <Megaphone className="w-4 h-4 me-2" aria-hidden="true" />
               {t("Partner program", "برنامج الشركاء")}
             </Badge>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-balance">{title}</h1>
-            <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-pretty">{description}</p>
+            <PartnerHeroCopy
+              a={{ title, description }}
+              b={{
+                title: t("Find shops with no website. Help them get one.", "دوّر على المحلات اللي مالهاش موقع. وساعدها تبقى أونلاين."),
+                description: t(
+                  "Open Google Maps, spot a business that is invisible online, show it a free draft, and earn a commission when it joins.",
+                  "افتح خرائط جوجل، لاقي نشاط مش موجود أونلاين، وريه مسودة مجانية، وتكسب عمولة لما ينضم."
+                ),
+              }}
+            />
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
-              <Button asChild size="lg" className="w-full sm:w-auto">
-                <a href={PARTNER_JOIN_URL}>
-                  {t("Join the partner program", "انضم إلى برنامج الشركاء")}
-                  <ArrowRight className="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" />
-                </a>
-              </Button>
+              <PartnerJoinLink href={PARTNER_JOIN_URL} size="lg" className="w-full sm:w-auto">
+                {t("Join the partner program", "انضم إلى برنامج الشركاء")}
+                <ArrowRight className="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" />
+              </PartnerJoinLink>
               <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
                 <a href={PARTNER_LOGIN_URL}>{t("Already a partner? Sign in", "شريك بالفعل؟ سجّل الدخول")}</a>
               </Button>
@@ -214,12 +222,10 @@ export default async function PartnersPage({ params }: { params: Promise<{ local
           <div className="max-w-3xl mx-auto text-center rounded-3xl border border-primary/30 bg-primary/5 px-6 py-12 space-y-5">
             <h2 className="text-2xl md:text-4xl font-bold text-balance">{t("Ready to start earning?", "جاهز لتبدأ الربح؟")}</h2>
             <p className="text-muted-foreground">{t("Get your code in a minute. It is free.", "احصل على كودك في دقيقة. مجانًا.")}</p>
-            <Button asChild size="lg">
-              <a href={PARTNER_JOIN_URL}>
-                {t("Join the partner program", "انضم إلى برنامج الشركاء")}
-                <ArrowRight className="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" />
-              </a>
-            </Button>
+            <PartnerJoinLink href={PARTNER_JOIN_URL} size="lg">
+              {t("Join the partner program", "انضم إلى برنامج الشركاء")}
+              <ArrowRight className="w-4 h-4 ms-2 rtl:rotate-180" aria-hidden="true" />
+            </PartnerJoinLink>
           </div>
         </section>
       </main>

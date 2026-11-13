@@ -10,6 +10,7 @@ const fixedPaths = [
   "/pricing",
   "/support",
   "/partners",
+  "/partners/builders",
   "/blog",
   "/privacy",
   "/terms",
