@@ -57,7 +57,7 @@ export default async function PartnersPage({ params }: { params: Promise<{ local
     { icon: LayoutDashboard, title: t("A dashboard you will want to open", "لوحة تحب أن تفتحها"), text: t("See customers, earnings and progress at a glance, in English or Arabic.", "تابع العملاء والأرباح والتقدم بنظرة واحدة، بالعربية أو الإنجليزية.") },
     { icon: Medal, title: t("Tiers that grow with you", "مستويات تكبر معك"), text: t("Reach a higher tier and your customers get a bigger discount and you get a bigger share.", "عند الوصول لمستوى أعلى يحصل عملاؤك على خصم أكبر وتحصل أنت على نسبة أكبر.") },
     { icon: Trophy, title: t("Missions, challenges and badges", "مهام وتحديات وشارات"), text: t("Hit a goal like your first 10 customers and a cash reward is added to your earnings.", "حقق هدفًا مثل أول 10 عملاء وتُضاف مكافأة نقدية إلى أرباحك.") },
-    { icon: Wallet, title: t("Paid your way", "استلم أرباحك بطريقتك"), text: t("InstaPay, mobile wallets, bank transfer or PayPal, in EGP or USD.", "إنستاباي أو المحافظ الإلكترونية أو التحويل البنكي أو باي بال، بالجنيه أو الدولار.") },
+    { icon: Wallet, title: t("Paid your way", "استلم أرباحك بطريقتك"), text: t("InstaPay, mobile wallets or bank transfer, in EGP or USD.", "إنستاباي أو المحافظ الإلكترونية أو التحويل البنكي، بالجنيه أو الدولار.") },
   ];
 
   const audiences = [
