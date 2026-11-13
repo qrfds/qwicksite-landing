@@ -26,7 +26,7 @@ const HeroSection = () => {
             {/* CTA Section */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Button asChild variant="hero" size="lg" className="text-lg px-8 py-6 h-auto">
-                <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                   Start Free Now
                 </Link>
               </Button>

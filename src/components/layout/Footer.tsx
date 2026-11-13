@@ -41,7 +41,9 @@ const Footer = () => {
       { name: t("blog"), href: "/blog" },
       { name: t("careers"), href: "/careers" },
       { name: t("contact"), href: "/contact" },
-    ],
+      // The partner program lives in the app, so this one is an external link.
+      { name: t("partners"), href: "https://app.qwicksite.com/partners/join", external: true },
+    ] as { name: string; href: string; external?: boolean }[],
     support: [
       { name: t("helpCenter"), href: "/help-center" },
       { name: t("documentation"), href: "/documentation" },
@@ -134,9 +136,15 @@ const Footer = () => {
             <ul className="space-y-2">
               {links.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    {link.name}
-                  </Link>
+                  {link.external ? (
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

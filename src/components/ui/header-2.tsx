@@ -84,7 +84,7 @@ export function Header() {
             <Link href="/support">{tc('signIn')}</Link>
           </Button>
           <Button asChild>
-            <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+            <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
               {tc('getStarted')}
             </Link>
           </Button>
@@ -135,7 +135,7 @@ export function Header() {
             </Button>
             <Button asChild className="w-full">
               <Link
-                href="https://vcboard.qrfds.com/register"
+                href="https://app.qwicksite.com/register"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setOpen(false)}

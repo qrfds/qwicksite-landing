@@ -132,7 +132,7 @@ export function HeroSection({ withHeader = true }: { withHeader?: boolean }) {
                 >
                   <div key={1} className="bg-foreground/10 rounded-[14px] border p-0.5">
                     <Button asChild size="lg" className="rounded-xl px-5 text-base">
-                      <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                      <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                         <span className="text-nowrap">{tc('startFree')}</span>
                       </Link>
                     </Button>
@@ -277,12 +277,12 @@ const HeroHeader = () => {
                   </Link>
                 </Button>
                 <Button asChild size="sm" className={cn(isScrolled && 'lg:hidden')}>
-                  <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                     <span>Sign Up</span>
                   </Link>
                 </Button>
                 <Button asChild size="sm" className={cn(isScrolled ? 'lg:inline-flex' : 'hidden')}>
-                  <Link href="https://vcboard.qrfds.com/register" target="_blank" rel="noopener noreferrer">
+                  <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
                     <span>Get Started</span>
                   </Link>
                 </Button>

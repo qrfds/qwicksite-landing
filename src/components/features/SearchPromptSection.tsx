@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 
-const REGISTER_URL = "https://vcboard.qrfds.com/register";
+const REGISTER_URL = "https://app.qwicksite.com/register";
 
 interface SearchPromptSectionProps {
   searchPlaceholder: string;
