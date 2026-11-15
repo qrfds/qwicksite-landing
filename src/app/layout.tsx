@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cairo, Geist, Plus_Jakarta_Sans } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import Analytics from "@/components/analytics/Analytics";
+import CampaignLinks from "@/components/analytics/CampaignLinks";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
@@ -117,6 +118,7 @@ export default async function RootLayout({
           </div>
         </ThemeProvider>
         <Analytics />
+        <CampaignLinks />
       </body>
     </html>
   );
