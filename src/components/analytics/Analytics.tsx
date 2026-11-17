@@ -8,11 +8,18 @@ const gaMeasurementId =
   process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() ||
   (process.env.NODE_ENV === "production" ? DEFAULT_GA_MEASUREMENT_ID : undefined);
 const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID?.trim();
+// QwickSite's Meta Pixel (Meta ads), shared with the dashboard at app.qwicksite.com, which also sends CompleteRegistration on sign-up.
+// Same rule as GA4: the env var overrides it, and `next dev` sends nothing unless the env var is set.
+const DEFAULT_META_PIXEL_ID = "1988531178790957";
+const metaPixelId =
+  process.env.NEXT_PUBLIC_META_PIXEL_ID?.trim() ||
+  (process.env.NODE_ENV === "production" ? DEFAULT_META_PIXEL_ID : undefined);
+const validMetaPixelId = metaPixelId && /^[0-9]+$/.test(metaPixelId);
 const validGaId = gaMeasurementId && /^G-[A-Z0-9]+$/.test(gaMeasurementId);
 const validClarityId = clarityProjectId && /^[a-z0-9]+$/i.test(clarityProjectId);
 
 export default function Analytics() {
-  if (!validGaId && !validClarityId) {
+  if (!validGaId && !validClarityId && !validMetaPixelId) {
     return null;
   }
 
@@ -34,6 +41,35 @@ export default function Analytics() {
             `}
           </Script>
           <WebVitals />
+        </>
+      ) : null}
+
+      {validMetaPixelId ? (
+        <>
+          <Script id="qwicksite-meta-pixel" strategy="afterInteractive">
+            {`
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '${metaPixelId}');
+              fbq('track', 'PageView');
+            `}
+          </Script>
+          <noscript>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              alt=""
+              src={`https://www.facebook.com/tr?id=${metaPixelId}&ev=PageView&noscript=1`}
+            />
+          </noscript>
         </>
       ) : null}
 
