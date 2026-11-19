@@ -1,5 +1,5 @@
 import { Blocks, Check, MessageCircle, ShoppingCart, TrendingUp } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { getTranslations } from "next-intl/server";
 
 const categoryIcons = [Blocks, ShoppingCart, MessageCircle, TrendingUp];
@@ -33,7 +33,7 @@ const BenefitsSection = async () => {
                   <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                     <Icon className="w-6 h-6 text-primary" />
                   </div>
-                  <CardTitle className="text-xl">{category.title}</CardTitle>
+                  <h3 className="text-xl font-semibold leading-none">{category.title}</h3>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3">

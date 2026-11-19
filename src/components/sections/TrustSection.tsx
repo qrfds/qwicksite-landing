@@ -51,7 +51,7 @@ const TrustSection = async () => {
                   >
                     <Image
                       src={logo.src}
-                      alt={setIndex === 0 ? logo.alt : ""}
+                      alt={logo.alt}
                       width={176}
                       height={64}
                       className="h-16 w-44 object-contain"

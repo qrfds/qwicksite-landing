@@ -119,6 +119,7 @@ for (const crawler of [
   "Googlebot",
   "Bingbot",
   "OAI-SearchBot",
+  "ChatGPT-User",
   "PerplexityBot",
   "Claude-SearchBot",
   "Claude-User",
@@ -128,7 +129,7 @@ for (const crawler of [
     failures.push(`robots.txt does not explicitly allow ${crawler}`);
   }
 }
-for (const crawler of ["GPTBot", "ClaudeBot"]) {
+for (const crawler of ["GPTBot", "ClaudeBot", "Google-Extended"]) {
   const block = new RegExp(`User-agent: ${crawler}\\s+Disallow: /`, "i");
   if (!block.test(robotsBody)) {
     failures.push(`robots.txt does not preserve the no-training policy for ${crawler}`);

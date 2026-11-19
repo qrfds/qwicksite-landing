@@ -48,8 +48,9 @@ const Footer = async () => {
       <div className="container py-12">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
           {/* Brand */}
-          <div className="col-span-2 md:col-span-1">
-            <Link href="/" aria-label="Go to homepage" className="inline-block mb-4">
+          <div className="h-card col-span-2 md:col-span-1">
+            <p className="p-name mb-3 text-sm font-semibold text-foreground">QwickSite Team</p>
+            <Link href="/" aria-label="Go to homepage" className="u-url inline-block mb-4">
               <Image
                 src="/images/qwicksite-logo.webp"
                 alt="QwickSite AI website builder and ecommerce platform logo"
@@ -58,7 +59,7 @@ const Footer = async () => {
                 className="h-20 w-auto"
               />
             </Link>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="p-note text-sm text-muted-foreground mb-4">
               {t("tagline")}
             </p>
             <div className="flex items-center gap-3">

@@ -20,15 +20,24 @@
   },
   "hero": {
     "badge": "Built for merchants in Egypt & MENA",
-    "title": "Your online store",
-    "titleAccent": "live in 30 seconds",
+    "title": "How do you launch an online store",
+    "titleAccent": "in 30 seconds?",
     "description": "No code. Arabic-first. Cash on delivery ready. Turn your idea into a store you can build and manage with AI.",
     "footnote": "No credit card required · Start with the free plan"
   },
   "home": {
     "seoOverview": {
       "eyebrow": "Built for local commerce",
-      "title": "One QwickSite platform for websites, stores, and growth",
+      "title": "What does QwickSite include for websites and stores?",
+      "byline": "By QwickSite Team",
+      "publishedLabel": "Published July 25, 2026",
+      "updatedLabel": "Updated November 19, 2026",
+      "facts": [
+        "QwickSite generates a business website from a short description in about 30 seconds (QwickSite, 2026).",
+        "Paid plans start at $9 per month, and a free plan is available (QwickSite, 2026).",
+        "Stores in Egypt can take cash on delivery, InstaPay, bank transfer, and mobile wallets (QwickSite, 2026).",
+        "The builder includes more than 67 components, Arabic right-to-left layout, and a product catalog with variants (QwickSite, 2026)."
+      ],
       "paragraphs": [
         "QwickSite is an AI website builder for founders and teams in Egypt and MENA. Create a responsive Arabic or English business website, then edit and publish it without coding.",
         "Need to sell online? The same ecommerce platform connects your storefront, products, checkout, and customer journey so you can launch and grow from one place."
@@ -38,11 +47,11 @@
       "aboutLink": "About QwickSite"
     },
     "trust": {
-      "title": "Trusted by leading businesses worldwide",
+      "title": "Who trusts QwickSite with their store?",
       "description": "Join thousands of companies that trust QwickSite to power their online presence."
     },
     "testimonials": {
-      "title": "Testimonials",
+      "title": "What do customers say about QwickSite?",
       "items": [
         {
           "quote": "Launched my online store in 30 minutes. Made my first sale the same day!",
@@ -62,11 +71,11 @@
       ]
     },
     "benefits": {
-      "title": "Everything you need to sell online",
+      "title": "What do you need to sell online?",
       "description": "From AI site generation to checkout, social commerce, and growth tools — all in one platform built for Egypt and MENA.",
       "categories": [
         {
-          "title": "Build & design",
+          "title": "How do you build and design the site?",
           "features": [
             "AI website generation from a simple business description",
             "Drag-and-drop page and website builder with live preview",
@@ -76,7 +85,7 @@
           ]
         },
         {
-          "title": "E-commerce & checkout",
+          "title": "How does ecommerce and checkout work?",
           "features": [
             "Product catalog with variants, inventory, and virtual products",
             "Cart, multi-step checkout, and order management",
@@ -86,7 +95,7 @@
           ]
         },
         {
-          "title": "Integrations & social commerce",
+          "title": "Which social and integration tools are included?",
           "features": [
             "WhatsApp Business and Instagram DM commerce",
             "Shopify and WooCommerce product sync",
@@ -96,7 +105,7 @@
           ]
         },
         {
-          "title": "Growth & operations",
+          "title": "How do you grow and run the store?",
           "features": [
             "SEO storefront with sitemap, structured data, and on-demand revalidation",
             "Analytics, insights dashboard, and UTM tracking",
@@ -109,7 +118,7 @@
     },
     "caseStudy": {
       "badge": "Success Story",
-      "title": "From idea to Comfytix",
+      "title": "How did Comfytix launch with QwickSite?",
       "description": "See how Youssef used QwickSite to launch Comfytix, an online massage chairs store, and scale quickly.",
       "stats": [
         { "label": "Weeks to launch" },
@@ -118,19 +127,19 @@
       ],
       "cards": {
         "challenge": {
-          "title": "The Challenge",
+          "title": "What problem did Comfytix need to solve?",
           "body": "Youssef wanted to launch Comfytix, an online massage chairs store, but needed a faster way to build a professional storefront without getting blocked by technical setup."
         },
         "solution": {
-          "title": "The Solution",
+          "title": "How did QwickSite solve that problem?",
           "body": "QwickSite's AI-powered builder generated a polished store in minutes, and the built-in e-commerce flow helped Comfytix start taking orders right away."
         },
         "results": {
-          "title": "The Results",
+          "title": "What results did Comfytix get?",
           "body": "Within months, Comfytix built momentum with a conversion-focused website, stronger mobile experience, and SEO-friendly pages that attracted qualified shoppers."
         },
         "next": {
-          "title": "What's Next",
+          "title": "What is Comfytix doing next?",
           "body": "Youssef is now expanding Comfytix with more product lines and category pages, while QwickSite continues to support growth and optimization."
         }
       },
@@ -141,7 +150,7 @@
       }
     },
     "faq": {
-      "title": "Frequently Asked Questions",
+      "title": "What do people ask about QwickSite?",
       "description": "Everything you need to know about QwickSite. Can't find what you're looking for? Contact our support team.",
       "items": [
         {
@@ -171,7 +180,7 @@
       ]
     },
     "finalCta": {
-      "title": "Your business online in minutes, not months",
+      "title": "How fast can your business go online?",
       "description": "Stop losing customers to competitors with better websites. Join thousands of entrepreneurs who chose the faster, smarter way to build online.",
       "features": [
         "AI generates your site in 30 seconds",

@@ -9,11 +9,13 @@ import CaseStudySection from "@/components/sections/CaseStudySection";
 import FinalCTASection from "@/components/sections/FinalCTASection";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/navigation";
+import { SITE_DATE_MODIFIED, SITE_DATE_PUBLISHED } from "@/lib/seo";
 import { getTranslations } from "next-intl/server";
 
 export default async function HomePage() {
   const t = await getTranslations("home.seoOverview");
   const paragraphs = t.raw("paragraphs") as string[];
+  const facts = t.raw("facts") as string[];
 
   return (
     <div className="min-h-screen">
@@ -25,18 +27,38 @@ export default async function HomePage() {
         <BenefitsSection />
         <section className="py-20" aria-labelledby="qwicksite-overview-title">
           <div className="container max-w-5xl">
-            <div className="rounded-3xl border border-border/60 bg-card/50 p-7 md:p-12">
-              <p className="text-sm font-medium text-primary">{t("eyebrow")}</p>
-              <h2 id="qwicksite-overview-title" className="mt-3 text-3xl font-bold md:text-5xl">
+            <article className="h-entry rounded-3xl border border-border/60 bg-card/50 p-7 md:p-12">
+              <p className="p-category text-sm font-medium text-primary">{t("eyebrow")}</p>
+              <h2 id="qwicksite-overview-title" className="p-name mt-3 text-3xl font-bold md:text-5xl">
                 {t("title")}
               </h2>
-              <div className="mt-7 grid gap-5 md:grid-cols-2">
+              <p className="mt-4 text-sm text-muted-foreground">
+                <Link href="/about" rel="author" className="p-author h-card u-url font-medium text-foreground">
+                  <span className="p-name">{t("byline")}</span>
+                </Link>
+                <span aria-hidden="true"> · </span>
+                <time className="dt-published" dateTime={SITE_DATE_PUBLISHED}>
+                  {t("publishedLabel")}
+                </time>
+                <span aria-hidden="true"> · </span>
+                <time className="dt-updated" dateTime={SITE_DATE_MODIFIED}>
+                  {t("updatedLabel")}
+                </time>
+              </p>
+              <div className="e-content mt-7 grid gap-5 md:grid-cols-2">
                 {paragraphs.map((paragraph) => (
                   <p key={paragraph} className="leading-relaxed text-muted-foreground">
                     {paragraph}
                   </p>
                 ))}
               </div>
+              <ul className="mt-6 list-disc space-y-3 ps-5">
+                {facts.map((fact) => (
+                  <li key={fact} className="leading-relaxed text-muted-foreground">
+                    {fact}
+                  </li>
+                ))}
+              </ul>
               <div className="mt-8 flex flex-wrap gap-3">
                 <Button asChild>
                   <Link href="/ai-website-builder-egypt">{t("websiteBuilderLink")}</Link>
@@ -48,7 +70,7 @@ export default async function HomePage() {
                   <Link href="/about">{t("aboutLink")}</Link>
                 </Button>
               </div>
-            </div>
+            </article>
           </div>
         </section>
         <CaseStudySection />

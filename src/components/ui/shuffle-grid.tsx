@@ -34,14 +34,14 @@ const generateSquares = (items: ImageTile[]) =>
 const contentByLocale = {
   en: {
     badge: "Live examples from QwickSite",
-    title: "Launch pages that actually convert",
+    title: "Which pages convert after launch?",
     description:
       "See real storefront and landing page visuals built with QwickSite. Mix proven layouts, strong messaging, and clear CTAs to ship faster.",
     cta: "Start building free",
   },
   ar: {
     badge: "نماذج حية من QwickSite",
-    title: "أطلق صفحات تحقق نتائج فعلية",
+    title: "أي الصفحات تحقق تحويلات بعد الإطلاق؟",
     description:
       "شاهد نماذج متاجر وصفحات هبوط حقيقية مبنية عبر QwickSite. استخدم تصميمات مجربة ورسائل واضحة ودعوات إجراء قوية للإطلاق أسرع.",
     cta: "ابدأ البناء مجاناً",

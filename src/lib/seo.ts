@@ -24,6 +24,9 @@ type WebPageSchemaInput = {
   description: string;
   breadcrumbId?: string;
   type?: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage" | "CheckoutPage";
+  datePublished?: string;
+  dateModified?: string;
+  authorName?: string;
 };
 
 type SoftwareOffer = {
@@ -38,6 +41,9 @@ const configuredSiteUrl = process.env.SITE_URL?.trim() || fallbackSiteUrl;
 
 export const SITE_URL = configuredSiteUrl.replace(/\/+$/, "");
 export const SITE_NAME = "QwickSite";
+export const SITE_AUTHOR_NAME = "QwickSite Team";
+export const SITE_DATE_PUBLISHED = "2026-07-25";
+export const SITE_DATE_MODIFIED = "2026-11-19";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const SOFTWARE_ID = `${SITE_URL}/#software`;
@@ -258,6 +264,9 @@ export function createWebPageSchema({
   description,
   breadcrumbId,
   type = "WebPage",
+  datePublished = SITE_DATE_PUBLISHED,
+  dateModified = SITE_DATE_MODIFIED,
+  authorName = SITE_AUTHOR_NAME,
 }: WebPageSchemaInput): JsonLdNode {
   const url = absoluteUrl(localizedPath(locale, path));
 
@@ -268,6 +277,16 @@ export function createWebPageSchema({
     name: title,
     description,
     inLanguage: locale,
+    datePublished,
+    dateModified,
+    author: {
+      "@type": "Organization",
+      name: authorName,
+      "@id": ORGANIZATION_ID,
+    },
+    publisher: {
+      "@id": ORGANIZATION_ID,
+    },
     isPartOf: {
       "@id": WEBSITE_ID,
     },

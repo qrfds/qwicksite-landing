@@ -43,9 +43,14 @@ export const metadata: Metadata = {
     "MENA",
     "Arabic website builder",
   ],
-  authors: [{ name: "QwickSite Team" }],
+  authors: [{ name: "QwickSite Team", url: "/humans.txt" }],
   creator: "QwickSite",
   publisher: "QwickSite",
+  openGraph: {
+    type: "website",
+    siteName: "QwickSite",
+    url: SITE_URL,
+  },
   verification:
     process.env.GOOGLE_SITE_VERIFICATION || process.env.BING_SITE_VERIFICATION
       ? {
@@ -80,6 +85,9 @@ export default async function RootLayout({
     <html lang={locale} dir={isArabic ? "rtl" : "ltr"} suppressHydrationWarning>
       <head>
         <link rel="describedby" href="/llms.txt" type="text/plain" />
+        <link rel="describedby" href="/llms-full.txt" type="text/markdown" />
+        <link rel="author" href="/humans.txt" type="text/plain" />
+        <link rel="help" href="/ai.txt" type="text/plain" />
       </head>
       <body
         className={`${geistSans.variable} ${cairo.variable} ${plusJakarta.variable} antialiased`}
