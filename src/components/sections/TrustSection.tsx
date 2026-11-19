@@ -3,14 +3,14 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
 const clientLogos = [
-  { src: "/images/clients/Optimum_oil.png", alt: "Optimum Oil" },
-  { src: "/images/clients/hn.svg", alt: "HN" },
-  { src: "/images/clients/colorplay.png", alt: "Color Play" },
-  { src: "/images/clients/allianz.svg", alt: "Allianz" },
-  { src: "/images/clients/lensaura.svg", alt: "Lens Aura" },
-  { src: "/images/clients/bfas.png", alt: "BFAS" },
-  { src: "/images/clients/Atomic_Rides.png", alt: "Atomic Rides" },
-  { src: "/images/clients/11_11.png", alt: "11:11" },
+  { src: "/images/clients/Optimum_oil.png", alt: "Optimum Oil logo, a red oil barrel" },
+  { src: "/images/clients/hn.svg", alt: "HN company logo" },
+  { src: "/images/clients/colorplay.png", alt: "Color Play logo with the tagline unwind, create, feel" },
+  { src: "/images/clients/allianz.svg", alt: "Allianz company logo" },
+  { src: "/images/clients/lensaura.svg", alt: "Lens Aura company logo" },
+  { src: "/images/clients/bfas.png", alt: "Beltagy Football Analysis Services logo" },
+  { src: "/images/clients/Atomic_Rides.png", alt: "Atomic Rides logo, a bicycle with a lightning bolt" },
+  { src: "/images/clients/11_11.png", alt: "11:11 company logo" },
 ];
 
 const TrustSection = async () => {
@@ -52,8 +52,10 @@ const TrustSection = async () => {
                     <Image
                       src={logo.src}
                       alt={logo.alt}
+                      title={logo.alt}
                       width={176}
                       height={64}
+                      unoptimized
                       className="h-16 w-44 object-contain"
                     />
                   </div>

@@ -299,6 +299,40 @@ export function createWebPageSchema({
   };
 }
 
+export function createHomepageArticleSchema({
+  locale,
+  headline,
+  description,
+}: {
+  locale: AppLocale;
+  headline: string;
+  description: string;
+}): JsonLdNode {
+  const url = absoluteUrl(localizedPath(locale, "/"));
+
+  return {
+    "@type": "Article",
+    "@id": `${url}#overview`,
+    headline,
+    description,
+    datePublished: SITE_DATE_PUBLISHED,
+    dateModified: SITE_DATE_MODIFIED,
+    inLanguage: locale,
+    author: {
+      "@type": "Organization",
+      name: SITE_AUTHOR_NAME,
+      "@id": ORGANIZATION_ID,
+    },
+    publisher: {
+      "@id": ORGANIZATION_ID,
+    },
+    mainEntityOfPage: {
+      "@id": `${url}#webpage`,
+    },
+    citation: `${SITE_AUTHOR_NAME}, 2026`,
+  };
+}
+
 export function createBreadcrumbSchema(
   locale: AppLocale,
   path: string,

@@ -130,13 +130,13 @@ for (const crawler of [
   }
 }
 for (const crawler of ["GPTBot", "ClaudeBot", "Google-Extended"]) {
-  const block = new RegExp(`User-agent: ${crawler}\\s+Disallow: /`, "i");
+  const block = new RegExp(`User-agent: ${crawler}\\s+Allow: /`, "i");
   if (!block.test(robotsBody)) {
-    failures.push(`robots.txt does not preserve the no-training policy for ${crawler}`);
+    failures.push(`robots.txt does not explicitly allow ${crawler}`);
   }
 }
-if (!/Content-Signal: ai-train=no, search=yes, ai-input=yes/i.test(robotsBody)) {
-  failures.push("robots.txt does not allow real-time AI grounding while disallowing training");
+if (!/Content-Signal: ai-train=yes, search=yes, ai-input=yes/i.test(robotsBody)) {
+  failures.push("robots.txt does not allow AI training, search, and real-time grounding");
 }
 if (!llmsBody.startsWith("# QwickSite") || !llmsBody.includes(`${siteUrl}/en/what-is-qwicksite`)) {
   failures.push("llms.txt is missing the QwickSite identity or canonical product link");

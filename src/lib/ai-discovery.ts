@@ -52,10 +52,10 @@ export function llmsTxt() {
 ## Discovery
 
 - [Full text summary](${SITE_URL}/llms-full.txt): Longer factual summary for answer engines.
-- [AI usage notes](${SITE_URL}/ai.txt): Citation allowed, training declined.
+- [AI usage notes](${SITE_URL}/ai.txt): Citation, retrieval, and training are allowed.
 - [Humans](${SITE_URL}/humans.txt): Publisher and contact attribution.
 - [XML sitemap](${SITE_URL}/sitemap.xml): Canonical indexable URLs in English and Arabic.
-- [Robots policy](${SITE_URL}/robots.txt): Search and answer-engine crawlers are allowed. Training crawlers are blocked.
+- [Robots policy](${SITE_URL}/robots.txt): Search, answer-engine, and training crawlers are allowed, including GPTBot, ClaudeBot, Google-Extended, and PerplexityBot.
 `;
 }
 
@@ -103,7 +103,7 @@ User-agent: *
 Allow: Indexing
 Allow: Citation
 Allow: AI-Input
-Disallow: Training
+Allow: Training
 
 Name: QwickSite
 Author: QwickSite Team

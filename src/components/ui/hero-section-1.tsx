@@ -4,6 +4,7 @@ import { getLocale, getTranslations } from 'next-intl/server';
 import { Button } from '@/components/ui/button';
 import { HeroBannerBackground } from '@/components/ui/hero-banner-background';
 import { Link } from '@/i18n/navigation';
+import { SITE_DATE_PUBLISHED } from '@/lib/seo';
 
 export async function HeroSection() {
   const locale = await getLocale();
@@ -80,6 +81,14 @@ export async function HeroSection() {
               </div>
               <p className="mx-auto mt-6 max-w-2xl text-balance text-sm text-muted-foreground">
                 {t('footnote')}
+              </p>
+              <p className="mx-auto mt-3 max-w-2xl text-balance text-sm text-muted-foreground">
+                <span>{t('byline')}</span>
+                <span aria-hidden="true"> · </span>
+                <time dateTime={SITE_DATE_PUBLISHED}>{t('published')}</time>
+              </p>
+              <p className="mx-auto mt-2 max-w-2xl text-balance text-sm text-muted-foreground">
+                {t('sourcedClaim')}
               </p>
             </div>
           </div>

@@ -23,13 +23,17 @@
     "title": "How do you launch an online store",
     "titleAccent": "in 30 seconds?",
     "description": "No code. Arabic-first. Cash on delivery ready. Turn your idea into a store you can build and manage with AI.",
-    "footnote": "No credit card required · Start with the free plan"
+    "footnote": "No credit card required · Start with the free plan",
+    "byline": "By QwickSite Team",
+    "published": "Published July 25, 2026",
+    "sourcedClaim": "An Arabic or English storefront can be generated from a short description in about 30 seconds (QwickSite, 2026)."
   },
   "home": {
     "seoOverview": {
       "eyebrow": "Built for local commerce",
       "title": "What does QwickSite include for websites and stores?",
       "byline": "By QwickSite Team",
+      "authorName": "QwickSite Team",
       "publishedLabel": "Published July 25, 2026",
       "updatedLabel": "Updated November 19, 2026",
       "facts": [
@@ -39,8 +43,8 @@
         "The builder includes more than 67 components, Arabic right-to-left layout, and a product catalog with variants (QwickSite, 2026)."
       ],
       "paragraphs": [
-        "QwickSite is an AI website builder for founders and teams in Egypt and MENA. Create a responsive Arabic or English business website, then edit and publish it without coding.",
-        "Need to sell online? The same ecommerce platform connects your storefront, products, checkout, and customer journey so you can launch and grow from one place."
+        "QwickSite is an AI website builder for founders and teams in Egypt and MENA (QwickSite, 2026). Create a responsive Arabic or English business website, then edit and publish it without coding.",
+        "Need to sell online? The same ecommerce platform connects your storefront, products, checkout, and customer journey so you can launch and grow from one place (QwickSite, 2026)."
       ],
       "websiteBuilderLink": "Explore the website builder",
       "ecommerceLink": "Explore ecommerce",
@@ -159,7 +163,7 @@
         },
         {
           "question": "How much does QwickSite cost?",
-          "answer": "We offer flexible pricing starting with a free forever plan. Paid plans start at just $9/month with advanced features, custom domains, and priority support. All plans include a 14-day money-back guarantee."
+          "answer": "We offer flexible pricing starting with a free forever plan. Paid plans start at just $9/month with advanced features, custom domains, and priority support (QwickSite, 2026). All plans include a 14-day money-back guarantee (QwickSite, 2026)."
         },
         {
           "question": "Can I migrate from Shopify or WooCommerce?",
@@ -175,7 +179,7 @@
         },
         {
           "question": "How fast will my website load?",
-          "answer": "Lightning fast! All QwickSite websites are automatically optimized for speed with global CDN, image optimization, and performance monitoring. Most sites load in under 2 seconds worldwide."
+          "answer": "Lightning fast! All QwickSite websites are automatically optimized for speed with global CDN, image optimization, and performance monitoring. Most sites load in under 2 seconds worldwide (QwickSite, 2026)."
         }
       ]
     },

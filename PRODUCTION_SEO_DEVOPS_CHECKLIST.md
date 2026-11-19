@@ -163,12 +163,11 @@ Both responses must return `200`.
 
 `robots.txt` must:
 
-- Explicitly allow Googlebot, Bingbot, OAI-SearchBot, PerplexityBot, Claude-SearchBot, and
-  Claude-User.
-- Preserve the current policy of allowing search discovery while disallowing GPTBot and ClaudeBot
-  model-training access.
-- Set `ai-input=yes` so retrieval, grounding, and agentic use are permitted while `ai-train=no`
-  keeps model training separate.
+- Explicitly allow Googlebot, Bingbot, OAI-SearchBot, PerplexityBot, Claude-SearchBot,
+  Claude-User, GPTBot, ClaudeBot, and Google-Extended.
+- Allow public pages for search discovery and for AI training crawlers. Keep only `/api/` disallowed.
+- Set `ai-input=yes` and `ai-train=yes` so retrieval, grounding, agentic use, and model training
+  are permitted.
 - Allow all other public pages to be crawled.
 - Disallow only `/api/`.
 - Reference `https://www.qwicksite.com/sitemap.xml`.
@@ -446,7 +445,7 @@ SITE_URL=https://www.qwicksite.com npm run seo:verify
 The command checks:
 
 - `robots.txt`, sitemap, `llms.txt`, and IndexNow key availability
-- Explicit AI-search crawler access and the separate no-training policy
+- Explicit access for search, answer-engine, and training crawlers, including GPTBot, ClaudeBot, Google-Extended, and PerplexityBot
 - All required English and Arabic SEO pages
 - HTTP `200` on canonical sitemap URLs
 - Canonical URLs

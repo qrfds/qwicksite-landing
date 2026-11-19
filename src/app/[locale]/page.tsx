@@ -8,6 +8,7 @@ import { getPricingPlans } from "@/lib/pricing-plans";
 import {
   createFaqSchema,
   createFounderSchema,
+  createHomepageArticleSchema,
   createOrganizationSchema,
   createPageMetadata,
   createSoftwareApplicationSchema,
@@ -55,6 +56,7 @@ export default async function LocalizedHomePage({
   const localeKey = resolveLocale(locale);
   setRequestLocale(localeKey);
   const meta = await getTranslations("meta");
+  const overview = await getTranslations("home.seoOverview");
   const faq = await getTranslations("home.faq");
   const pricing = await getTranslations("pricingPage");
   const { plans } = await getPricingPlans(pricing);
@@ -80,6 +82,11 @@ export default async function LocalizedHomePage({
           createWebPageSchema({
             locale: localeKey,
             title: meta("title"),
+            description,
+          }),
+          createHomepageArticleSchema({
+            locale: localeKey,
+            headline: overview("title"),
             description,
           }),
           createFaqSchema(

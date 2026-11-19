@@ -27,9 +27,16 @@ export default async function HomePage() {
         <BenefitsSection />
         <section className="py-20" aria-labelledby="qwicksite-overview-title">
           <div className="container max-w-5xl">
-            <article className="h-entry rounded-3xl border border-border/60 bg-card/50 p-7 md:p-12">
+            <article
+              className="h-entry rounded-3xl border border-border/60 bg-card/50 p-7 md:p-12"
+              itemScope
+              itemType="https://schema.org/Article"
+            >
+              <meta itemProp="author" content={t("authorName")} />
+              <meta itemProp="datePublished" content={SITE_DATE_PUBLISHED} />
+              <meta itemProp="dateModified" content={SITE_DATE_MODIFIED} />
               <p className="p-category text-sm font-medium text-primary">{t("eyebrow")}</p>
-              <h2 id="qwicksite-overview-title" className="p-name mt-3 text-3xl font-bold md:text-5xl">
+              <h2 id="qwicksite-overview-title" className="p-name mt-3 text-3xl font-bold md:text-5xl" itemProp="headline">
                 {t("title")}
               </h2>
               <p className="mt-4 text-sm text-muted-foreground">
@@ -37,15 +44,15 @@ export default async function HomePage() {
                   <span className="p-name">{t("byline")}</span>
                 </Link>
                 <span aria-hidden="true"> · </span>
-                <time className="dt-published" dateTime={SITE_DATE_PUBLISHED}>
+                <time className="dt-published" dateTime={SITE_DATE_PUBLISHED} itemProp="datePublished">
                   {t("publishedLabel")}
                 </time>
                 <span aria-hidden="true"> · </span>
-                <time className="dt-updated" dateTime={SITE_DATE_MODIFIED}>
+                <time className="dt-updated" dateTime={SITE_DATE_MODIFIED} itemProp="dateModified">
                   {t("updatedLabel")}
                 </time>
               </p>
-              <div className="e-content mt-7 grid gap-5 md:grid-cols-2">
+              <div className="e-content mt-7 grid gap-5 md:grid-cols-2" itemProp="articleBody">
                 {paragraphs.map((paragraph) => (
                   <p key={paragraph} className="leading-relaxed text-muted-foreground">
                     {paragraph}
