@@ -1,4 +1,5 @@
 import type { AppLocale } from "@/i18n/routing";
+import { bookingPages } from "./marketing-pages-booking";
 
 export type MarketingPageSection = {
   title: string;
@@ -46,9 +47,14 @@ export const seoContentSlugs = [
   "ai-store-builder",
   "online-store-builder-egypt",
   "qwicksite-not-amazon-quicksight",
+  "booking-website-builder",
+  "salon-booking-website",
+  "clinic-appointment-website",
+  "coach-consultant-booking-website",
 ] as const;
 
 export const marketingPages: MarketingPage[] = [
+  ...bookingPages,
   {
     slug: "templates",
     dateModified: "2026-07-25",
