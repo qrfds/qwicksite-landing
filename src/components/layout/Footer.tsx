@@ -92,7 +92,7 @@ const Footer = async () => {
             <p className="p-note text-sm text-muted-foreground mb-4">
               {t("tagline")}
             </p>
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2">
               {socialLinks.map((social) => (
                 <a
                   key={social.name}
@@ -100,9 +100,9 @@ const Footer = async () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.name}
-                  className="flex h-9 w-9 items-center justify-center rounded-md border border-border/60 bg-card/40 text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50"
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-border/60 bg-card/40 text-muted-foreground transition-colors hover:text-foreground hover:border-primary/50"
                 >
-                  <social.icon className="h-4 w-4" />
+                  <social.icon className="h-4 w-4 shrink-0" />
                 </a>
               ))}
             </div>
