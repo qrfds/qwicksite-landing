@@ -10,7 +10,7 @@ const gaMeasurementId =
 const clarityProjectId = process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID?.trim();
 // QwickSite's Meta Pixel (Meta ads), shared with the dashboard at app.qwicksite.com, which also sends CompleteRegistration on sign-up.
 // Same rule as GA4: the env var overrides it, and `next dev` sends nothing unless the env var is set.
-const DEFAULT_META_PIXEL_ID = "1988531178790957";
+const DEFAULT_META_PIXEL_ID = "1671311454725306";
 const metaPixelId =
   process.env.NEXT_PUBLIC_META_PIXEL_ID?.trim() ||
   (process.env.NODE_ENV === "production" ? DEFAULT_META_PIXEL_ID : undefined);
