@@ -1,7 +1,36 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { MapPin, Mail, Phone, MessageCircle } from "lucide-react";
+import {
+  MapPin,
+  Mail,
+  Phone,
+  MessageCircle,
+  Facebook,
+  Instagram,
+  Youtube,
+  Linkedin,
+  type LucideIcon,
+} from "lucide-react";
 import Image from "next/image";
+
+const TikTokIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+    <path d="M19.6 6.8a4.8 4.8 0 0 1-3-1.1 4.8 4.8 0 0 1-1.6-2.7h-3.2v12.4a2.6 2.6 0 1 1-1.9-2.5V9.7a5.8 5.8 0 1 0 5.1 5.7V9.3a8 8 0 0 0 4.6 1.5z" />
+  </svg>
+);
+
+// Replace each "link_here" with the real profile URL (or set the NEXT_PUBLIC_SOCIAL_<NAME>_URL env var).
+const SOCIAL_PROFILES: {
+  name: string;
+  href: string;
+  icon: LucideIcon | typeof TikTokIcon;
+}[] = [
+  { name: "Facebook", href: process.env.NEXT_PUBLIC_SOCIAL_FACEBOOK_URL || "https://www.facebook.com/qwicksite", icon: Facebook },
+  { name: "Instagram", href: process.env.NEXT_PUBLIC_SOCIAL_INSTAGRAM_URL || "https://www.instagram.com/qwicksiteai", icon: Instagram },
+  { name: "TikTok", href: process.env.NEXT_PUBLIC_SOCIAL_TIKTOK_URL || "https://www.tiktok.com/@qwicksite", icon: TikTokIcon },
+  { name: "YouTube", href: process.env.NEXT_PUBLIC_SOCIAL_YOUTUBE_URL || "https://www.youtube.com/@qwicksite", icon: Youtube },
+  { name: "LinkedIn", href: process.env.NEXT_PUBLIC_SOCIAL_LINKEDIN_URL || "https://www.linkedin.com/showcase/qwicksite-ai", icon: Linkedin },
+];
 
 const Footer = async () => {
   const t = await getTranslations("footer");
@@ -11,6 +40,7 @@ const Footer = async () => {
       href: "https://wa.me/201062034597",
       icon: MessageCircle,
     },
+    ...SOCIAL_PROFILES,
   ];
 
   const links = {
