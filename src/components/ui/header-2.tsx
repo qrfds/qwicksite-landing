@@ -80,17 +80,21 @@ export function Header() {
           ))}
           <LanguageSwitcher />
           <Button asChild variant="outline">
-            <Link href="https://app.qwicksite.com/login" target="_blank" rel="noopener noreferrer">
+            <Link href="https://app.qwicksite.com/login">
               {tc('signIn')}
             </Link>
           </Button>
           <Button asChild>
-            <Link href="https://app.qwicksite.com/register" target="_blank" rel="noopener noreferrer">
+            <Link href="https://app.qwicksite.com/register">
               {tc('getStarted')}
             </Link>
           </Button>
         </div>
 
+        <div className="flex items-center gap-2 md:hidden">
+          <Button asChild size="sm">
+            <Link href="https://app.qwicksite.com/register">{tc('getStarted')}</Link>
+          </Button>
         <Button
           size="icon"
           variant="outline"
@@ -102,6 +106,7 @@ export function Header() {
         >
           <MenuToggleIcon open={open} className="size-5" duration={300} />
         </Button>
+        </div>
       </nav>
 
       <div
@@ -141,8 +146,6 @@ export function Header() {
             <Button asChild variant="outline" className="w-full">
               <Link
                 href="https://app.qwicksite.com/login"
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
               >
                 {tc('signIn')}
@@ -151,8 +154,6 @@ export function Header() {
             <Button asChild className="w-full">
               <Link
                 href="https://app.qwicksite.com/register"
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={() => setOpen(false)}
               >
                 {tc('getStarted')}

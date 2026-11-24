@@ -3,6 +3,7 @@ import { Cairo, Geist, Plus_Jakarta_Sans } from "next/font/google";
 import { getLocale } from "next-intl/server";
 import Analytics from "@/components/analytics/Analytics";
 import CampaignLinks from "@/components/analytics/CampaignLinks";
+import ScrollToTop from "@/components/analytics/ScrollToTop";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SITE_URL } from "@/lib/seo";
 import "./globals.css";
@@ -127,6 +128,7 @@ export default async function RootLayout({
         </ThemeProvider>
         <Analytics />
         <CampaignLinks />
+        <ScrollToTop />
       </body>
     </html>
   );

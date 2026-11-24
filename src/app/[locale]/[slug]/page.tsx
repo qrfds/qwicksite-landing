@@ -179,6 +179,30 @@ export default async function LocalizedStaticContentPage({
               </CardContent>
             </Card>
 
+
+            <section className="rounded-2xl border border-primary/30 bg-primary/10 p-6 text-center md:p-8">
+              <h2 className="text-2xl font-semibold md:text-3xl">
+                {localeKey === "ar" ? "جاهز تبدأ؟" : "Ready to start?"}
+              </h2>
+              <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
+                {localeKey === "ar"
+                  ? "أنشئ حسابك وابدأ بناء موقعك أو متجرك خلال دقائق، وجرّبه بنفسك قبل أي التزام."
+                  : "Create your account and start building your site or store in minutes. Try it yourself before you commit."}
+              </p>
+              <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+                <Button asChild size="lg">
+                  <a href="https://app.qwicksite.com/register">
+                    {localeKey === "ar" ? "ابدأ الآن" : "Get started"}
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/pricing">
+                    {localeKey === "ar" ? "شاهد الأسعار" : "See pricing"}
+                  </Link>
+                </Button>
+              </div>
+            </section>
+
             {content.sections.map((section) => (
               <section
                 key={section.title}
