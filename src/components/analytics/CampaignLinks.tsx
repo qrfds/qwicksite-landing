@@ -2,7 +2,8 @@
 
 import { useEffect } from "react";
 
-const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content"] as const;
+// `ref` is an affiliate / group-admin promo code (app: utils/affiliate-ref.ts pre-fills it on the pricing page).
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "ref"] as const;
 const STORAGE_KEY = "qs_landing_utm";
 const APP_HOST = "app.qwicksite.com";
 
