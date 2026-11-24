@@ -36,7 +36,9 @@ type SoftwareOffer = {
   url: string;
 };
 
-const fallbackSiteUrl = "https://qwicksite.com";
+// Must match the canonical host in PRODUCTION_SEO_DEVOPS_CHECKLIST.md. The apex redirects to
+// www, so an apex canonical/hreflang/og:url points search engines at a redirecting URL.
+const fallbackSiteUrl = "https://www.qwicksite.com";
 const configuredSiteUrl = process.env.SITE_URL?.trim() || fallbackSiteUrl;
 
 export const SITE_URL = configuredSiteUrl.replace(/\/+$/, "");
